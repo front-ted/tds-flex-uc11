@@ -168,6 +168,11 @@
                     <p>Agora, imaginando os casos de teste que devem ser criados para cobrir os limites dessa situação, quantos seriam necessários para atender a todas as partições?</p>
                     <p>Nessa situação, você precisa de quatro casos de teste, sendo um teste para cobrir o valor-limite da partição inválida muito baixa, nesse caso 9,9 l; um teste para cobrir o valor-limite mínimo válido da partição válida, nesse caso 10 l; um teste para cobrir o valor-limite máximo válido da partição válida, nesse caso 50 l; e um teste para cobrir o valor-limite da partição inválida muito alta, nesse caso 50,1 l.</p>
                     <p>Agora é hora praticar criando o código para esse projeto. Primeiro, você desenvolverá a base, criando uma variável para armazenar o nome que referenciará o tanque de tinta e exibirá os dados cadastrados ao final.</p>
+
+                    <p>Destaca-se que serão apresentados os códigos tanto em linguagem Java quanto em Python. </p>
+
+                    <p>A seguir, veja um exemplo de implementação feita em linguagem Java.</p>
+
                     <pre>
                       <code>
 import java.util.Scanner;
@@ -189,11 +194,30 @@ public class TesteTanque {
 }
                       </code>
                     </pre>
+
+                    <p>Agora é apresentada essa mesma implementação, mas feita em linguagem Python. </p>
+
+                    <pre>
+                      <code>
+class TesteTanque: 
+    def main(self):
+        identificacao = input("Informe a identificação do tanque: ") 
+          qtdTinta = float(input("Informe a quantidade de litros inserido no tanque: "))   
+        print("O nome do tanque é:", identificacao, "e a quantidade presente de litros é:", qtdTinta) 
+  
+# Instanciar e chamar o método main 
+TesteTanque().main() 
+                      </code>
+                    </pre>
+
                     <p>Agora, você realizará os testes de análise de valor-limite e verificará se está cobrindo os requisitos esperados para o projeto. Então, execute o código e analise o que acontece. Primeiro, informe um valor mínimo aceito de 10 l e, posteriormente, execute o código novamente e informe um valor máximo aceito de 50 l. Em ambos os casos deve ser exibida a mensagem de litros presentes no tanque e a identificação dele.</p>
                     <p>Então, você realizará os testes para os valores abaixo do mínimo aceito e acima do valor máximo aceito, portanto execute o código novamente. Primeiro, informe 9,9 l e veja o que acontece. </p>
                     <p>Execute outra vez o código e informe 50,1 l. Em ambos os casos deve ser exibida uma mensagem de valores inválidos informados.</p>
                     <p>Você percebeu que o código apresentou falhas, pois está faltando algo, não é mesmo? No teste, foram encontradas falhas do projeto; as estruturas de decisão não foram criadas para validar os valores que devem ser aceitos, ou seja, a cobertura do teste é de 50%. Nesse momento, você reportará, em um documento adequado, que essa função do sistema não está adequada ao que era esperado no documento de requisitos e deve ser refeita.</p>
                     <p>Portanto, refaça e adicione as validações que devem estar presentes.</p>
+
+                    <p>A seguir, veja o exemplo de implementação feita em linguagem Java. </p>
+
                     <pre>
                       <code>
 import java.util.Scanner;
@@ -220,6 +244,24 @@ public class TesteTanque {
             }      
     }
 }
+                      </code>
+                    </pre>
+
+                    <p>Agora veja essa mesma implementação, mas feita em linguagem Python. </p>
+                    <pre>
+                      <code>
+class TesteTanque: 
+    def main(self):                     
+        identificacao = input("Informe a identificação do tanque: ")                     
+          qtdTinta = float(input("Informe a quantidade de litros inserido no tanque: ")) 
+
+          if 10 <= qtdTinta <= 50: 
+            print("O nome do tanque é:", identificacao, "e a quantidade presente de litros é:", qtdTinta) 
+          else: 
+            print("A quantidade de tinta informada é inadequada para a capacidade do tanque")   
+
+# Instanciar e chamar o método main 
+TesteTanque().main()
                       </code>
                     </pre>
                     <p>Agora, você deve refazer os testes de análise de valor-limite e verificar se o projeto cobre os requisitos esperados.</p>
@@ -729,7 +771,7 @@ public class TesteTanque {
                     <p>Verifica as instruções executáveis de um código. Tem como cálculo para percentual de cobertura a seguinte formula:</p>
                     <p>(Instruções Executadas / Total de Instruções Existentes) * 100</p>
                     <p>É a técnica de cobertura menos eficiente, pois verifica apenas se as instruções estão sendo executadas, desconsiderando outros tipos de cobertura, como situações condicionais. Em algumas literaturas, pode ser encontrada como cobertura de declaração, comando ou até mesmo sentença.</p>
-                    <p>Agora, pense em um exemplo prático: em uma competição de salto em altura, um atleta tem três oportunidades para registrar a maior marcar de seu salto. Você foi convidado a desenvolver um <i>software</i> para aferir a maior marca de um atleta, portanto construirá o seguinte código:</p>
+                    <p>Agora, pense em um exemplo prático: em uma competição de salto em altura, um atleta tem três oportunidades para registrar a maior marcar de seu salto. Você foi convidado a desenvolver um <i>software</i> para aferir a maior marca de um atleta, portanto construirá o seguinte código (em Java):</p>
                     <pre>
                       <code>
 import java.util.Scanner;
@@ -762,6 +804,32 @@ public class Competicao {
 }
                       </code>
                     </pre>
+
+                    <p>A seguir, é apresentada essa mesma implementação, mas feita em linguagem Python. </p>
+
+                    <pre>
+                      <code>
+class Competicao: 
+    def main(self): 
+        salto1 = float(input("Informe a altura do salto 1: ")) 
+        maior = salto1 
+        salto2 = float(input("Informe a altura do segundo salto: ")) 
+        salto3 = float(input("Informe a altura do terceiro salto: "))   
+
+        if salto2 > maior: 
+            maior = salto2 
+            if salto3 > maior: 
+                maior = salto3 
+        else: 
+            if salto3 > maior: 
+                maior = salto3  
+
+        print("A maior marca é de:", maior, "ms")   
+
+# Instanciar e chamar o método main 
+Competicao().main() 
+                      </code>
+                    </pre>
                     <p>Agora, pense no seguinte caso de teste para verificar a cobertura das instruções: o primeiro salto teve altura de 1,89 m, o segundo salto de 1,95 m e o terceiro foi anulado, portanto fica com 0,0 m. Dessa forma, teste seu código com esses valores para verificar quais instruções serão executadas. Para facilitar a análise, crie um fluxograma com as instruções do programa.</p>
                     <img src="imgs/figura_03.png" class="img-responsive center-block">
                     <p class="legenda-imagem">
@@ -780,6 +848,11 @@ public class Competicao {
                     <p>Em algumas literaturas, utilizam-se termos como “ramificação” e “desvio”.</p>
                     <p>Agora, pense no seguinte exemplo: uma empresa está considerando subsidiar um auxílio para seus funcionários realizarem um curso de especialização em qualquer área, independentemente de ter ou não relação com seu cargo na empresa, no entanto o funcionário deve aceitar que o percentual restante seja descontado diretamente em folha de pagamento. O colaborador poderá, ainda, definir se, ao escolher realizar a especialização, receberá um outro subsidio de transporte, novamente descontado em folha.</p>
                     <p>Quantos e quais seriam os casos de uso necessários para cobrir todas as estruturas de decisão presentes no seguinte trecho de código?</p>
+
+
+                    <p>Código em Java: </p>
+
+
                     <pre>
                       <code>
 import java.util.*;
@@ -811,6 +884,31 @@ public class JavaApplication {
         System.out.println("Obrigado por participar");
     }
 }
+                      </code>
+                    </pre>
+
+                    <p>Agora veja essa mesma implementação, porém feita em linguagem Python. </p>
+
+                    <pre>
+                      <code>
+class PythonApplication: 
+    def main(self): 
+        print("Informe 'sim' se deseja realizar o curso de especialização ou 'nao' para recusar:") 
+        curso = input().lower()   
+
+        if curso == "sim": 
+            print("Informe 'sim' se deseja ganhar o subsídio para transporte ou 'nao' para recusar:") 
+            transporte = input().lower() 
+            if transporte == "sim": 
+                print("Você optou por não receber o subsídio de transporte, mas fará a especialização.") 
+            else: 
+                print("Você optou por não receber o subsídio de transporte e fará a especialização.") 
+        else: 
+            print("Você optou por não realizar a especialização.")   
+        print("Obrigado por participar.")  
+
+# Instanciar e chamar o método main 
+PythonApplication().main() 
                       </code>
                     </pre>
                     <p>Use novamente um fluxograma para auxiliar na análise da execução.</p>
@@ -944,13 +1042,13 @@ public static void main(String[] args) {
             </div>
             <div class="caixa-destaque-livre borda-primaria-03 icone desafio mt-40">
               <p><b>Desafio 2: Desafio de teste de cobertura de decisão</b></p>
-              <p>Você foi contratado por uma empresa de desenvolvimento de <i>software</i> que está desenvolvendo um <i>e-commerce</i>. Sua equipe está desenvolvendo uma classe em Java para calcular o valor total de uma compra realizada pelo cliente.</p>
+              <p>Você foi contratado por uma empresa de desenvolvimento de <i>software</i> que está desenvolvendo um <i>e-commerce</i>. Sua equipe está desenvolvendo uma classe em Java ou Python para calcular o valor total de uma compra realizada pelo cliente.</p>
               <p>Seu desafio é analisar o código e escrever casos de teste para cobrir todas as instruções da classe e verificar quantos são necessários para cobrir todas as situações. Você deve considerar as seguintes premissas:</p>
               <ul class="cor01">
                 <li>O valor da compra é calculado com base na quantidade de itens comprados, no preço unitário de cada item e no desconto que pode ser aplicado.</li>
                 <li>O desconto é determinado com base no valor total da compra. Se o valor em reais for maior ou igual a mil, o desconto é de 10%; se o valor em reais for menor que mil, não há desconto.</li>
               </ul>
-              <p>O código produzido é o seguinte:</p>
+              <p>O código em Java produzido é o seguinte:</p>
               <pre>
                 <code>
 public class CalculadoraValorCompra {
@@ -965,6 +1063,24 @@ public class CalculadoraValorCompra {
 }
                 </code>
               </pre>
+
+              <p>Agora veja o código da mesma implementação, porém feito em linguagem Python: </p>
+
+              <pre>
+                <code>
+class CalculadoraValorCompra: 
+    @staticmethod 
+    def calcular(quantidade, preco_unitario, taxa_desconto): 
+        total = quantidade * preco_unitario 
+        if total >= 1000: 
+            total -= total * taxa_desconto / 100 
+        return total 
+                </code>
+              </pre>
+
+
+
+
             </div>
 
             <h3>Encerramento</h3>
