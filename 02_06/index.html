@@ -80,11 +80,20 @@
             <p>A estratégia deve nortear alguns requisitos que são necessários para o acompanhamento, portanto deve ter os seguintes itens: indicar os objetivos do teste que está sendo realizado; indicar quais serão os papéis e as pessoas envolvidas no plano de teste; e determinar qual é o padrão que as documentações seguirão, por exemplo, como será desenvolvido o documento padrão de relatório de defeitos. Além de determinar quais serão os tipos de testes que cada nível terá, é preciso especificar quais serão as técnicas de testes aplicadas, assim como determinar a utilização de testes automáticos/manuais.</p>
             <p>Requisitos de cobertura e métrica também devem estar especificados no documento de estratégias, portanto deve conter a quantidade de <i>bugs</i> esperados e definir a quantidade de <i>bugs</i> por linha e a quantidade de vezes que uma tarefa retorna para o desenvolvimento. Também deve especificar quais serão as ferramentas utilizadas para o acompanhamento dos defeitos, ou seja, o uso de ferramentas como Jira e Mantis, e definir como deve ser realizada a descrição dos problemas. </p>
             <p>Ao criar a estratégia, devem-se considerar também os ambientes de testes que serão utilizados (desenvolvimento, homologação e produção) e a definição de quais relatórios serão realizados e quais devem ser entregues.</p>
-            <p>Esses itens são os sugeridos pela norma do IEEE (Instituto de Engenheiros Eletricistas e Eletrônicos) que especifica o padrão a ser seguido, porém algumas empresas realizam adaptações conforme a sua realidade, considerando técnicas e metodologias de desenvolvimento aplicadas.</p>
+            
+            <p class="caixa-destaque icone-atencao">Esses itens são os sugeridos pela norma do IEEE (Instituto de Engenheiros Eletricistas e Eletrônicos) que especifica o padrão a ser seguido, porém algumas empresas realizam adaptações conforme a sua realidade, considerando técnicas e metodologias de desenvolvimento aplicadas.</p>
+            
             <p>Geralmente a estratégia de teste fica em um <i>wiki</i>, em uma página <i>web</i> interna, em razão da fácil manutenção e do fácil acesso a todos da instituição, pois manter outras formas de documento gerará entraves para acesso, como a necessidade de licenças para realizar edições ou até mesmo a necessidade de <i>download</i> de arquivo toda vez que a estratégia passar por alterações.</p>
             <p>Alguns fatores são essenciais para a criação da estratégia. O primeiro passo é compreender a realidade de desenvolvimento da instituição, ou seja, ambientar-se às ferramentas que a empresa usa, compreendendo como acontecem os processos e seus fluxos e inteirando-se das tecnologias que são utilizadas (linguagem de programação e teste com suas métricas de cobertura). O segundo fator de grande importância é conhecer a quantidade de ambientes de testes que estarão disponíveis e se serão utilizados ambientes gerais ou ambientes específicos para cada tipo de teste, por exemplo, o teste de carga.</p>
+            
             <p>Outro fator preponderante é conhecer quais são as áreas mais importantes do sistema que está sendo desenvolvido. Desse modo, deve-se compreender quais pontos, caso sejam liberados com falhas, podem ser fatais ao projeto, significando uma mancha irrecuperável para a imagem do cliente.</p>
-            <p>Um exemplo para uma situação dessas seria projetar um <i>software</i> para um sistema hospitalar que auxiliará médicos em diagnósticos de exames de alto grau de risco. Nesse caso, uma falha poderia trazer sérias consequências, pois geraria um diagnóstico que poderia colocar um paciente em grave risco de vida. No caso de ocorrência de uma fatalidade, isso afetaria a integridade dessa instituição junto à opinião pública, acarretando uma marca negativa tanto para o cliente quanto para a empresa de desenvolvimento. Além disso, possíveis problemas jurídicos poderiam ser desencadeados.</p>
+            
+            <p  class="caixa-destaque icone apoio030">Uma situação assim seria projetar um <i>software</i> para um sistema hospitalar a fim de auxiliar médicos em diagnósticos de exames de alto grau de risco. Nesse caso, uma falha acarretaria sérias consequências, pois poderia gerar um diagnóstico colocando o paciente em risco de vida. No caso de ocorrência de fatalidade, isso afetaria a integridade da instituição junto à opinião pública, deixando uma marca negativa tanto no cliente quanto na empresa de desenvolvimento. Além disso, problemas jurídicos poderiam ser desencadeados.</p>
+
+             
+
+
+            
             <p>Outro fator essencial é conhecer a pirâmide de teste automatizado, para iniciar pelas bases da pirâmide, verificando se já existe alguma métrica de cobertura ou, no caso de estar sendo realizada a primeira bateria de testes em um <i>software</i> novo, criando esses parâmetros. Após essas definições serem realizadas, o próximo passo é subir para os degraus mais altos da estrutura e, por fim, verificar quais são os testes não funcionais que devem ser realizados.</p>
             <p>Esses são os fatores que devem ser considerados na hora da criação de estratégias, aplicando-os também para atualizações futuras. </p>
             <p>Existem algumas abordagens que podem ser aplicadas, como no caso da abordagem preventiva ou reativa, que considera o período em que os testes devem iniciar, e da abordagem analítica ou heurística, que considera a base de dados conhecida.</p>
@@ -102,7 +111,11 @@
                   <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
                     <div class='panel-body'>
                       <p>A abordagem preventiva considera a participação da equipe de teste desde o momento em que o projeto é iniciado, minimizando, dessa forma, os custos, pois, ao especificar casos de teste e aplicá-los, possíveis falhas são encontradas com antecedência no processo. Assim, evita-se que ocorra retrabalho pela equipe de desenvolvimento, otimizando o tempo para o desenvolvimento de tarefas essenciais.</p>
-                      <p>Um exemplo de projeto em que podem ser utilizadas estratégias preventivas é o desenvolvimento de uma aplicação Java para a organização de tarefas pessoais, em que, durante o processo de desenvolvimento, testes unitários foram produzidos para serem executados com periodicidade, garantindo a funcionalidade das classes e dos métodos da aplicação. Também foram produzidos testes de integração para cobrir a interação correta entre as classes e os métodos, validando entradas de dados e inclusão de operações de adição, edição e remoção de tarefas. </p>
+                      <p>Um exemplo de projeto em que podem ser utilizadas estratégias preventivas é o desenvolvimento de uma aplicação em linguagem Java ou em linguagem Python para a organização de tarefas pessoais, em que, durante o processo de desenvolvimento, testes unitários foram produzidos para serem executados com periodicidade, garantindo a funcionalidade das classes e dos métodos da aplicação. Também foram produzidos testes de integração para cobrir a interação correta entre as classes e os métodos, validando entradas de dados e inclusão de operações de adição, edição e remoção de tarefas. </p>
+
+
+
+
                     </div>
                   </div>
                 </div>
@@ -154,7 +167,10 @@
             <p>A realização de testes é uma etapa importante para assegurar a qualidade de um <i>software</i>, portanto é necessária a realização de gerenciamento e organização dos testes, o que abrange a definição de níveis de testes a serem executados.</p>
             <p>Sendo o conjunto de tarefas relacionadas ao gerenciamento e à organização dos testes, os níveis de testes consistem em: componentes, integração, sistema e aceite. Cada tarefa é realizada em um determinado momento do desenvolvimento do projeto, gerando uma esfera de teste, podendo ser realizado em unidades individuais ou componentes até englobar sistemas totalmente concluídos, tendo relação com diferentes tarefas nas etapas do desenvolvimento de <i>software</i>.</p>
             <p>Cada nível de teste deve ter um ambiente condizente com a sua realidade. É possível citar como exemplo o teste de aceitação, em que o ideal é a realização com aspectos semelhantes ao ambiente de produção em que o sistema será executado. Já um teste de componente geralmente é realizado no ambiente de desenvolvimento.</p>
-            <p>Um nível de teste deve ter as seguintes propriedades: objetivos específicos; bases de teste diferentes para serem utilizadas para criar casos de testes; objeto de teste, que é aquilo que será testado; defeitos e falhas típicas e abordagens; e responsabilidades específicas.</p>
+
+            <p class="caixa-destaque icone-atencao">Um nível de teste deve ter as seguintes propriedades: objetivos específicos; bases de teste diferentes para serem utilizadas na criação de casos de teste; objeto de teste, que é aquilo que será testado; defeitos, falhas típicas e abordagens; além de responsabilidades específicas.</p>
+
+
             <p>O teste de componentes também é conhecido como teste de unidade. O teste de integração tem duas partes, sendo divido em: integração entre componentes e integração entre sistemas. Já o teste de aceite ou aceitação pode ser: aceite de usuário, aceite operacional, aceite contratual e alfa/beta teste.</p>
             <div class="no-print" aria-hidden="true">
               <p>Clique ou toque para visualizar o conteúdo. </p>
@@ -171,7 +187,9 @@
                     <p>Esse teste tem como objetivos reduzir risco, considerar aspectos de requisitos funcionais e não funcionais dos componentes esperados e especificados, gerar uma relação de confiança na qualidade do componente, buscar defeitos no componente e evitar que os problemas se expandam para níveis mais altos de teste. </p>
                     <p>Para a base de teste é utilizado o projeto detalhado, o código e as especificações dos componentes. O objeto de teste é a própria estrutura de código, considerando classes e módulos de bancos de dados. </p>
                     <p>São consideradas falhas típicas funções que não têm lógica e/ou estrutura de desenvolvimento de códigos corretos e que destoam do que foi informado na especificação do projeto. A velocidade de correção do teste se dá em razão de a realização do teste ser feita pelo próprio desenvolvedor, que, ao perceber a falha, já realiza a correção, sem a necessidade de abrir um chamado que parará em uma lista de eventuais ajustes.</p>
-                    <p>Considere o seguinte código:</p>
+
+
+                    <p>Código em linguagem Java</p>
                     <pre>
                       <code>
 public class Calculadora {
@@ -196,6 +214,29 @@ public class Calculadora {
 }
                       </code>
                     </pre>
+
+
+                    <p>Código em linguagem Python </p>
+
+                    <pre>
+                      <code>
+class Calculadora: 
+    def soma(self, a, b): 
+        return a + b   
+
+    def subtrai(self, a, b): 
+        return a - b                     
+
+    def multiplica(self, a, b): 
+        return a * b                         
+
+    def divide(self, a, b): 
+        if b == 0: 
+            raise ValueError("Não é possível dividir por zero.") 
+        return a / b 
+                      </code>
+                    </pre>
+
                     <p>Agora, pense no seguinte exemplo. Ao criar uma classe para realizar as quatro operações básicas da matemática, serão realizados testes para verificar se a soma, a subtração, a multiplicação e a divisão estão retornando o valor correto do cálculo e se na divisão, ao informar um valor 0, uma exceção é lançada.  </p>
                   </div>
                   <div role='tabpanel' class='tab-pane fade' id='profile'>
@@ -206,7 +247,11 @@ public class Calculadora {
                     <p>A segunda parte é a integração de sistema, voltada para a interação entre interfaces do sistema, considerando inclusive interfaces que possam ser fornecidas por sistemas de terceiros, por exemplo, um sistema que realizará vendas e consumirá uma API (<i>application programming interface</i>, ou, em português, interface de programação de aplicação) de transações bancárias para realizar a funcionalidade de pagamento.</p>
                     <p>Como base de teste pode ser utilizado o próprio <i>software</i>, o diagrama de sequência, os protocolos de comunicação e as especificações de interfaces, os casos de uso e a arquitetura em nível de componente ou sistema. Como objetos de testes, tem-se: subsistemas, bancos de dados, infraestrutura, interfaces e APIs.</p>
                     <p>Os defeitos típicos que podem ser encontrados no teste de integração entre componentes são: ausência de dados, dados errôneos e desenvolvimento de código incorreto. O uso de bibliotecas incompatíveis pode gerar falhas por falta de comunicação na troca de informações entre os componentes, assim como a falta de tratamento para essas falhas. Para os testes de integração de sistemas, há, além dos já citados, os seguintes defeitos típicos: mensagens incoerentes entre os sistemas e não seguimento de especificações obrigatórias de segurança.</p>
-                    <p>Considere o seguinte código:</p>
+
+                    <p>A seguir, veja dois códigos com o mesmo objetivo e as mesmas funcionalidades. O primeiro está implementado em linguagem Java e o segundo em linguagem Python. </p>
+
+                    <p>Código em linguagem Java</p>
+
                     <pre>
                       <code>
 public class SistemaPedidos {
@@ -223,6 +268,24 @@ public class SistemaPedidos {
         pedidoDAO.salvaPedido(pedido);
     }
 }
+                      </code>
+                    </pre>
+
+                    <p>Código em linguagem Python </p>
+                    <pre>
+                      <code>
+class SistemaPedidos: 
+    def __init__(self, produtoDAO, pedidoDAO, estoqueService): 
+        self.produtoDAO = produtoDAO 
+        self.pedidoDAO = pedidoDAO 
+        self.estoqueService = estoqueService 
+
+    def realizaPedido(self, pedido): 
+        produtos = self.produtoDAO.buscaProdutos(pedido.getIdsProdutos()) 
+        if not self.estoqueService.temEstoque(produtos): 
+            raise ValueError("Produto sem estoque") 
+        self.estoqueService.diminuiEstoque(produtos)
+        self.pedidoDAO.salvaPedido(pedido) 
                       </code>
                     </pre>
                     <p>Agora, analise a seguinte situação. A classe <b>SistemaPedidos</b> representa um sistema de gerenciamento de pedidos. Ela depende de outras três classes: <b>ProdutoDAO</b>, <b>PedidoDAO</b> e <b>EstoqueService</b>.</p>
