@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Plano de teste</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção Grau de pontuação/símbolos, acesse Preferências – Configurações – Fala. Altere o padrão Pouco para Tudo. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade. </p>
+            
+            <h2>Plano de teste</h2>
+            <h3>Introdução</h3>
+            <p>Uma etapa essencial em todas as fases de criação de um <i>software</i> é o planejamento, ou seja, especificar como ocorrerão todas essas fases, desde equipe, tempo de duração do projeto, cronograma de cada etapa, quais diagramas serão executados, que dados serão armazenados no banco, como será a interface etc. Certamente, todo programador e toda equipe de desenvolvimento esperam ansiosamente ver o projeto funcionando, porém, para que o sistema seja bem-sucedido, a etapa do planejamento não pode ser burlada.</p>
+            <p>O teste de um sistema não pode ser feito de qualquer maneira, apenas colocando dados depois do <i>software</i> pronto e vendo se ele “roda”. Existem diversos critérios e muitas particularidades que precisam ser levados em consideração, e é neste momento que entra um plano de teste, que é um documento que visa planejar as atividades de teste durante todo o projeto e os métodos de testagem que serão empregados. Ainda, deve estabelecer as métricas do que é considerado aceitável ou não como resultado de um teste, as respostas da equipe perante erros que possam aparecer, além de diversos outros elementos que serão ainda apresentados. </p>
+
+            <h3>Especificações e tipos de teste</h3>
+            <p>O plano de testes durará durante toda a vida útil do projeto de <i>software</i> que está sendo criado. Normalmente é elaborado por um gerente de testes, ou pelas pessoas mais experientes da equipe, com a ajuda dos demais envolvidos no desenvolvimento, podendo ter a participação de pessoas de outras áreas que tenham relevância para o documento, por exemplo, <i>designers</i>.</p>
+            <p>Os planos de testes nem sempre têm os mesmos itens para todas as empresas, podendo ser adequados conforme as necessidades, o foco e o público-alvo, porém devem deixar bem claro “o quê”, “como” e “quando” serão feitos os testes e o motivo pelo qual a sua existência e as etapas que o compõem são importantes.</p>
+
+            <h3>Itens de um plano de teste</h3>
+            <p>Como indicado anteriormente, os planos de teste diferem conforme o projeto, mas é de extrema importância conhecer os principais itens que devem existir nesse documento. Com base nesse modelo que será apresentado, é possível incluir ou excluir elementos para adequar aos seus futuros projetos.</p>
+            <img src="imgs/info.png" class="img-responsive center-block hidden-xs mt-20 no-print" aria-hidden="true">
+            <div class="row visible-xs print" aria-hidden="true">
+              <div class="col-xs-12 info-titulo">
+                <p>Itens que podem aparecer em um plano de teste:</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_a.png" class="img-responsive center-block">
+                <p>a)	<b>Nome e resumo do sistema a ser criado</b></p>
+                <p>Aqui, o mais importante é uma explicação clara do que será o sistema, para que qualquer pessoa que leia o documento pela primeira vez saiba identificar o que ele faz e quais são as suas funcionalidades.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_b.png" class="img-responsive center-block">
+                <p>b)	<b>Objetivos do plano de teste</b></p>
+                <p>Aqui, deve ser citado tudo o que se espera de resultados com a aplicação desse plano de tese.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_c.png" class="img-responsive center-block">
+                <p>c)	<b>Escopo do projeto</b></p>
+                <p>Neste item, deve-se especificar os documentos que serão utilizados para a criação do plano de teste, por exemplo: manual de requisitos, diagramas, regras de negócios, documento de arquitetura, lista de riscos, protótipo, entre outros.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_d.png" class="img-responsive center-block">
+                <p>d)	<b>Tipos de teste</b></p>
+                <p>Este é um dos itens mais importantes de um plano de teste, pois aqui são definidos todos os elementos do sistema que serão testados. Uma falha nesta fase do documento pode acarretar sérios riscos ao futuro do projeto. Por exemplo: teste de banco de dados, teste de interface, teste de carga, teste de <i>performance</i> etc.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_e.png" class="img-responsive center-block">
+                <p>e)	<b>Requisitos de teste</b></p>
+                <p>Este item mostra os casos de uso e os requisitos funcionais e não funcionais que serão testados por cada tipo de teste escolhido para esse projeto.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_f.png" class="img-responsive center-block">
+                <p>f)	<b>Estratégias de teste</b></p>
+                <p>Aqui, é especificado o objetivo de cada um dos testes, qual será o seu modo de utilização, por quem será feito o teste, os critérios de aceitação dos resultados e a especificação de infraestrutura necessária.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_g.png" class="img-responsive center-block">
+                <p>g)	<b>Ferramentas</b></p>
+                <p>Aqui, devem ser citadas as ferramentas utilizadas para os testes e suas respectivas etapas. É preciso citar, caso necessário, as ferramentas utilizadas para os testes e em qual etapa de teste ela será empregada.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_h.png" class="img-responsive center-block">
+                <p>h)	<b>Equipe</b></p>
+                <p>Aqui, devem ser indicados todos os integrantes da equipe de teste, especificando a função de cada um no projeto e em quais testes terão participação.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_i.png" class="img-responsive center-block">
+                <p>i)	<b>Infraestrutura de teste</b></p>
+                <p>Aqui, deve-se listar tudo que é necessário de <i>hardware</i> e <i>software</i> para as fases de teste do projeto, inclusive especificando versões e marcas, se necessário.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_j.png" class="img-responsive center-block">
+                <p>j)	<b>Cronograma</b></p>
+                <p>Neste item, listam-se os prazos de execução de cada etapa do projeto.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_k.png" class="img-responsive center-block">
+                <p>k)	<b>Modelo de reportação de erros</b></p>
+                <p>Neste item, deve-se indicar a forma como serão apresentados os erros que aparecerem nos testes.</p>
+              </div>
+              <div class="col-xs-12 info-item">
+                <img src="imgs/info_ico_l.png" class="img-responsive center-block">
+                <p>l)	<b>Avaliação dos resultados</b></p>
+                <p>Com base nos resultados obtidos, são tomadas as decisões para o andamento do projeto, que podem ser: recomeçar algo que não está dando certo, atualizar parte do sistema ou manter o que está funcionando dentro do esperado.</p>
+              </div>
+            </div>
+            <div class="acessivel no-print">
+              <p>Itens que podem aparecer em um plano de teste:</p>
+              <p>a)	<b>Nome e resumo do sistema a ser criado</b></p>
+              <p>Aqui, o mais importante é uma explicação clara do que será o sistema, para que qualquer pessoa que leia o documento pela primeira vez saiba identificar o que ele faz e quais são as suas funcionalidades.</p>
+              <p>b)	<b>Objetivos do plano de teste</b></p>
+              <p>Aqui, deve ser citado tudo o que se espera de resultados com a aplicação desse plano de tese.</p>
+              <p>c)	<b>Escopo do projeto</b></p>
+              <p>Neste item, deve-se especificar os documentos que serão utilizados para a criação do plano de teste, por exemplo: manual de requisitos, diagramas, regras de negócios, documento de arquitetura, lista de riscos, protótipo, entre outros.</p>
+              <p>d)	<b>Tipos de teste</b></p>
+              <p>Este é um dos itens mais importantes de um plano de teste, pois aqui são definidos todos os elementos do sistema que serão testados. Uma falha nesta fase do documento pode acarretar sérios riscos ao futuro do projeto. Por exemplo: teste de banco de dados, teste de interface, teste de carga, teste de <i>performance</i> etc.</p>
+              <p>e)	<b>Requisitos de teste</b></p>
+              <p>Este item mostra os casos de uso e os requisitos funcionais e não funcionais que serão testados por cada tipo de teste escolhido para esse projeto.</p>
+              <p>f)	<b>Estratégias de teste</b></p>
+              <p>Aqui, é especificado o objetivo de cada um dos testes, qual será o seu modo de utilização, por quem será feito o teste, os critérios de aceitação dos resultados e a especificação de infraestrutura necessária.</p>
+              <p>g)	<b>Ferramentas</b></p>
+              <p>Aqui, devem ser citadas as ferramentas utilizadas para os testes e suas respectivas etapas. É preciso citar, caso necessário, as ferramentas utilizadas para os testes e em qual etapa de teste ela será empregada.</p>
+              <p>h)	<b>Equipe</b></p>
+              <p>Aqui, devem ser indicados todos os integrantes da equipe de teste, especificando a função de cada um no projeto e em quais testes terão participação.</p>
+              <p>i)	<b>Infraestrutura de teste</b></p>
+              <p>Aqui, deve-se listar tudo que é necessário de <i>hardware</i> e <i>software</i> para as fases de teste do projeto, inclusive especificando versões e marcas, se necessário.</p>
+              <p>j)	<b>Cronograma</b></p>
+              <p>Neste item, listam-se os prazos de execução de cada etapa do projeto.</p>
+              <p>k)	<b>Modelo de reportação de erros</b></p>
+              <p>Neste item, deve-se indicar a forma como serão apresentados os erros que aparecerem nos testes.</p>
+              <p>l)	<b>Avaliação dos resultados</b></p>
+              <p>Com base nos resultados obtidos, são tomadas as decisões para o andamento do projeto, que podem ser: recomeçar algo que não está dando certo, atualizar parte do sistema ou manter o que está funcionando dentro do esperado.</p>
+            </div>
+
+            <h3>Etapas de criação de um plano de teste e tipos de testes</h3>
+            <p>Para começar o exemplo de um plano de teste, simule um sistema simples de cadastro de usuários e <i>login</i>, em que serão criadas algumas regras a serem seguidas durante o processo de cadastro de novos usuários e haverá todos os testes necessários para analisar o funcionamento do sistema.</p>
+            <img src="imgs/figura_01.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_01.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_01.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 1 – Tela do sistema <br>
+              Fonte: adaptado de Figma (2023)
+            </p>
+            <p class="acessivel no-print">A Imagem apresenta duas telas do sistema de cadastro/login. A primeira tela é dividida em dois retângulos na vertical. O da esquerda, em um tom de roxo, pergunta se o usuário já tem acesso. Caso positivo, tem o botão para entrar e que leva à tela de login. O retângulo à direita, em branco, tem a parte de criação de conta, onde, em dois campos de texto, o usuário pode cadastrar seu e-mail e sua senha. Abaixo, os botões para apagar e cadastrar. A segunda tela é a tela de login, que tem dois campos de texto, os mesmos do cadastro, e-mail e senha, e abaixo há os botões de apagar e login.</p>
+            <p><b>1.	Nome e resumos do sistema</b></p>
+            <div class="caixa-destaque bg-auxiliar-claro-01">
+              <p>O sistema é chamado “Login +” e pode ser utilizado como um <i>script</i> de <i>login</i> acoplado a outros sistemas. Ele tem duas telas em que o usuário pode cadastrar seu <i>login</i> e uma tela para o <i>login</i> ser executado. Esse <i>script</i> serve para aumentar a segurança de um sistema que não apresente essa funcionalidade.</p>
+            </div>
+            <p><b>2.	Objetivos do plano de teste</b></p>
+            <div class="caixa-destaque bg-primaria-02 borda-primaria-03">
+              <p>Esse documento do plano de testes do sistema Login + é composto dos seguintes objetivos:</p>
+              <ul class="cor01">
+                <li>Identificar os tipos de dados que devem ser aceitos pelo cadastro no banco de dados.</li>
+                <li>Recomendar estratégias de teste que funcionam melhor no sistema Login +.</li>
+                <li>Listar a forma de apresentação dos resultados dos testes.</li>
+                <li>Listar a equipe de pessoas responsável pelos testes.</li>
+                <li>Criar o cronograma de testes.</li>
+              </ul>
+            </div>
+            <p><b>3.	Escopo do projeto</b></p>
+            <div class="caixa-destaque bg-primaria-01">
+              <p>O plano de teste engloba os setores de banco de dados, telas de cadastro e <i>login</i>, segurança/criptografia da senha, análise do protótipo e interface do projeto.</p>
+              <p>A interface será testada apenas para sistemas <i>desktop</i> e inclui as telas de <i>login</i> e cadastro, além das mensagens de erro.</p>
+              <p>Todos os testes são finalizados quando cada uma das etapas estiver funcionando.</p>
+            </div>
+
+            <h3>Tipos de testes a serem executados</h3>
+            <p>É preciso descrever os tipos de testes que farão parte do plano e qual será o seu objetivo nesse plano.</p>
+            <p><b>1.	Tipos de testes</b></p>
+            <p>Todos os testes têm um objetivo, portanto a escolha deve ser bem elaborada, pois eles que cobrirão as diversas possibilidades de erros que podem ocorrer em um sistema. A seguir, veja o que se teria no plano de testes:</p>
+            <div class="caixa-destaque bg-auxiliar-claro-02 borda-primaria-03">
+              <p>Os testes utilizados no projeto serão: teste estrutural, teste de banco de dados, teste funcional, teste de interface do usuário, teste de carga e teste de segurança.</p>
+            </div>
+            <p><b>2.	Requisitos de teste</b></p>
+            <p>Nesta etapa, é preciso descrever o que será testado em cada um dos testes utilizados no sistema de cadastro e <i>login</i>.</p>
+            <p><b>2.1. Teste de banco de dados</b></p>
+            <div class="caixa-destaque bg-auxiliar-claro-03">
+              <ul class="cor02">
+                <li>Verifica se ocorre a conexão com o banco de dados.</li>
+                <li>Verifica se a senha cadastrada está criptografada conforme o método MD5.</li>
+                <li>Verifica se é possível cadastrar novos usuários no banco de dados.</li>
+                <li>Verifica se é possível testar os dados de <i>login</i> com os dados inseridos no banco de dados. </li>
+              </ul>
+            </div>
+            <p><b>2.2. Teste funcional</b></p>
+            <div class="caixa-destaque">
+              <ul>
+                <li>Verifica se o programa inicia e finaliza corretamente sempre que o usuário desejar.</li>
+                <li>Verifica se as mensagens de <i>login</i> correto ou de erro de <i>login</i> aparecem quando deveriam.</li>
+                <li>Verifica se todas as funções do programa, neste caso, cadastro e <i>login</i>, estão funcionando.</li>
+                <li>Testa se o comportamento do sistema é o esperado.</li>
+              </ul>
+            </div>
+            <p>Teste funcional é o conhecido como caixa-preta, em que não se tem acesso ao código-fonte, mas são testadas as diversas funções do sistema, com o máximo possível de variações de dados inseridos, para testar, por exemplo, as características a seguir:</p>
+            <ul class="bolinha">
+              <li>Funções incorretas ou ausentes</li>
+              <li>Erros de desempenho</li>
+              <li>Erros de interface</li>
+              <li>Erros em acessos a bancos de dados externos</li>
+              <li>Erros de inicialização e término</li>
+              <li>Erros nos tipos de dados aceitos em campos de inserção</li>
+            </ul>
+            <div class="caixa-destaque icone anotar">
+              <p>Aqui, é possível citar duas ferramentas principais de testes funcionais: Selenium e JUnit.</p>
+            </div>
+            <p><b>2.3. Teste de interface do usuário</b></p>
+            <div class="caixa-destaque bg-primaria-02 borda-primaria-03">
+              <ul class="cor01">
+                <li>Navega por todas as funcionalidades do programa, testando seu funcionamento.</li>
+                <li>Verifica se a interface é de fácil utilização e aprendizado.</li>
+                <li>Verifica se a interface mantém alinhamentos e proporções estipulados no protótipo.</li>
+                <li>Verifica se todo o texto apresentado na interface está conforme as normas de grafia e as regras gramaticais.</li>
+              </ul>
+            </div>
+            <p><b>2.4. Teste de carga</b></p>
+            <div class="caixa-destaque bg-primaria-01">
+              <ul class="cor01">
+                <li>Verifica o sistema com 1 usuário logado.</li>
+                <li>Verifica o sistema com 10 usuários logados.</li>
+                <li>Verifica o sistema com 20 usuários logados.</li>
+                <li>Verifica o sistema com 50 usuários logados. </li>
+              </ul>
+            </div>
+            <p><b>2.5. Teste de segurança</b></p>
+            <div class="caixa-destaque bg-auxiliar-claro-03">
+              <ul class="cor02">
+                <li>Verifica se somente um usuário cadastrado tem acesso ao sistema.</li>
+                <li>Verifica se não é possível acessar a base de dados por meio das caixas de texto do sistema, por comando SQL (<i>structured query language</i>).</li>
+              </ul>
+            </div>
+            <div class="caixa-destaque icone anotar">
+              <p>Como optou-se por um exemplo simples para facilitar o entendimento, serão feitos apenas esses testes, mas seria possível ter, por exemplo, teste automatizado, teste de desempenho, teste de volume etc.</p>
+            </div>
+            <p><b>3.	Estratégias de teste</b></p>
+            <p>Agora, saiba mais sobre as estratégias de teste.</p>
+            <div class="hidden-xs no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo.</p>
+              <div id="carousel1" class="carousel slide no-print borda-primaria-03" data-ride="carousel" data-interval="false" aria-hidden="true">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel1" data-slide-to="1"></li>
+                  <li data-target="#carousel1" data-slide-to="2"></li>
+                  <li data-target="#carousel1" data-slide-to="3"></li>
+                  <li data-target="#carousel1" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <p><b>3.1. Teste de banco de dados</b></p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>Objetivo do teste</td>
+                            <td>Garantir que os dados cadastrados estejam sendo salvos corretamente no banco de dados e que o sistema de <i>login</i> consiga acessar a base de dados para autorizar o usuário.</td>
+                          </tr>
+                          <tr>
+                            <td>Técnica</td>
+                            <td>
+                              Invocar cada método de cadastro ao banco de dados com valores válidos e inválidos. <br>
+                              Testar o processo de consulta à base de dados por meio do <i>login</i>.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Critério de finalização</td>
+                            <td>Todos os acessos à base de dados funcionam como projetados e sem perda de informações.</td>
+                          </tr>
+                          <tr>
+                            <td>Considerações especiais</td>
+                            <td>Processos devem ser invocados manualmente.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 1 – Teste de banco de dados <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                  </div>
+                  <div class="item">
+                    <p><b>3.2. Teste funcional</b></p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>Objetivo do teste</td>
+                            <td>Garantir que as principais funções do programa estejam funcionando.</td>
+                          </tr>
+                          <tr>
+                            <td>Técnica</td>
+                            <td>
+                              Executar todos os casos de uso, usando dados válidos e inválidos, para verificar se: <br>
+                              <ul>
+                                <li>Cada regra de negócio é aplicada corretamente.</li>
+                                <li>As mensagem de erro aparecem sempre que necessário e da forma como foram projetadas.</li>
+                                <li>Quando dados válidos são colocados, ocorrem os resultados esperados.</li>
+                              </ul>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Critério de finalização</td>
+                            <td>
+                              Todos os testes foram aplicados com êxito. <br>
+                              Todos os erros identificados foram corrigidos ou reportados.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Considerações especiais</td>
+                            <td>Aqui, pode ser reportado algo que ajude na avaliação final dos testes funcionais.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 2 – Teste funcional <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                  </div>
+                  <div class="item">
+                    <p><b>3.3. Teste de interface do usuário</b></p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>Objetivo do teste</td>
+                            <td>Garantir que a interface apresente o mesmo formato projetado no protótipo e respeite as regras de usabilidade definidas pela equipe de desenvolvimento e seus gerentes.</td>
+                          </tr>
+                          <tr>
+                            <td>Técnica</td>
+                            <td>
+                              Testar todos os elementos de cada janela da interface, especialmente botões, textos e mensagens de erros. <br>
+                              Modificar o tamanho das janelas para ver se funcionam nos dispositivos para os quais foram projetadas.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Critério de finalização</td>
+                            <td>
+                              As janelas funcionam sem erros em todos os dispositivos para os quais foram projetadas. <br>
+                              Botões e mensagens de erro, ou avisos, abrem corretamente sempre que for necessário. <br>
+                              A interface respeita as regras de usabilidade do projeto do sistema.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Considerações especiais</td>
+                            <td>Nenhuma</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 3 – Teste de interface do usuário <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                  </div>
+                  <div class="item">
+                    <p><b>3.4. Teste de carga</b></p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>Objetivo do teste</td>
+                            <td>Testar o tempo de resposta do sistema, alterando o número de usuários acessando ao mesmo tempo.</td>
+                          </tr>
+                          <tr>
+                            <td>Técnica</td>
+                            <td>Testar o tempo de resposta do sistema, alterando o número de usuários acessando ao mesmo tempo.</td>
+                          </tr>
+                          <tr>
+                            <td>Critério de finalização</td>
+                            <td>O sistema não apresentar falhas nem perda de acesso com até 500 usuários ao mesmo tempo.</td>
+                          </tr>
+                          <tr>
+                            <td>Considerações especiais</td>
+                            <td>Deve-se ter toda a base de dados em uma mesma máquina recebendo todos os acessos para que o teste tenha validade.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 4 – Teste de carga <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                  </div>
+                  <div class="item">
+                    <p><b>3.5. Teste de segurança</b></p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>Objetivo do teste</td>
+                            <td>
+                              Verificar se somente usuários cadastrados têm acesso ao sistema. <br>
+                              Verificar se as senhas estão criptografadas na base de dados.
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Técnica</td>
+                            <td>Testar dados válidos e inválidos para tentar acessar o sistema e testar se os dados de cadastro estão criptografados na base de dados.</td>
+                          </tr>
+                          <tr>
+                            <td>Critério de finalização</td>
+                            <td>O teste é finalizado quando todos os acessos válidos funcionam e não é encontrado nenhum acesso inválido no processo.</td>
+                          </tr>
+                          <tr>
+                            <td>Considerações especiais</td>
+                            <td>Nenhuma</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 5 – Teste de segurança <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel1" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="visible-xs no-print" aria-hidden="true">
+              <div class="">
+                <p><b>3.1. Teste de banco de dados</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Garantir que os dados cadastrados estejam sendo salvos corretamente no banco de dados e que o sistema de <i>login</i> consiga acessar a base de dados para autorizar o usuário.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>
+                          Invocar cada método de cadastro ao banco de dados com valores válidos e inválidos. <br>
+                          Testar o processo de consulta à base de dados por meio do <i>login</i>.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>Todos os acessos à base de dados funcionam como projetados e sem perda de informações.</td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Processos devem ser invocados manualmente.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 1 – Teste de banco de dados <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.2. Teste funcional</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Garantir que as principais funções do programa estejam funcionando.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>
+                          Executar todos os casos de uso, usando dados válidos e inválidos, para verificar se: <br>
+                          <ul>
+                            <li>Cada regra de negócio é aplicada corretamente.</li>
+                            <li>As mensagem de erro aparecem sempre que necessário e da forma como foram projetadas.</li>
+                            <li>Quando dados válidos são colocados, ocorrem os resultados esperados.</li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>
+                          Todos os testes foram aplicados com êxito. <br>
+                          Todos os erros identificados foram corrigidos ou reportados.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Aqui, pode ser reportado algo que ajude na avaliação final dos testes funcionais.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 2 – Teste funcional <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.3. Teste de interface do usuário</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Garantir que a interface apresente o mesmo formato projetado no protótipo e respeite as regras de usabilidade definidas pela equipe de desenvolvimento e seus gerentes.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>
+                          Testar todos os elementos de cada janela da interface, especialmente botões, textos e mensagens de erros. <br>
+                          Modificar o tamanho das janelas para ver se funcionam nos dispositivos para os quais foram projetadas.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>
+                          As janelas funcionam sem erros em todos os dispositivos para os quais foram projetadas. <br>
+                          Botões e mensagens de erro, ou avisos, abrem corretamente sempre que for necessário. <br>
+                          A interface respeita as regras de usabilidade do projeto do sistema.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Nenhuma</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 3 – Teste de interface do usuário <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.4. Teste de carga</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Testar o tempo de resposta do sistema, alterando o número de usuários acessando ao mesmo tempo.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>Testar o tempo de resposta do sistema, alterando o número de usuários acessando ao mesmo tempo.</td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>O sistema não apresentar falhas nem perda de acesso com até 500 usuários ao mesmo tempo.</td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Deve-se ter toda a base de dados em uma mesma máquina recebendo todos os acessos para que o teste tenha validade.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 4 – Teste de carga <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.5. Teste de segurança</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>
+                          Verificar se somente usuários cadastrados têm acesso ao sistema. <br>
+                          Verificar se as senhas estão criptografadas na base de dados.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>Testar dados válidos e inválidos para tentar acessar o sistema e testar se os dados de cadastro estão criptografados na base de dados.</td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>O teste é finalizado quando todos os acessos válidos funcionam e não é encontrado nenhum acesso inválido no processo.</td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Nenhuma</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 5 – Teste de segurança <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <div class="">
+                <p><b>3.1. Teste de banco de dados</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Garantir que os dados cadastrados estejam sendo salvos corretamente no banco de dados e que o sistema de <i>login</i> consiga acessar a base de dados para autorizar o usuário.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>
+                          Invocar cada método de cadastro ao banco de dados com valores válidos e inválidos. <br>
+                          Testar o processo de consulta à base de dados por meio do <i>login</i>.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>Todos os acessos à base de dados funcionam como projetados e sem perda de informações.</td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Processos devem ser invocados manualmente.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 1 – Teste de banco de dados <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.2. Teste funcional</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Garantir que as principais funções do programa estejam funcionando.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>
+                          Executar todos os casos de uso, usando dados válidos e inválidos, para verificar se: <br>
+                          <ul>
+                            <li>Cada regra de negócio é aplicada corretamente.</li>
+                            <li>As mensagem de erro aparecem sempre que necessário e da forma como foram projetadas.</li>
+                            <li>Quando dados válidos são colocados, ocorrem os resultados esperados.</li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>
+                          Todos os testes foram aplicados com êxito. <br>
+                          Todos os erros identificados foram corrigidos ou reportados.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Aqui, pode ser reportado algo que ajude na avaliação final dos testes funcionais.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 2 – Teste funcional <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.3. Teste de interface do usuário</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Garantir que a interface apresente o mesmo formato projetado no protótipo e respeite as regras de usabilidade definidas pela equipe de desenvolvimento e seus gerentes.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>
+                          Testar todos os elementos de cada janela da interface, especialmente botões, textos e mensagens de erros. <br>
+                          Modificar o tamanho das janelas para ver se funcionam nos dispositivos para os quais foram projetadas.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>
+                          As janelas funcionam sem erros em todos os dispositivos para os quais foram projetadas. <br>
+                          Botões e mensagens de erro, ou avisos, abrem corretamente sempre que for necessário. <br>
+                          A interface respeita as regras de usabilidade do projeto do sistema.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Nenhuma</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 3 – Teste de interface do usuário <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.4. Teste de carga</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>Testar o tempo de resposta do sistema, alterando o número de usuários acessando ao mesmo tempo.</td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>Testar o tempo de resposta do sistema, alterando o número de usuários acessando ao mesmo tempo.</td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>O sistema não apresentar falhas nem perda de acesso com até 500 usuários ao mesmo tempo.</td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Deve-se ter toda a base de dados em uma mesma máquina recebendo todos os acessos para que o teste tenha validade.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 4 – Teste de carga <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+              <div class="">
+                <p><b>3.5. Teste de segurança</b></p>
+                <div class='table-responsive'>
+                  <table class='senac'>
+                    <tbody>
+                      <tr>
+                        <td>Objetivo do teste</td>
+                        <td>
+                          Verificar se somente usuários cadastrados têm acesso ao sistema. <br>
+                          Verificar se as senhas estão criptografadas na base de dados.
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Técnica</td>
+                        <td>Testar dados válidos e inválidos para tentar acessar o sistema e testar se os dados de cadastro estão criptografados na base de dados.</td>
+                      </tr>
+                      <tr>
+                        <td>Critério de finalização</td>
+                        <td>O teste é finalizado quando todos os acessos válidos funcionam e não é encontrado nenhum acesso inválido no processo.</td>
+                      </tr>
+                      <tr>
+                        <td>Considerações especiais</td>
+                        <td>Nenhuma</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="legenda-imagem">
+                  Tabela 5 – Teste de segurança <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+              </div>
+            </div>
+            <p>Agora, veja o desafio a seguir.</p>
+            <div class="no-print" aria-hidden="true">
+              <p class="text-center">Clique ou toque para visualizar o conteúdo.</p>
+              <div class="card exibe-frente">
+                <div class="frente">
+                  <p class="desafio-frente">Agora é hora de um pequeno desafio!</p>
+                </div>
+                <div class="verso">
+                  <p class="desafio-verso">
+                    Desafio 1: Imagine um sistema que recebe o nome do aluno e duas notas desse aluno, calcula a sua média e, ao fim, grava, em uma base de dados, o nome, a média e se o aluno foi aprovado com base em uma média maior ou igual a 7. <br><br>
+                    Defina que tipos de testes você usaria nesse sistema e qual estratégia de teste seria utilizada.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <p>Agora é hora de um pequeno desafio!</p>
+              <p>Desafio 1: Imagine um sistema que recebe o nome do aluno e duas notas desse aluno, calcula a sua média e, ao fim, grava, em uma base de dados, o nome, a média e se o aluno foi aprovado com base em uma média maior ou igual a 7.</p>
+              <p>Defina que tipos de testes você usaria nesse sistema e qual estratégia de teste seria utilizada.</p>
+            </div>
+            <p><b>4.	Equipe</b></p>
+            <p>Veja a tabela a seguir.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Cargo</th>
+                    <th>Responsabilidades</th>
+                  </tr>
+                  <tr>
+                    <td>Gerente</td>
+                    <td>
+                      <ul class="cor01">
+                        <li>Define a equipe de teste</li>
+                        <li>Indica direcionamento de funções</li>
+                        <li>Fornece relatórios</li>
+                        <li>Adquire recursos necessários</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><i>Test designer</i> </td>
+                    <td>
+                      <ul class="cor01">
+                        <li>Identifica, prioriza e implementa os casos de teste</li>
+                        <li>Gera o plano de teste</li>
+                        <li>Cria o modelo de cada teste</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><i>Designer</i> gráfico/visual</td>
+                    <td>
+                      <ul class="cor01">
+                        <li>Responsável pela elaboração dos testes de interface</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Testador</td>
+                    <td>
+                      <ul class="cor01">
+                        <li>Executa os testes</li>
+                        <li>Registra os resultados</li>
+                        <li>Documenta e solicita mudanças</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Gerente de banco de dados</td>
+                    <td>
+                      <ul class="cor01">
+                        <li>Prepara o banco de dados para os testes</li>
+                        <li>Administra os dados durante os testes</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Implementador</td>
+                    <td>
+                      <ul class="cor01">
+                        <li>Implementa as classes de teste</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 6 – Equipe <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p><b>5.	Infraestrutura de teste</b></p>
+            <p>Aqui, são colocados todos os <i>hardwares</i> e <i>softwares</i> necessários para o bom andamento da fase de testes.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Recursos de infraestrutura</th>
+                  </tr>
+                  <tr>
+                    <td><b>Servidor de banco de dados MySQL</b></td>
+                  </tr>
+                  <tr>
+                    <td><b>NetBeans 13</b></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Terminais de teste</b> <br>
+                      <b>Três PCs (computadores pessoais) – não é necessária conexão à Internet</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 7 – Recursos de infraestrutura <br>
+              Fonte: Senac (2023)
+            </p>
+            <p><b>6.	Cronograma</b></p>
+            <p>Aqui, será simulado um cronograma de atividades de teste. É sempre importante ter um último item de avaliação dos testes, pois decisões são tomadas com base nos resultados, devendo, inclusive, ser criado um novo cronograma de testes sempre que houver atualizações. </p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Etapas</th>
+                    <th>Data de início</th>
+                    <th>Data de término</th>
+                  </tr>
+                  <tr>
+                    <td>Planejar teste</td>
+                    <td>20/05/2023</td>
+                    <td>22/05/2023</td>
+                  </tr>
+                  <tr>
+                    <td>Teste estrutural </td>
+                    <td>22/05/2023</td>
+                    <td>22/05/2023</td>
+                  </tr>
+                  <tr>
+                    <td>Teste de banco de dados</td>
+                    <td>23/05/2023</td>
+                    <td>23/05/2023</td>
+                  </tr>
+                  <tr>
+                    <td>Teste funcional</td>
+                    <td>24/05/2023</td>
+                    <td>24/05/2023</td>
+                  </tr>
+                  <tr>
+                    <td>Teste de interface</td>
+                    <td>25/05/2023</td>
+                    <td>25/05/2023</td>
+                  </tr>
+                  <tr>
+                    <td>Teste de carga</td>
+                    <td>26/05/2023</td>
+                    <td>26/05/2023</td>
+                  </tr>
+                  <tr>
+                    <td>Teste de segurança</td>
+                    <td>27/05/2023</td>
+                    <td>27/05/2023</td>
+                  </tr>
+                  <tr>
+                    <td>Avaliar teste</td>
+                    <td>28/05/2023</td>
+                    <td>30/05/2023</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 8 – Cronograma <br>
+              Fonte: Senac EAD (2023)
+            </p>
+
+            <h3>Especificação, relato e registro de teste</h3>
+            <p>Esta parte do plano de teste é de extrema importância, pois especifica a forma como os erros serão reportados e qual será a avaliação dos resultados e das medidas futuras a serem tomadas.</p>
+            <p><b>7.	Modelo de reportação de erros</b></p>
+            <p>Na parte de reportação de erros, utiliza-se um programa do tipo <i>bugtracker</i> (específico para reportar os erros).</p>
+            <p>Um dos modelos mais aceitos para a descrição de erros é o que utiliza três itens para citar cada erro existente. Veja a seguir.</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class='panel-group gaitinha' id='accordion01' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading01'>
+                    <h3 class='panel-title'>
+                      <a role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse01' aria-expanded='false' aria-controls='collapse01'>
+                        a) Sumário
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
+                    <div class='panel-body'>
+                      <p>É onde se coloca alguma abreviação, caso haja, com o nome do erro. Por exemplo: </p>
+                      <p><i>- [BUG] Erro de cadastro no campo <b>E-mail</b>.</i></p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading02'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse02' aria-expanded='false' aria-controls='collapse02'>
+                        b) Descrição
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse02' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading02'>
+                    <div class='panel-body'>
+                      <p>É onde vai a mensagem apresentada pelo programa, ou a descrição do erro feita pelo testador, caso o sistema não apresente um erro aparente, mas a pessoa responsável pelo teste entenda que algo deveria ter acontecido diferente do que aconteceu.</p>
+                      <p><i>- O cadastro não apresentou erro ao ser inserido um e-mail sem “@”.</i></p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading03'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse03' aria-expanded='false' aria-controls='collapse03'>
+                        c) Informação adicional
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse03' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading03'>
+                    <div class='panel-body'>
+                      <p>É qualquer informação adicional que possa ajudar o gerente de teste nas tomadas de decisões posteriores, como uma possível solução ao erro, uma sugestão de usabilidade ou até o que imagina ser a origem do erro.</p>
+                      <p><i>- Precisa ser usada uma validação de formulários. Sugere-se o uso de expressões regulares para a solução do problema.</i> </p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading04'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse04' aria-expanded='false' aria-controls='collapse04'>
+                        d) Prioridade 
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse04' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading04'>
+                    <div class='panel-body'>
+                      <p>Permite definir níveis de importância para os erros, que podem ser, por exemplo, baixa, média e alta.</p>
+                      <p><i>- Prioridade alta</i></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <ol type="a">
+                <li>Sumário</li>
+                <p>É onde se coloca alguma abreviação, caso haja, com o nome do erro. Por exemplo: </p>
+                <p><i>- [BUG] Erro de cadastro no campo <b>E-mail</b>.</i></p>
+                <li>Descrição</li>
+                <p>É onde vai a mensagem apresentada pelo programa, ou a descrição do erro feita pelo testador, caso o sistema não apresente um erro aparente, mas a pessoa responsável pelo teste entenda que algo deveria ter acontecido diferente do que aconteceu.</p>
+                <p><i>- O cadastro não apresentou erro ao ser inserido um e-mail sem “@”.</i></p>
+                <li>Informação adicional</li>
+                <p>É qualquer informação adicional que possa ajudar o gerente de teste nas tomadas de decisões posteriores, como uma possível solução ao erro, uma sugestão de usabilidade ou até o que imagina ser a origem do erro.</p>
+                <p><i>- Precisa ser usada uma validação de formulários. Sugere-se o uso de expressões regulares para a solução do problema.</i> </p>
+                <li>Prioridade</li>
+                <p>Permite definir níveis de importância para os erros, que podem ser, por exemplo, baixa, média e alta.</p>
+                <p><i>- Prioridade alta</i></p>
+              </ol>
+            </div>
+            <p><b>8.	Avaliação dos resultados do teste</b></p>
+            <p>Nesta etapa, analisam-se os resultados obtidos após todas as fases de testes, normalmente criados pelo testador, que, evidentemente, pode ser de mais de uma área (programador, <i>design</i>, usuários do público-alvo do projeto). Com base nas respostas registradas pelos testadores, decide-se o que deve ser feito.</p>
+            <p>A seguir, veja outro desafio.</p>
+            <div class="no-print" aria-hidden="true">
+              <p class="text-center">Clique ou toque para visualizar o conteúdo.</p>
+              <div class="card exibe-frente">
+                <div class="frente">
+                  <p class="desafio-frente">Que tal um pequeno desafio?</p>
+                </div>
+                <div class="verso">
+                  <p class="desafio-verso">
+                    Desafio 2: Com base no desafio 1, simule possíveis erros que podem aparecer e use o método de reportação aprendido para descrever esses erros. Ao final, crie uma avaliação dos resultados, com possíveis medidas a serem tomadas com base nos erros apresentados.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <p>Que tal um pequeno desafio?</p>
+              <p>Desafio 2: Com base no desafio 1, simule possíveis erros que podem aparecer e use o método de reportação aprendido para descrever esses erros. Ao final, crie uma avaliação dos resultados, com possíveis medidas a serem tomadas com base nos erros apresentados.</p>
+            </div>
+
+            <h3>Encerramento</h3>
+            <div class="row">
+              <div class="col-md-5 col-xs-12">
+                <img src="imgs/img_fim.png" class="img-responsive center-block mt-10">
+              </div>
+              <div class="col-md-7 col-xs-12">
+                <p>Após todas as etapas do plano de teste finalizadas, fica evidente a importância de um documento de testes muito bem elaborado, que abranja o máximo das possibilidades que podem aparecer durante um processo de criação de um sistema e, depois, durante toda a vida útil dele. Esse documento planeja um caminho que deve ser seguido pela equipe de testes e evita o retrabalho de ir descobrindo o que deve ser testado conforme os erros forem aparecendo.</p>
+              </div>
+            </div>
+            <p>Sendo assim, essa etapa não pode ser ignorada, pois qualquer erro futuro que não foi projetado pode colocar em risco todo o andamento do processo e o prazo de conclusão do seu <i>software</i>. Dessa forma, entende-se que um documento bem formatado agiliza o trabalho da equipe e deixa mais rápido o processo de criação do sistema. Além disso, esse documento deixa o sistema com uma base muito mais sólida para enfrentar os desafios de mercado, pois os principais erros que poderiam ocorrer já foram tratados.</p>
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+
+    
+    <!-- Modais 100% -->
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

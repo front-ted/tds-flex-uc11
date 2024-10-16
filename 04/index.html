@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Técnicas de teste: caixa-preta, caixa-branca; métodos de testes</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção Grau de pontuação/símbolos, acesse Preferências – Configurações – Fala. Altere o padrão Pouco para Tudo. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade. </p>
+            
+            <h2>Técnicas de teste: caixa-preta, caixa-branca; métodos de testes</h2>
+            <h3>Introdução</h3>
+            <p>Utilizar técnicas de teste consistentes e aprovadas pelo mercado de TI (tecnologia da informação) tornará o desenvolvimento do projeto mais ágil e assertivo em seu resultado final. Atualmente, as técnicas são divididas em: funcionais e não funcionais.</p>
+            <p>Os testes funcionais validam as funções do sistema, ou seja, serão realizados testes nas funcionalidades descritas no documento de requisitos funcionais. Devem ser produzidos testes para contemplar todos os níveis. Geralmente medida em valores percentuais, a cobertura define a eficácia do plano de testes elaborado, tem como técnica conhecida a caixa-preta e baseia-se em experiências.</p>
+            <p>Um exemplo de teste funcional é em um determinado <i>software</i> de controle de estoque em que o operador do sistema deve emitir uma nota fiscal com diferentes produtos e, ao final da operação, o sistema tem como ação esperada a dedução dos itens vendidos da base de estoque.</p>
+            <p>Testes não funcionais verificarão: segurança, usabilidade, velocidade e demais características envolvidas no escopo do projeto, considerando as regras de negócio e as restrições envolvidas no projeto.</p>
+            <p>Para testes não funcionais, é possível citar como exemplo a seguinte situação: a empresa está para realizar a inserção de 50 novos operadores para trabalhar simultaneamente aos 20 que já interagem no sistema. Ao total, haverá 70 operadores que emitirão nota fiscal ao mesmo tempo. Dessa forma, será avaliada a <i>performance</i> do sistema após a escalabilidade realizada.</p>
+            <p>Outro exemplo de teste não funcional é a análise de comportamento do sistema ao sofrer uma tentativa de invasão à base de dados por meio de uma técnica de acesso não permitido. Nesse caso, um teste de segurança estará sendo realizado. Ainda, é possível testar a usabilidade do sistema ao avaliar como pessoas de diferentes faixas etárias se portarão ao utilizar o sistema.</p>
+            <p>Estas são algumas técnicas utilizadas no mercado:</p>
+            <div class="caixa-destaque-livre bg-primaria-03 texto-primaria-02 mt-40">
+              <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                  <img src="imgs/dest_caixa1.png" class="img-responsive center-block mt-10">
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                  <p><b>Teste de caixa-branca</b>: consiste na utilização do código-fonte do projeto e também é conhecido como teste estrutural.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                  <img src="imgs/dest_caixa2.png" class="img-responsive center-block mt-10">
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                  <p><b>Teste de caixa-preta</b>: considera as funcionalidades do sistema, deixando de lado o código-fonte e testando apenas as funções desenvolvidas.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                  <img src="imgs/dest_caixa3.png" class="img-responsive center-block mt-10">
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                  <p><b>Teste de caixa-cinza</b>: consiste na junção dos testes de caixa-branca e caixa-preta e utiliza a engenharia reversa, sendo possível, assim, analisar erros e problemas gerados no desenvolvimento do projeto.</p>
+                </div>
+              </div>
+            </div>
+            <div class="caixa-destaque icone atencao mt-60">
+              <p>Nesta unidade curricular, serão abordados com mais ênfase o teste de caixa-branca e o teste de caixa-preta.</p>
+            </div>
+
+            <h3>Caixa-preta</h3>
+            <p>Essa técnica considera as entradas e saídas esperadas para o <b>software</b>, sem levar em consideração a estrutura do código-fonte. Dessa forma, é avaliado se a estrutura está operando da forma especificada na documentação, seguindo os requisitos funcionais, por isso também é conhecida como teste de comportamento. A técnica da caixa-preta não permite a verificação do código desenvolvido para validar se está realizando uma função de forma otimizada ou não.</p>
+            <p>Geralmente tem um ambiente de teste seguindo as premissas estipuladas em casos de uso, <i>user stories</i> e especificações do sistema. Os casos de testes encontrarão possíveis falhas entre o que foi especificado e o que realmente está acontecendo. A cobertura é parametrizada, considerando os itens testados na base e a técnica aplicada.</p>
+            <div class="caixa-destaque icone dica">
+              <p>Para mais informações sobre o nível de cobertura, busque em seu navegador por “padrão internacional ISO/IEC/IEEE 29119-4”.</p>
+            </div>
+
+            <h3>Métodos de teste </h3>
+            <p>Agora, você saberá mais a respeito dos métodos de teste.</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class='caixa-destaque-livre'>
+                <ul id='abas_1' class='nav nav-tabs' role='tablist'>
+                  <li role='presentation' class='active'><a href='#aba01' aria-controls='aba01' role='tab' data-toggle='tab'>Particionamento de equivalências</a></li>
+                  <li role='presentation'><a href='#aba02' aria-controls='aba02' role='tab' data-toggle='tab'>Análise de valor-limite</a></li>
+                  <li role='presentation'><a href='#aba03' aria-controls='aba03' role='tab' data-toggle='tab'>Tabela de decisão</a></li>
+                  <li role='presentation'><a href='#aba04' aria-controls='aba04' role='tab' data-toggle='tab'>Transição de estado</a></li>
+                  <li role='presentation'><a href='#aba05' aria-controls='aba05' role='tab' data-toggle='tab'>Teste de caso de uso</a></li>
+                </ul>
+                <div class='tab-content'>
+                  <div role='tabpanel' class='tab-pane fade in active' id='aba01'>
+                    <p>Imagine o seguinte caso: uma nova empresa de tintas está desenvolvendo um <i>software</i> para validar o preenchimento de seus tanques de tintas e definiu que um tanque deve ao menos ter 10 l de tintas e no máximo 50 l. Com isso, ao cadastrar o preenchimento do tanque, o campo de litros poderá aceitar valores entre 10 e 50.</p>
+                    <p>Para facilitar o entendimento, analise a linha de valores que podem ou não ser inseridos no momento de realizar a tarefa.</p>
+                    <img src="imgs/figura_01.png" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_01.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_01.png" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 1 – Método de teste particionamento de equivalência <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Linha na horizontal, traçada para especificar uma faixa de litros aceitável e definir partição válida, partição inválida muito baixa e partição inválida muito alta. À esquerda da linha, há uma linha na vertical, cortando a linha horizontal que indica valores abaixo do limite, partição inválida muito baixa. À direta, há uma linha na vertical, cortando a linha horizontal que indica valores acima do limite, partição inválida muito alto. Entre os dois pontos fica a partição válida. Os valores dentro da partição válida estão entre 10 e 50 litros.</p>
+                    <p>Ao analisar a imagem, percebem-se três partições: partição inválida muito baixa, partição válida e partição inválida muito alta. Os valores para a partição muito baixa estão abaixo da quantidade de litros que limita a disponibilidade de reserva, já a partição inválida muito alta limitará os valores acima da quantidade de litros que limita a disponibilidade. A partição válida contém os valores que são aceitos para definir cada quantidade de litros que permitem o preenchimento do tanque.</p>
+                    <p>É o processo de divisão de dados, de modo que todos os membros pertencentes a uma partição serão processados do mesmo modo. Além disso, consiste na criação de partições para valores válidos e inválidos. Dessa forma, cria-se uma divisão para os valores que serão aceitos (válidos) e os que não serão aceitos (inválidos). Muitas vezes é criado de forma “inconsciente”.</p>
+                    <p>A cobertura é feita por meio do seguinte cálculo:</p>
+                    <p class="text-center"><i>COBERTURA = (PARTIÇÕES TESTADAS ÷ TOTAL DE PARTIÇÕES) * 100%</i></p>
+                    <p>Agora, imaginando os casos de teste que devem ser criados para cobrir essa situação, quantos seriam necessários para atender a todas as partições?</p>
+                    <p>Devem ser criados três casos: um caso de teste com uma quantidade inferior ao mínimo de 10 l, um caso de teste com uma quantidade entre 10 l e 50 l e um caso de teste com uma quantidade superior a 50 l.</p>
+                    <p>As partições inválidas devem ser testadas separadamente, ou seja, em partições diferentes, para evitar que uma falha possa mascarar as demais falhas que possam ocorrer. Desta forma um erro impediria os demais de serem detectados.</p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='aba02'>
+                    <p>É uma ampliação do particionamento de equivalência e constitui-se de dados numéricos ou sequenciais, em que os valores mínimo e máximo são os valores-limite para uma partição. Pode ser aplicada em qualquer nível de teste e tem uma probabilidade maior de encontrar falhas em relação à partição de equivalência. A cobertura é definida da seguinte maneira:</p>
+                    <p class="text-center"><i>COBERTURA = (LIMITES TESTADOS ÷ TOTAL DE LIMITES) * 100%</i></p>
+                    <p>Agora, pense no exemplo anterior, em que o limite no campo de litros foi implementado:</p>
+                    <img src="imgs/figura_02.png" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_02.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_02.png" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 2 – Método de teste análise de valor-limite <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Linha na horizontal, traçada para especificar uma faixa de litros aceitável e definir partição válida, partição inválida muito baixa e partição inválida muito alta. À esquerda da linha, há uma linha na vertical, cortando a linha horizontal que indica valores abaixo do limite (9,9 litros), partição inválida muito baixa. À direta há, uma linha na vertical, cortando a linha horizontal que indica valores acima do limite (50,1 litros), partição inválida muito alto. Entre os dois pontos fica a partição válida. Os valores dentro da partição válida estão entre 10 e 50 litros.</p>
+                    <p>Com base no conhecimento adquirido, você já sabe que valores abaixo de 10 l fazem parte da partição inválida muito baixa, que a partição válida contém os valores entre 10 l e 50 l e que a partição inválida muito alta tem valores acima de 50 l. Porém, agora está sendo feita apenas a análise dos valores-limite, portanto apenas 10 l e 50 l são os limites válidos para a partição válida. O limite da partição inválida muito baixa é somente 9,9 l e o limite de 50,1 l é o correspondente à partição inválida muito alta.</p>
+                    <p>Agora, imaginando os casos de teste que devem ser criados para cobrir os limites dessa situação, quantos seriam necessários para atender a todas as partições?</p>
+                    <p>Nessa situação, você precisa de quatro casos de teste, sendo um teste para cobrir o valor-limite da partição inválida muito baixa, nesse caso 9,9 l; um teste para cobrir o valor-limite mínimo válido da partição válida, nesse caso 10 l; um teste para cobrir o valor-limite máximo válido da partição válida, nesse caso 50 l; e um teste para cobrir o valor-limite da partição inválida muito alta, nesse caso 50,1 l.</p>
+                    <p>Agora é hora praticar criando o código para esse projeto. Primeiro, você desenvolverá a base, criando uma variável para armazenar o nome que referenciará o tanque de tinta e exibirá os dados cadastrados ao final.</p>
+                    <pre>
+                      <code>
+import java.util.Scanner;
+
+public class TesteTanque {
+
+    public static void main(String[] args) {
+        String identificacao;
+        double qtdTinta;
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Informe a identificação do tanque: ");
+        identificacao = entrada.nextLine();
+        System.out.println("Informe a quantidade de litros inserido no tanque: ");
+        qtdTinta = entrada.nextDouble();
+
+        System.out.println("O nome do tanque é: " + identificacao + " e a quantidade presente de litros é: " + qtdTinta);       
+    }  
+}
+                      </code>
+                    </pre>
+                    <p>Agora, você realizará os testes de análise de valor-limite e verificará se está cobrindo os requisitos esperados para o projeto. Então, execute o código e analise o que acontece. Primeiro, informe um valor mínimo aceito de 10 l e, posteriormente, execute o código novamente e informe um valor máximo aceito de 50 l. Em ambos os casos deve ser exibida a mensagem de litros presentes no tanque e a identificação dele.</p>
+                    <p>Então, você realizará os testes para os valores abaixo do mínimo aceito e acima do valor máximo aceito, portanto execute o código novamente. Primeiro, informe 9,9 l e veja o que acontece. </p>
+                    <p>Execute outra vez o código e informe 50,1 l. Em ambos os casos deve ser exibida uma mensagem de valores inválidos informados.</p>
+                    <p>Você percebeu que o código apresentou falhas, pois está faltando algo, não é mesmo? No teste, foram encontradas falhas do projeto; as estruturas de decisão não foram criadas para validar os valores que devem ser aceitos, ou seja, a cobertura do teste é de 50%. Nesse momento, você reportará, em um documento adequado, que essa função do sistema não está adequada ao que era esperado no documento de requisitos e deve ser refeita.</p>
+                    <p>Portanto, refaça e adicione as validações que devem estar presentes.</p>
+                    <pre>
+                      <code>
+import java.util.Scanner;
+
+public class TesteTanque {
+
+    /**
+     * @param args the command line arguments
+     */
+    Public static void main(String[] args) {
+        // TODO code application logic here
+            String identificacao;
+            Double qtdTinta;
+            Scanner entrada = new Scanner(System.in);
+            
+            System.out.println("Informe a identificação do tanque: ");
+            identificacao = entrada.nextLine();
+            System.out.println("Informe a quantidade de litros inserido no tanque: ");
+            qtdTinta = entrada.nextDouble();
+            if(qtdTinta>=10 && qtdTinta&lt;=50){
+                System.out.println("O nome do tanque é: " + identificacao + " e a quantidade presente de litros é: "+ qtdTinta);
+            } else {
+                System.out.println("A quantidade de tinta informada é inadequada para a capacidade do tanque");
+            }      
+    }
+}
+                      </code>
+                    </pre>
+                    <p>Agora, você deve refazer os testes de análise de valor-limite e verificar se o projeto cobre os requisitos esperados.</p>
+                    <p>Como era esperado, dessa vez os valores-limite inválidos, muito baixo e muito alto, não são aceitos. Já os limites válidos são aceitos, portanto o seu teste tem 100% de cobertura.</p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='aba03'>
+                    <p>A técnica de tabela de decisão testa combinações que resultarão em dados diferentes, sendo considerada interessante para cobrir regras de negócio complexas que um sistema tem. A tabela é composta de condições, que são as entradas, e ações (os resultados gerados na saída), que são as linhas. Para as colunas, há regras que indicarão quais condições têm as ações esperadas. O número de colunas é baseado no número de casos de testes.</p>
+                    <p>As condições são expressas da seguinte forma: </p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>“S”: especifica que a condição é atendida (em algumas literaturas, pode ser exibido como “V” ou “1”).</td>
+                          </tr>
+                          <tr>
+                            <td>“N”: especifica que a condição não é atendida (em algumas literaturas, pode ser exibido como “F” ou “0”).</td>
+                          </tr>
+                          <tr>
+                            <td>“-“: especifica que o valor não é importante para a condição (em algumas literaturas, pode ser exibido como “N/A”).</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 1 – Condições <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <P>Para as ações, há as seguintes expressões:</P>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>“X”: especifica que a ação deve ocorrer (em algumas literaturas, pode ser exibido como “S”, “V” ou “1”).</td>
+                          </tr>
+                          <tr>
+                            <td>Em branco: especifica que a ação não deve ocorrer (em algumas literaturas, pode ser exibido como “-“, “N”, “F” ou “0”).</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 2 – Ações <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p>Agora, pense na seguinte situação: uma <i>startup</i> de recursos humanos está desenvolvendo uma plataforma para facilitar a contratação de colaboradores e deseja disponibilizar para os clientes uma ferramenta que verifica se o candidato tem as qualificações esperadas para a vaga. Dessa forma, alguns requisitos devem ser expressos: ter formação esperada para a área, ter nível de experiência adequado, conforme especificação do cliente, e ter domínio no idioma solicitado. </p>
+                    <p>Os candidatos que tiverem os requisitos necessários, ou seja, atenderem às condições, participarão da próxima etapa do processo seletivo. Os que não atenderem a um ou mais requisitos irão para o banco de talentos da empresa, sendo esta a ação esperada.</p>
+                    <p>Veja a tabela de decisão:</p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <td>CONDIÇÕES</td>
+                            <td>Regra 1 (caso de teste 1)</td>
+                            <td>Regra 2 (caso de teste 2)</td>
+                            <td>Regra 3 (caso de teste 3)</td>
+                            <td>Regra 4 (caso de teste 4)</td>
+                            <td>Regra 5 (caso de teste 5)</td>
+                            <td>Regra 6 (caso de teste 6)</td>
+                            <td>Regra 7 (caso de teste 7)</td>
+                            <td>Regra 8 (caso de teste 8)</td>
+                          </tr>
+                          <tr>
+                            <td>Formação esperada para a área?</td>
+                            <td>S</td>
+                            <td>S</td>
+                            <td>S</td>
+                            <td>S</td>
+                            <td>N</td>
+                            <td>N</td>
+                            <td>N</td>
+                            <td>N</td>
+                          </tr>
+                          <tr>
+                            <td>Nível de experiência adequado?</td>
+                            <td>S</td>
+                            <td>S</td>
+                            <td>N</td>
+                            <td>N</td>
+                            <td>S</td>
+                            <td>S</td>
+                            <td>N</td>
+                            <td>N</td>
+                          </tr>
+                          <tr>
+                            <td>Domínio no idioma solicitado?</td>
+                            <td>S</td>
+                            <td>N</td>
+                            <td>S</td>
+                            <td>N</td>
+                            <td>S</td>
+                            <td>N</td>
+                            <td>S</td>
+                            <td>N</td>
+                          </tr>
+                          <tr>
+                            <td>AÇÕES</td>
+                            <td colspan="8" style="background-color: black;"></td>
+                          </tr>
+                          <tr>
+                            <td>Participar da próxima etapa do processo seletivo</td>
+                            <td>X</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr>
+                            <td>Banco de talentos da empresa</td>
+                            <td></td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td colspan="9"><p class="text-center">LEGENDA: S = sim; N = não; X = ação a ser executada</p></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 3 – Tabela de decisão <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p>Dessa forma, é possível verificar diferentes casos de teste e analisar o resultado de cada um, sendo, assim, uma técnica adequada para cobrir os requisitos mais complexos. No exemplo, apenas o primeiro caso de teste cobre por completo os requisitos e seguiria no processo seletivo; os demais iram para o banco de talentos.</p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='aba04'>
+                    <p>O método de transição de estados mostrará, por meio de um diagrama, os possíveis estados que o <i>software</i> pode ter, exibindo o modo como este alterna entre os estados, passando por entrada, saída e transição.</p>
+                    <p>As transições são iniciadas com base em um evento, que, por exemplo, pode ser a inserção de dado em um campo. Com isso, uma mudança de estado pode gerar a execução de uma ação, que pode ser, por exemplo, a exibição de uma mensagem de confirmação na tela ou um erro em razão de inconsistências.</p>
+                    <p>Há uma tabela de transição de estado que exibirá as transições válidas e inválidas entre estados. Os eventos também fazem parte da tabela. Já os diagramas mostram apenas transições válidas, deixando de fora as transições inválidas. </p>
+                    <p>Pense em uma situação de abastecimento do tanque de tintas e elabore uma tabela de transição de estados. Há uma bomba de abastecimento que encherá o tanque ou ele poderá receber uma determinada quantidade de litros de tinta.</p>
+                    <p>A tabela de testes de transição de estados ficará da seguinte forma:</p>
+                    <div class='table-responsive'>
+                      <table class='senac'>
+                        <tbody>
+                          <tr>
+                            <th>Número do teste</th>
+                            <th>Estado inicial</th>
+                            <th>Ação</th>
+                            <th>Estado final</th>
+                            <th>Resultado esperado</th>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Tanque vazio</td>
+                            <td>Abastecer tanque</td>
+                            <td>Tanque cheio</td>
+                            <td>Tanque cheio</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>Vazio</td>
+                            <td>Abastecimento com uma quantidade X</td>
+                            <td>Tanque com valor X</td>
+                            <td>Tanque com X litros de tinta</td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>Abastecimento em andamento</td>
+                            <td>Cancelar abastecimento</td>
+                            <td>Vazio</td>
+                            <td>Ao cancelar a ação, o tanque não realiza o abastecimento</td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>Tanque cheio</td>
+                            <td>Abastecimento com uma quantidade X de litros</td>
+                            <td>Tanque com valor X de litros</td>
+                            <td>Tanque já está cheio e não é possível abastecer</td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>Tanque com valor X de tinta</td>
+                            <td>Abastecimento com uma quantidade X de litros</td>
+                            <td>Tanque com valor X de litros</td>
+                            <td>Não é possível abastecer, pois ultrapassará a quantidade máxima do tanque </td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>Falha do sistema</td>
+                            <td>Cancelar abastecimento</td>
+                            <td>Vazio</td>
+                            <td>Em falha, o tanque não deve abastecer</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p class="legenda-imagem">
+                      Tabela 4 – Tabela de testes de transição de estados <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p>A tabela de testes de transição de estados para a bomba de abastecimento mostra os diferentes estados que a bomba pode estar e as ações que o usuário pode realizar, levando a um estado final esperado. A tabela começa com o estado vazio da bomba e as ações de informar um valor específico para abastecimento ou escolher encher o tanque completamente. Quando o usuário escolhe informar um valor X, a bomba passa para o estado de abastecimento em andamento e começa a realizar o abastecimento. Se o usuário cancelar, a bomba volta ao estado vazio. Se a bomba estiver cheia, o usuário não poderá adicionar mais combustível, independentemente da ação escolhida. Em ambos os casos, o sistema informará ao usuário que o tanque já está cheio. No caso de falha do sistema, a bomba volta ao estado vazio.</p>
+                    <p>Geralmente os testes são criados de forma a percorrer todos os estados, passar por cada transição ou cobrir uma sequência predefinida de transições ou transições inválidas.</p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='aba05'>
+                    <p>O método de teste de caso de uso é baseado nos casos de uso. Desse modo, especificará o comportamento que uma funcionalidade terá ao interagir com um ou mais atores do sistema.</p>
+                    <p>Os testes de caso de uso ajudam a garantir a qualidade e a confiabilidade do sistema, validando situações de uso e verificando se situações excepcionais têm o tratamento de falhas de sistema adequados. A medida de cobertura é expressa pela quantidade de comportamentos de casos de uso que serão testados dividida pelo total de comportamentos de caso de uso.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <h4>Particionamento de equivalências</h4>
+              <p>Imagine o seguinte caso: uma nova empresa de tintas está desenvolvendo um <i>software</i> para validar o preenchimento de seus tanques de tintas e definiu que um tanque deve ao menos ter 10 l de tintas e no máximo 50 l. Com isso, ao cadastrar o preenchimento do tanque, o campo de litros poderá aceitar valores entre 10 e 50.</p>
+              <p>Para facilitar o entendimento, analise a linha de valores que podem ou não ser inseridos no momento de realizar a tarefa.</p>
+              <img src="imgs/figura_01.png" class="img-responsive center-block">
+              <p class="legenda-imagem">
+                Figura 1 – Método de teste particionamento de equivalência <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Linha na horizontal, traçada para especificar uma faixa de litros aceitável e definir partição válida, partição inválida muito baixa e partição inválida muito alta. À esquerda da linha, há uma linha na vertical, cortando a linha horizontal que indica valores abaixo do limite, partição inválida muito baixa. À direta, há uma linha na vertical, cortando a linha horizontal que indica valores acima do limite, partição inválida muito alto. Entre os dois pontos fica a partição válida. Os valores dentro da partição válida estão entre 10 e 50 litros.</p>
+              <p>Ao analisar a imagem, percebem-se três partições: partição inválida muito baixa, partição válida e partição inválida muito alta. Os valores para a partição muito baixa estão abaixo da quantidade de litros que limita a disponibilidade de reserva, já a partição inválida muito alta limitará os valores acima da quantidade de litros que limita a disponibilidade. A partição válida contém os valores que são aceitos para definir cada quantidade de litros que permitem o preenchimento do tanque.</p>
+              <p>É o processo de divisão de dados, de modo que todos os membros pertencentes a uma partição serão processados do mesmo modo. Além disso, consiste na criação de partições para valores válidos e inválidos. Dessa forma, cria-se uma divisão para os valores que serão aceitos (válidos) e os que não serão aceitos (inválidos). Muitas vezes é criado de forma “inconsciente”.</p>
+              <p>A cobertura é feita por meio do seguinte cálculo:</p>
+              <p class="text-center"><i>COBERTURA = (PARTIÇÕES TESTADAS÷TOTAL DE PARTIÇÕES)*100%</i></p>
+              <p>Agora, imaginando os casos de teste que devem ser criados para cobrir essa situação, quantos seriam necessários para atender a todas as partições?</p>
+              <p>Devem ser criados três casos: um caso de teste com uma quantidade inferior ao mínimo de 10 l, um caso de teste com uma quantidade entre 10 l e 50 l e um caso de teste com uma quantidade superior a 50 l.</p>
+              <p>As partições inválidas devem ser testadas separadamente, ou seja, em partições diferentes, para evitar que uma falha possa mascarar as demais falhas que possam ocorrer. Desta forma um erro impediria os demais de serem detectados.</p>
+              <h4>Análise de valor-limite</h4>
+              <p>É uma ampliação do particionamento de equivalência e constitui-se de dados numéricos ou sequenciais, em que os valores mínimo e máximo são os valores-limite para uma partição. Pode ser aplicada em qualquer nível de teste e tem uma probabilidade maior de encontrar falhas em relação à partição de equivalência. A cobertura é definida da seguinte maneira:</p>
+              <p class="text-center"><i>COBERTURA = (LIMITES TESTADOS ÷ TOTAL DE LIMITES) * 100%</i></p>
+              <p>Agora, pense no exemplo anterior, em que o limite no campo de litros foi implementado:</p>
+              <img src="imgs/figura_02.png" class="img-responsive center-block">
+              <p class="legenda-imagem">
+                Figura 2 – Método de teste análise de valor-limite <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Linha na horizontal, traçada para especificar uma faixa de litros aceitável e definir partição válida, partição inválida muito baixa e partição inválida muito alta. À esquerda da linha, há uma linha na vertical, cortando a linha horizontal que indica valores abaixo do limite (9,9 litros), partição inválida muito baixa. À direta há, uma linha na vertical, cortando a linha horizontal que indica valores acima do limite (50,1 litros), partição inválida muito alto. Entre os dois pontos fica a partição válida. Os valores dentro da partição válida estão entre 10 e 50 litros.</p>
+              <p>Com base no conhecimento adquirido, você já sabe que valores abaixo de 10 l fazem parte da partição inválida muito baixa, que a partição válida contém os valores entre 10 l e 50 l e que a partição inválida muito alta tem valores acima de 50 l. Porém, agora está sendo feita apenas a análise dos valores-limite, portanto apenas 10 l e 50 l são os limites válidos para a partição válida. O limite da partição inválida muito baixa é somente 9,9 l e o limite de 50,1 l é o correspondente à partição inválida muito alta.</p>
+              <p>Agora, imaginando os casos de teste que devem ser criados para cobrir os limites dessa situação, quantos seriam necessários para atender a todas as partições?</p>
+              <p>Nessa situação, você precisa de quatro casos de teste, sendo um teste para cobrir o valor-limite da partição inválida muito baixa, nesse caso 9,9 l; um teste para cobrir o valor-limite mínimo válido da partição válida, nesse caso 10 l; um teste para cobrir o valor-limite máximo válido da partição válida, nesse caso 50 l; e um teste para cobrir o valor-limite da partição inválida muito alta, nesse caso 50,1 l.</p>
+              <p>Agora é hora praticar criando o código para esse projeto. Primeiro, você desenvolverá a base, criando uma variável para armazenar o nome que referenciará o tanque de tinta e exibirá os dados cadastrados ao final.</p>
+              <pre>
+                <code>
+import java.util.Scanner;
+
+public class TesteTanque {
+
+    public static void main(String[] args) {
+        String identificacao;
+        double qtdTinta;
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Informe a identificação do tanque: ");
+        identificacao = entrada.nextLine();
+        System.out.println("Informe a quantidade de litros inserido no tanque: ");
+        qtdTinta = entrada.nextDouble();
+
+        System.out.println("O nome do tanque é: " + identificacao + " e a quantidade presente de litros é: " + qtdTinta);       
+    }  
+}
+                </code>
+              </pre>
+              <p>Agora, você realizará os testes de análise de valor-limite e verificará se está cobrindo os requisitos esperados para o projeto. Então, execute o código e analise o que acontece. Primeiro, informe um valor mínimo aceito de 10 l e, posteriormente, execute o código novamente e informe um valor máximo aceito de 50 l. Em ambos os casos deve ser exibida a mensagem de litros presentes no tanque e a identificação dele.</p>
+              <p>Então, você realizará os testes para os valores abaixo do mínimo aceito e acima do valor máximo aceito, portanto execute o código novamente. Primeiro, informe 9,9 l e veja o que acontece. </p>
+              <p>Execute outra vez o código e informe 50,1 l. Em ambos os casos deve ser exibida uma mensagem de valores inválidos informados.</p>
+              <p>Você percebeu que o código apresentou falhas, pois está faltando algo, não é mesmo? No teste, foram encontradas falhas do projeto; as estruturas de decisão não foram criadas para validar os valores que devem ser aceitos, ou seja, a cobertura do teste é de 50%. Nesse momento, você reportará, em um documento adequado, que essa função do sistema não está adequada ao que era esperado no documento de requisitos e deve ser refeita.</p>
+              <p>Portanto, refaça e adicione as validações que devem estar presentes.</p>
+              <pre>
+                <code>
+import java.util.Scanner;
+
+public class TesteTanque {
+
+    /**
+    * @param args the command line arguments
+    */
+    Public static void main(String[] args) {
+      // TODO code application logic here
+          String identificacao;
+          Double qtdTinta;
+          Scanner entrada = new Scanner(System.in);
+          
+          System.out.println("Informe a identificação do tanque: ");
+          identificacao = entrada.nextLine();
+          System.out.println("Informe a quantidade de litros inserido no tanque: ");
+          qtdTinta = entrada.nextDouble();
+          if(qtdTinta>=10 && qtdTinta&lt;=50){
+              System.out.println("O nome do tanque é: " + identificacao + " e a quantidade presente de litros é: "+ qtdTinta);
+          } else {
+              System.out.println("A quantidade de tinta informada é inadequada para a capacidade do tanque");
+          }
+    }
+}
+                </code>
+              </pre>
+              <p>Agora, você deve refazer os testes de análise de valor-limite e verificar se o projeto cobre os requisitos esperados.</p>
+              <p>Como era esperado, dessa vez os valores-limite inválidos, muito baixo e muito alto, não são aceitos. Já os limites válidos são aceitos, portanto o seu teste tem 100% de cobertura.</p>
+              <h4>Tabela de decisão</h4>
+              <p>A técnica de tabela de decisão testa combinações que resultarão em dados diferentes, sendo considerada interessante para cobrir regras de negócio complexas que um sistema tem. A tabela é composta de condições, que são as entradas, e ações (os resultados gerados na saída), que são as linhas. Para as colunas, há regras que indicarão quais condições têm as ações esperadas. O número de colunas é baseado no número de casos de testes.</p>
+              <p>As condições são expressas da seguinte forma: </p>
+              <div class='table-responsive'>
+                <table class='senac'>
+                  <tbody>
+                    <tr>
+                      <td>“S”: especifica que a condição é atendida (em algumas literaturas, pode ser exibido como “V” ou “1”).</td>
+                    </tr>
+                    <tr>
+                      <td>“N”: especifica que a condição não é atendida (em algumas literaturas, pode ser exibido como “F” ou “0”).</td>
+                    </tr>
+                    <tr>
+                      <td>“-“: especifica que o valor não é importante para a condição (em algumas literaturas, pode ser exibido como “N/A”).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="legenda-imagem">
+                Tabela 1 – Condições <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <P>Para as ações, há as seguintes expressões:</P>
+              <div class='table-responsive'>
+                <table class='senac'>
+                  <tbody>
+                    <tr>
+                      <td>“X”: especifica que a ação deve ocorrer (em algumas literaturas, pode ser exibido como “S”, “V” ou “1”).</td>
+                    </tr>
+                    <tr>
+                      <td>Em branco: especifica que a ação não deve ocorrer (em algumas literaturas, pode ser exibido como “-“, “N”, “F” ou “0”).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="legenda-imagem">
+                Tabela 2 – Ações <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p>Agora, pense na seguinte situação: uma <i>startup</i> de recursos humanos está desenvolvendo uma plataforma para facilitar a contratação de colaboradores e deseja disponibilizar para os clientes uma ferramenta que verifica se o candidato tem as qualificações esperadas para a vaga. Dessa forma, alguns requisitos devem ser expressos: ter formação esperada para a área, ter nível de experiência adequado, conforme especificação do cliente, e ter domínio no idioma solicitado. </p>
+              <p>Os candidatos que tiverem os requisitos necessários, ou seja, atenderem às condições, participarão da próxima etapa do processo seletivo. Os que não atenderem a um ou mais requisitos irão para o banco de talentos da empresa, sendo esta a ação esperada.</p>
+              <p>Veja a tabela de decisão:</p>
+              <div class='table-responsive'>
+                <table class='senac'>
+                  <tbody>
+                    <tr>
+                      <td>CONDIÇÕES</td>
+                      <td>Regra 1 (caso de teste 1)</td>
+                      <td>Regra 2 (caso de teste 2)</td>
+                      <td>Regra 3 (caso de teste 3)</td>
+                      <td>Regra 4 (caso de teste 4)</td>
+                      <td>Regra 5 (caso de teste 5)</td>
+                      <td>Regra 6 (caso de teste 6)</td>
+                      <td>Regra 7 (caso de teste 7)</td>
+                      <td>Regra 8 (caso de teste 8)</td>
+                    </tr>
+                    <tr>
+                      <td>Formação esperada para a área?</td>
+                      <td>S</td>
+                      <td>S</td>
+                      <td>S</td>
+                      <td>S</td>
+                      <td>N</td>
+                      <td>N</td>
+                      <td>N</td>
+                      <td>N</td>
+                    </tr>
+                    <tr>
+                      <td>Nível de experiência adequado?</td>
+                      <td>S</td>
+                      <td>S</td>
+                      <td>N</td>
+                      <td>N</td>
+                      <td>S</td>
+                      <td>S</td>
+                      <td>N</td>
+                      <td>N</td>
+                    </tr>
+                    <tr>
+                      <td>Domínio no idioma solicitado?</td>
+                      <td>S</td>
+                      <td>N</td>
+                      <td>S</td>
+                      <td>N</td>
+                      <td>S</td>
+                      <td>N</td>
+                      <td>S</td>
+                      <td>N</td>
+                    </tr>
+                    <tr>
+                      <td>AÇÕES</td>
+                      <td colspan="8" style="background-color: black;"></td>
+                    </tr>
+                    <tr>
+                      <td>Participar da próxima etapa do processo seletivo</td>
+                      <td>X</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Banco de talentos da empresa</td>
+                      <td></td>
+                      <td>X</td>
+                      <td>X</td>
+                      <td>X</td>
+                      <td>X</td>
+                      <td>X</td>
+                      <td>X</td>
+                      <td>X</td>
+                    </tr>
+                    <tr>
+                      <td colspan="9"><p class="text-center">LEGENDA: S = sim; N = não; X = ação a ser executada</p></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="legenda-imagem">
+                Tabela 3 – Tabela de decisão <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p>Dessa forma, é possível verificar diferentes casos de teste e analisar o resultado de cada um, sendo, assim, uma técnica adequada para cobrir os requisitos mais complexos. No exemplo, apenas o primeiro caso de teste cobre por completo os requisitos e seguiria no processo seletivo; os demais iram para o banco de talentos.</p>
+              <h4>Transição de estado</h4>
+              <p>O método de transição de estados mostrará, por meio de um diagrama, os possíveis estados que o <i>software</i> pode ter, exibindo o modo como este alterna entre os estados, passando por entrada, saída e transição.</p>
+              <p>As transições são iniciadas com base em um evento, que, por exemplo, pode ser a inserção de dado em um campo. Com isso, uma mudança de estado pode gerar a execução de uma ação, que pode ser, por exemplo, a exibição de uma mensagem de confirmação na tela ou um erro em razão de inconsistências.</p>
+              <p>Há uma tabela de transição de estado que exibirá as transições válidas e inválidas entre estados. Os eventos também fazem parte da tabela. Já os diagramas mostram apenas transições válidas, deixando de fora as transições inválidas. </p>
+              <p>Pense em uma situação de abastecimento do tanque de tintas e elabore uma tabela de transição de estados. Há uma bomba de abastecimento que encherá o tanque ou ele poderá receber uma determinada quantidade de litros de tinta.</p>
+              <p>A tabela de testes de transição de estados ficará da seguinte forma:</p>
+              <div class='table-responsive'>
+                <table class='senac'>
+                  <tbody>
+                    <tr>
+                      <th>Número do teste</th>
+                      <th>Estado inicial</th>
+                      <th>Ação</th>
+                      <th>Estado final</th>
+                      <th>Resultado esperado</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Tanque vazio</td>
+                      <td>Abastecer tanque</td>
+                      <td>Tanque cheio</td>
+                      <td>Tanque cheio</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Vazio</td>
+                      <td>Abastecimento com uma quantidade X</td>
+                      <td>Tanque com valor X</td>
+                      <td>Tanque com X litros de tinta</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Abastecimento em andamento</td>
+                      <td>Cancelar abastecimento</td>
+                      <td>Vazio</td>
+                      <td>Ao cancelar a ação, o tanque não realiza o abastecimento</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Tanque cheio</td>
+                      <td>Abastecimento com uma quantidade X de litros</td>
+                      <td>Tanque com valor X de litros</td>
+                      <td>Tanque já está cheio e não é possível abastecer</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Tanque com valor X de tinta</td>
+                      <td>Abastecimento com uma quantidade X de litros</td>
+                      <td>Tanque com valor X de litros</td>
+                      <td>Não é possível abastecer, pois ultrapassará a quantidade máxima do tanque </td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>Falha do sistema</td>
+                      <td>Cancelar abastecimento</td>
+                      <td>Vazio</td>
+                      <td>Em falha, o tanque não deve abastecer</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="legenda-imagem">
+                Tabela 4 – Tabela de testes de transição de estados <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p>A tabela de testes de transição de estados para a bomba de abastecimento mostra os diferentes estados que a bomba pode estar e as ações que o usuário pode realizar, levando a um estado final esperado. A tabela começa com o estado vazio da bomba e as ações de informar um valor específico para abastecimento ou escolher encher o tanque completamente. Quando o usuário escolhe informar um valor X, a bomba passa para o estado de abastecimento em andamento e começa a realizar o abastecimento. Se o usuário cancelar, a bomba volta ao estado vazio. Se a bomba estiver cheia, o usuário não poderá adicionar mais combustível, independentemente da ação escolhida. Em ambos os casos, o sistema informará ao usuário que o tanque já está cheio. No caso de falha do sistema, a bomba volta ao estado vazio.</p>
+              <p>Geralmente os testes são criados de forma a percorrer todos os estados, passar por cada transição ou cobrir uma sequência predefinida de transições ou transições inválidas.</p>
+              <h4>Teste de caso de uso</h4>
+              <p>O método de teste de caso de uso é baseado nos casos de uso. Desse modo, especificará o comportamento que uma funcionalidade terá ao interagir com um ou mais atores do sistema.</p>
+              <p>Os testes de caso de uso ajudam a garantir a qualidade e a confiabilidade do sistema, validando situações de uso e verificando se situações excepcionais têm o tratamento de falhas de sistema adequados. A medida de cobertura é expressa pela quantidade de comportamentos de casos de uso que serão testados dividida pelo total de comportamentos de caso de uso.</p>
+            </div>
+
+            <h3>Caixa-branca</h3>
+            <p>A técnica de teste de caixa-branca analisa a arquitetura do projeto, avaliando de modo interno a estrutura, sendo, assim, possível resolver questões de otimização do projeto, gerando um processamento mais adequado. Dessa forma, é possível criar testes que percorrerão mais trechos do código, evitando que ocorram redundâncias ou testes em duplicidade por meio de <i>scripts</i> criados para executar os testes de forma automática.</p>
+            <p>Ainda é possível realizar uma análise de cobertura de código. Dessa forma, é possível mensurar qual percentual do código é verificado e, com base nesse dado, criar testes complementares para validar o percentual faltante. A cobertura é medida com base nos itens testados de uma estrutura, de acordo com a técnica utilizada.</p>
+            <p>Por exemplo, ao criar um teste para cobrir todas as estruturas de decisão, os <b>ifs/elses</b> criados serão testados para verificar se o comportamento do sistema é o adequado ao passar por aquele trecho. Essa técnica tem um cálculo específico para verificar o percentual dos testes que obtiveram êxito ao serem executados.</p>
+            <p>Como se baseia na estrutura interna do objeto, as classes, as funções e os pacotes são verificados para validar a cobertura. Pode ser realizado em todos os níveis de teste, porém é mais utilizado para teste de componentes ou de integração de componentes.</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class='caixa-destaque-livre'>
+                <ul id='abas_2' class='nav nav-tabs' role='tablist'>
+                  <li role='presentation' class='active'><a href='#home' aria-controls='home' role='tab' data-toggle='tab'>Teste de cobertura de instruções</a></li>
+                  <li role='presentation'><a href='#profile' aria-controls='profile' role='tab' data-toggle='tab'>Teste de cobertura de decisão</a></li>
+                </ul>
+                <div class='tab-content'>
+                  <div role='tabpanel' class='tab-pane fade in active' id='home'>
+                    <p>Verifica as instruções executáveis de um código. Tem como cálculo para percentual de cobertura a seguinte formula:</p>
+                    <p>(Instruções Executadas / Total de Instruções Existentes) * 100</p>
+                    <p>É a técnica de cobertura menos eficiente, pois verifica apenas se as instruções estão sendo executadas, desconsiderando outros tipos de cobertura, como situações condicionais. Em algumas literaturas, pode ser encontrada como cobertura de declaração, comando ou até mesmo sentença.</p>
+                    <p>Agora, pense em um exemplo prático: em uma competição de salto em altura, um atleta tem três oportunidades para registrar a maior marcar de seu salto. Você foi convidado a desenvolver um <i>software</i> para aferir a maior marca de um atleta, portanto construirá o seguinte código:</p>
+                    <pre>
+                      <code>
+import java.util.Scanner;
+
+public class Competicao {
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner entrada = new Scanner(System.in);
+        double salto1, salto2, salto3, maior;
+        System.out.println("informe a altura do salto 1");
+        salto1 = entrada.nextDouble();
+        maior = salto1;
+        System.out.println("Informe a altura do segundo salto");
+        salto2 = entrada.nextDouble();
+        System.out.println("Informe a altura do terceiro salto");
+        salto3 = entrada.nextDouble();
+        if (salto2 > maior) {
+            maior = salto2;
+            if (salto3 > maior) {
+                maior = salto3;
+            }
+        } else {
+            if (salto3 > maior) {
+                maior = salto3;
+            }
+        }
+        System.out.println("A maior marca é de: " + maior + " ms");
+    }
+}
+                      </code>
+                    </pre>
+                    <p>Agora, pense no seguinte caso de teste para verificar a cobertura das instruções: o primeiro salto teve altura de 1,89 m, o segundo salto de 1,95 m e o terceiro foi anulado, portanto fica com 0,0 m. Dessa forma, teste seu código com esses valores para verificar quais instruções serão executadas. Para facilitar a análise, crie um fluxograma com as instruções do programa.</p>
+                    <img src="imgs/figura_03.png" class="img-responsive center-block">
+                    <p class="legenda-imagem">
+                      Figura 3 – Método de teste cobertura de comandos <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Elipse inicial com o texto “principal”. Dela, parte uma seta para baixo até um retângulo amarelo que indica a criação de quatro variáveis: salto1, salto2, salto3 e maior. Do retângulo, uma seta para baixo até um paralelogramo com texto “Escrever ‘informe a altura do salto1’”. Uma seta para baixo vai um paralelogramo azul com o texto “Ler salto 1”. Dele, parte uma seta para um retângulo amarelo com o texto “maior &lt;- salto1”. Dele, sai uma seta para baixo até um paralelogramo verde com o texto “Escrever ‘informe a altura do segundo salto’”. Uma seta para baixo alcança um paralelogramo azul com o texto “Ler salto2”. Dele, sai seta para baixo até um paralelogramo verde com o texto “Escrever ‘informe a altura do terceiro salto’”. Uma seta para baixo alcança um paralelogramo azul com o texto “Ler salto3”. Abaixo, uma seta alcança um losango rosa com o texto “salto2 > maior”. Dele, saem uma seta à esquerda com o rótulo “Falso” e uma à direita com o rótulo “Verdade”. A seta “Falso” se liga a outro losango “salto3 > maior”, de onde parte uma nova seta “Falso” à esquerda que liga a um círculo e uma seta à direita “Verdade” que liga a um retângulo “maior &lt;- salto3” e dela uma seta para o círculo. Do círculo, parte uma seta para outro círculo abaixo e, dele, uma seta para um paralelogramo com o texto “Escrever ‘A maior marca é de ‘& maior &’ ms’”. Dele, parte uma seta para uma elipse “Fim”. A seta “Verdade” do losango “salto2 > maior” liga a um retângulo “maior &lt;- salto2”. Dele, uma seta liga a um losango “salto3>maior”, de onde parte uma seta “Falso” à esquerda, atingindo um círculo, e uma seta “Verdade” à direita, levando a um retângulo “maior &lt;- salto3”, do qual sai uma seta ao círculo abaixo. Do círculo, uma seta liga ao paralelogramo “Escrever ‘A maior marca é de ‘& maior &’ ms’”.</p>
+                    <p>Cada figura geométrica no fluxograma significa uma instrução, portanto há 15 (ficarão de fora os círculos rosas, que estão vazios, as setas e, em roxo, as elipses <b>Principal</b> e <b>Fim</b>). </p>
+                    <p>Agora, analise as instruções. O programa realizará as declarações, as entradas/saídas na tela e as atribuições até chegar na primeira estrutura de decisão. Até a estrutura de decisão, oito instruções foram realizadas. A nona instrução a ser executada será a verificação de atendimento da condição. Com os dados desse caso de teste, o segundo salto é de 1,95 m, portanto maior que o valor que já está armazenado na variável maior. Logo, será executada também a instrução de atribuição de valor maior na variável maior, que é a décima instrução a ser testada.</p>
+                    <p>A próxima instrução a ter sua cobertura verificada é a de análise do terceiro salto (não perca a conta ,11º), se ele é maior que o atual valor em maior. Como o terceiro salto foi anulado, a condição não é atendida e, assim, o programa segue para o 12º comando, que encerra a execução exibindo uma mensagem com a maior altura saltada. Considerando o cálculo de cobertura, foram executadas 12 instruções em um total de 15, portanto a cobertura desse teste é de 80%.</p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='profile'>
+                    <p>Esse método de teste verifica as estruturas de decisões presentes no código, assim como as instruções que serão executadas conforme o resultado das condições. Os casos de testes devem ser criados de forma a validar situações condicionais. Por exemplo, se for uma estrutura <b>if</b>, deve-se criar um caso de teste para quando a condição é atendida e um para quando a condição não é atendida (verdadeiro ou falso, respectivamente). Em uma estrutura <b>switch case</b>, todos os casos devem ter um caso de teste que cobrirá o resultado, incluindo a resposta padrão.</p>
+                    <p>A cobertura é medida por meio do seguinte cálculo:</p>
+                    <p>(Número de resultados de decisão executados / Total de decisões existentes) *100</p>
+                    <p>Em algumas literaturas, utilizam-se termos como “ramificação” e “desvio”.</p>
+                    <p>Agora, pense no seguinte exemplo: uma empresa está considerando subsidiar um auxílio para seus funcionários realizarem um curso de especialização em qualquer área, independentemente de ter ou não relação com seu cargo na empresa, no entanto o funcionário deve aceitar que o percentual restante seja descontado diretamente em folha de pagamento. O colaborador poderá, ainda, definir se, ao escolher realizar a especialização, receberá um outro subsidio de transporte, novamente descontado em folha.</p>
+                    <p>Quantos e quais seriam os casos de uso necessários para cobrir todas as estruturas de decisão presentes no seguinte trecho de código?</p>
+                    <pre>
+                      <code>
+import java.util.*;
+import java.lang.Math;
+
+public class JavaApplication {
+    private static Scanner input = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        String curso;
+        String transporte;
+        
+        String curso;
+        String transporte;
+        
+        System.out.println("Informe sim,se desejar realizar o curso de especialização ou não para recusar!");
+        curso = input.nextLine();
+        if (curso.equals("sim")) {
+            System.out.println("Informe sim,se desejar ganhar o subsidio para transporte ou não para recusar!");
+            transporte = input.nextLine();
+            if (transporte.equals("sim")) {
+                System.out.println("Você optou não receber o subsidio do transporte e fará a especialização");
+            } else {
+                System.out.println("Você optou por não receber o subsidio do transporte, mas fará a especialização");
+            }
+        } else {
+            System.out.println("Você optou por não realizar a especialização");
+        }
+        System.out.println("Obrigado por participar");
+    }
+}
+                      </code>
+                    </pre>
+                    <p>Use novamente um fluxograma para auxiliar na análise da execução.</p>
+                    <img src="imgs/figura_04.png" class="img-responsive center-block">
+                    <p class="legenda-imagem">
+                      Figura 4 – Método de teste cobertura de decisão <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Losango de decisão “Curso = ‘sim’” no topo. Dele, sai seta à esquerda “Falso”, que liga a um paralelogramo abaixo “Escrever ‘Você optou por não realizar a especialização’”, que tem seta para um círculo rosa, que leva a outro paralelogramo “Escrever ‘Obrigado por participar’”. À direita do losango, sai seta “Verdade” para paralelogramo “Escrever ‘Informe ‘sim’ se deseja ganhar o subsídio para transporte ou ‘não’ para recusar’”. Dele, parte seta para paralelogramo “Ler transporte” e deste para losango “Transporte = ‘sim’” abaixo. Desse losango, uma seta à esquerda “Falso” liga com “Escrever ‘Você optou por não receber o subsídio do transporte, mas fará a especialização’” e uma seta à direita “Verdade” liga com paralelogramo “Escrever ‘Você optou por não receber o subsídio do transporte e fará a especialização’”. De ambos os paralelogramos saem setas para um círculo e esse círculo liga com paralelogramo “Escrever ‘Obrigado por participar’”. Dele, uma seta liga com uma elipse “Fim”.</p>
+                    <p>O primeiro caso de teste seria definir a resposta para a participação no curso como “não”. Dessa forma, encerra a execução do programa, pois irá pelo caminho de decisão falso.</p>
+                    <p>O segundo caso de teste seria definir a primeira resposta como “sim” e a segunda como “sim” novamente. Assim, passaria por todas as condições verdadeiras.</p>
+                    <p>O terceiro caso de teste seria definir a primeira resposta como “sim” e a segunda como “não”. Dessa forma, percorreria pelo caminho da primeira decisão sendo verdadeiro e o caminho da segunda decisão sendo falso. Logo, seriam necessários três casos de teste para atingir a cobertura de 100% dos caminhos disponíveis conforme as estruturas de condição existentes.</p>
+                    <p>Dessa forma, pode-se afirmar que cobrir 100% de um teste de cobertura de decisão cobrirá 100% de um teste de comando.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <h4>Teste de cobertura de instruções</h4>
+              <p>Verifica as instruções executáveis de um código. Tem como cálculo para percentual de cobertura a seguinte formula:</p>
+              <p>(Instruções Executadas / Total de Instruções Existentes) * 100</p>
+              <p>É a técnica de cobertura menos eficiente, pois verifica apenas se as instruções estão sendo executadas, desconsiderando outros tipos de cobertura, como situações condicionais. Em algumas literaturas, pode ser encontrada como cobertura de declaração, comando ou até mesmo sentença.</p>
+              <p>Agora, pense em um exemplo prático: em uma competição de salto em altura, um atleta tem três oportunidades para registrar a maior marcar de seu salto. Você foi convidado a desenvolver um <i>software</i> para aferir a maior marca de um atleta, portanto construirá o seguinte código:</p>
+              <pre>
+                <code>
+import java.util.Scanner;
+
+public class Competicao {
+
+public static void main(String[] args) {
+  // TODO code application logic here
+  Scanner entrada = new Scanner(System.in);
+  double salto1, salto2, salto3, maior;
+  System.out.println("informe a altura do salto 1");
+  salto1 = entrada.nextDouble();
+  maior = salto1;
+  System.out.println("Informe a altura do segundo salto");
+  salto2 = entrada.nextDouble();
+  System.out.println("Informe a altura do terceiro salto");
+  salto3 = entrada.nextDouble();
+  if (salto2 > maior) {
+      maior = salto2;
+      if (salto3 > maior) {
+          maior = salto3;
+      }
+  } else {
+      if (salto3 > maior) {
+          maior = salto3;
+      }
+  }
+  System.out.println("A maior marca é de: " + maior + " ms");
+}
+}
+                </code>
+              </pre>
+              <p>Agora, pense no seguinte caso de teste para verificar a cobertura das instruções: o primeiro salto teve altura de 1,89 m, o segundo salto de 1,95 m e o terceiro foi anulado, portanto fica com 0,0 m. Dessa forma, teste seu código com esses valores para verificar quais instruções serão executadas. Para facilitar a análise, crie um fluxograma com as instruções do programa.</p>
+              <img src="imgs/figura_03.png" class="center-block img-responsive hidden-sm hidden-xs print">
+              <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+              <a href="imgs/figura_03.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_03.png" class="center-block img-responsive"></a>
+              <p class="legenda-imagem">
+                Figura 3 – Método de teste cobertura de comandos <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Elipse inicial com o texto “principal”. Dela, parte uma seta para baixo até um retângulo amarelo que indica a criação de quatro variáveis: salto1, salto2, salto3 e maior. Do retângulo, uma seta para baixo até um paralelogramo com texto “Escrever ‘informe a altura do salto1’”. Uma seta para baixo vai um paralelogramo azul com o texto “Ler salto 1”. Dele, parte uma seta para um retângulo amarelo com o texto “maior &lt;- salto1”. Dele, sai uma seta para baixo até um paralelogramo verde com o texto “Escrever ‘informe a altura do segundo salto’”. Uma seta para baixo alcança um paralelogramo azul com o texto “Ler salto2”. Dele, sai seta para baixo até um paralelogramo verde com o texto “Escrever ‘informe a altura do terceiro salto’”. Uma seta para baixo alcança um paralelogramo azul com o texto “Ler salto3”. Abaixo, uma seta alcança um losango rosa com o texto “salto2 > maior”. Dele, saem uma seta à esquerda com o rótulo “Falso” e uma à direita com o rótulo “Verdade”. A seta “Falso” se liga a outro losango “salto3 > maior”, de onde parte uma nova seta “Falso” à esquerda que liga a um círculo e uma seta à direita “Verdade” que liga a um retângulo “maior &lt;- salto3” e dela uma seta para o círculo. Do círculo, parte uma seta para outro círculo abaixo e, dele, uma seta para um paralelogramo com o texto “Escrever ‘A maior marca é de ‘& maior &’ ms’”. Dele, parte uma seta para uma elipse “Fim”. A seta “Verdade” do losango “salto2 > maior” liga a um retângulo “maior &lt;- salto2”. Dele, uma seta liga a um losango “salto3>maior”, de onde parte uma seta “Falso” à esquerda, atingindo um círculo, e uma seta “Verdade” à direita, levando a um retângulo “maior &lt;- salto3”, do qual sai uma seta ao círculo abaixo. Do círculo, uma seta liga ao paralelogramo “Escrever ‘A maior marca é de ‘& maior &’ ms’”.</p>
+              <p>Cada figura geométrica no fluxograma significa uma instrução, portanto há 15 (ficarão de fora os círculos rosas, que estão vazios, as setas e, em roxo, as elipses <b>Principal</b> e <b>Fim</b>). </p>
+              <p>Agora, analise as instruções. O programa realizará as declarações, as entradas/saídas na tela e as atribuições até chegar na primeira estrutura de decisão. Até a estrutura de decisão, oito instruções foram realizadas. A nona instrução a ser executada será a verificação de atendimento da condição. Com os dados desse caso de teste, o segundo salto é de 1,95 m, portanto maior que o valor que já está armazenado na variável maior. Logo, será executada também a instrução de atribuição de valor maior na variável maior, que é a décima instrução a ser testada.</p>
+              <p>A próxima instrução a ter sua cobertura verificada é a de análise do terceiro salto (não perca a conta ,11º), se ele é maior que o atual valor em maior. Como o terceiro salto foi anulado, a condição não é atendida e, assim, o programa segue para o 12º comando, que encerra a execução exibindo uma mensagem com a maior altura saltada. Considerando o cálculo de cobertura, foram executadas 12 instruções em um total de 15, portanto a cobertura desse teste é de 80%.</p>
+              <h4>Teste de cobertura de decisão</h4>
+              <p>Esse método de teste verifica as estruturas de decisões presentes no código, assim como as instruções que serão executadas conforme o resultado das condições. Os casos de testes devem ser criados de forma a validar situações condicionais. Por exemplo, se for uma estrutura <b>if</b>, deve-se criar um caso de teste para quando a condição é atendida e um para quando a condição não é atendida (verdadeiro ou falso, respectivamente). Em uma estrutura <b>switch case</b>, todos os casos devem ter um caso de teste que cobrirá o resultado, incluindo a resposta padrão.</p>
+              <p>A cobertura é medida por meio do seguinte cálculo:</p>
+              <p>(Número de resultados de decisão executados / Total de decisões existentes) *100</p>
+              <p>Em algumas literaturas, utilizam-se termos como “ramificação” e “desvio”.</p>
+              <p>Agora, pense no seguinte exemplo: uma empresa está considerando subsidiar um auxílio para seus funcionários realizarem um curso de especialização em qualquer área, independentemente de ter ou não relação com seu cargo na empresa, no entanto o funcionário deve aceitar que o percentual restante seja descontado diretamente em folha de pagamento. O colaborador poderá, ainda, definir se, ao escolher realizar a especialização, receberá um outro subsidio de transporte, novamente descontado em folha.</p>
+              <p>Quantos e quais seriam os casos de uso necessários para cobrir todas as estruturas de decisão presentes no seguinte trecho de código?</p>
+              <pre>
+                <code>
+import java.util.*;
+import java.lang.Math;
+
+public class JavaApplication {
+private static Scanner input = new Scanner(System.in);
+
+public static void main(String[] args) {
+  String curso;
+  String transporte;
+  
+  String curso;
+  String transporte;
+  
+  System.out.println("Informe sim,se desejar realizar o curso de especialização ou não para recusar!");
+  curso = input.nextLine();
+  if (curso.equals("sim")) {
+      System.out.println("Informe sim,se desejar ganhar o subsidio para transporte ou não para recusar!");
+      transporte = input.nextLine();
+      if (transporte.equals("sim")) {
+          System.out.println("Você optou não receber o subsidio do transporte e fará a especialização");
+      } else {
+          System.out.println("Você optou por não receber o subsidio do transporte, mas fará a especialização");
+      }
+  } else {
+      System.out.println("Você optou por não realizar a especialização");
+  }
+  System.out.println("Obrigado por participar");
+}
+}
+                </code>
+              </pre>
+              <p>Use novamente um fluxograma para auxiliar na análise da execução.</p>
+              <img src="imgs/figura_04.png" class="center-block img-responsive hidden-sm hidden-xs print">
+              <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+              <a href="imgs/figura_04.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_04.png" class="center-block img-responsive"></a>
+              <p class="legenda-imagem">
+                Figura 4 – Método de teste cobertura de decisão <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Losango de decisão “Curso = ‘sim’” no topo. Dele, sai seta à esquerda “Falso”, que liga a um paralelogramo abaixo “Escrever ‘Você optou por não realizar a especialização’”, que tem seta para um círculo rosa, que leva a outro paralelogramo “Escrever ‘Obrigado por participar’”. À direita do losango, sai seta “Verdade” para paralelogramo “Escrever ‘Informe ‘sim’ se deseja ganhar o subsídio para transporte ou ‘não’ para recusar’”. Dele, parte seta para paralelogramo “Ler transporte” e deste para losango “Transporte = ‘sim’” abaixo. Desse losango, uma seta à esquerda “Falso” liga com “Escrever ‘Você optou por não receber o subsídio do transporte, mas fará a especialização’” e uma seta à direita “Verdade” liga com paralelogramo “Escrever ‘Você optou por não receber o subsídio do transporte e fará a especialização’”. De ambos os paralelogramos saem setas para um círculo e esse círculo liga com paralelogramo “Escrever ‘Obrigado por participar’”. Dele, uma seta liga com uma elipse “Fim”.</p>
+              <p>O primeiro caso de teste seria definir a resposta para a participação no curso como “não”. Dessa forma, encerra a execução do programa, pois irá pelo caminho de decisão falso.</p>
+              <p>O segundo caso de teste seria definir a primeira resposta como “sim” e a segunda como “sim” novamente. Assim, passaria por todas as condições verdadeiras.</p>
+              <p>O terceiro caso de teste seria definir a primeira resposta como “sim” e a segunda como “não”. Dessa forma, percorreria pelo caminho da primeira decisão sendo verdadeiro e o caminho da segunda decisão sendo falso. Logo, seriam necessários três casos de teste para atingir a cobertura de 100% dos caminhos disponíveis conforme as estruturas de condição existentes.</p>
+              <p>Dessa forma, pode-se afirmar que cobrir 100% de um teste de cobertura de decisão cobrirá 100% de um teste de comando.</p>
+            </div>
+            <div class="caixa-destaque-livre borda-primaria-03 icone desafio mt-40">
+              <p><b>Desafio 1: Desafio de teste de tabela de decisão</b></p>
+              <p>Você é um desenvolvedor de <i>software</i> para uma empresa de seguros automotivos. Sua equipe está desenvolvendo um sistema para calcular o valor do seguro de carros, levando em consideração vários fatores, como idade do motorista, modelo do carro e ano do carro.</p>
+              <p>Seu desafio é criar uma tabela de decisão de teste que cubra os cenários mais importantes para o cálculo do valor do seguro. Para isso, considere as seguintes premissas:</p>
+              <ul class="cor01">
+                <li>O modelo e o ano do carro também afetam o valor do seguro. Carros 0 km e de modelos acima de R$ 60 mil terão um valor de 10% da tabela Fipe (tabela da Fundação Instituto de Pesquisas Econômicas).</li>
+                <li>O valor do seguro é influenciado pela idade do motorista. Se o motorista tiver menos de 25 anos, o valor do seguro terá um acréscimo de 40%.</li>
+                <li>Se o motorista tiver mais de 60 anos, o valor do seguro será automaticamente reduzido em 30%.</li>
+              </ul>
+            </div>
+            <div class="caixa-destaque-livre borda-primaria-03 icone desafio mt-40">
+              <p><b>Desafio 2: Desafio de teste de cobertura de decisão</b></p>
+              <p>Você foi contratado por uma empresa de desenvolvimento de <i>software</i> que está desenvolvendo um <i>e-commerce</i>. Sua equipe está desenvolvendo uma classe em Java para calcular o valor total de uma compra realizada pelo cliente.</p>
+              <p>Seu desafio é analisar o código e escrever casos de teste para cobrir todas as instruções da classe e verificar quantos são necessários para cobrir todas as situações. Você deve considerar as seguintes premissas:</p>
+              <ul class="cor01">
+                <li>O valor da compra é calculado com base na quantidade de itens comprados, no preço unitário de cada item e no desconto que pode ser aplicado.</li>
+                <li>O desconto é determinado com base no valor total da compra. Se o valor em reais for maior ou igual a mil, o desconto é de 10%; se o valor em reais for menor que mil, não há desconto.</li>
+              </ul>
+              <p>O código produzido é o seguinte:</p>
+              <pre>
+                <code>
+public class CalculadoraValorCompra {
+  
+    public static double calcular(int quantidade, double precoUnitario, double taxaDesconto) {
+        double total = quantidade * precoUnitario;
+        if (total >= 1000) {
+            total = total - (total * taxaDesconto / 100);
+        }
+        return total;
+    }
+}
+                </code>
+              </pre>
+            </div>
+
+            <h3>Encerramento</h3>
+            <p class="icone concluindo">Neste material, você aprendeu a diferença de testes funcionais e testes não funcionais e verificou conceitos de técnicas de testes de caixa-preta e caixa-branca. Além disso, você foi apresentado a métodos de técnicas de testes e praticou por meio de exemplos.</p>
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+
+    
+    <!-- Modais 100% -->
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

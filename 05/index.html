@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Ferramentas de testes: bugtrackers e automação</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção Grau de pontuação/símbolos, acesse Preferências – Configurações – Fala. Altere o padrão Pouco para Tudo. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade. </p>
+            
+            <h2>Ferramentas de testes: <i>bugtrackers</i> e automação</h2>
+            <h3>Introdução</h3>
+            <p>Como você já sabe, por meio dos testes é possível reduzir a probabilidade de defeitos não descobertos permanecerem no <i>software</i>. Para que esses defeitos sejam encontrados de forma antecipada, as atividades de testes devem iniciar o mais cedo possível no ciclo de vida de desenvolvimento de <i>software</i>. Além disso, para a realização de testes, existem ferramentas específicas para os tipos de <i>softwares</i>/sistemas e contextos. Por meio dessas ferramentas, os testes são executados, os resultados são reportados e as comparações com testes anteriores são realizadas, podendo serem executados os testes repetidamente em qualquer horário do dia. </p>
+            <p>A seguir, você verá o que são ferramentas de <i>bugtrackers</i> e o que são ferramentas de automação.</p>
+
+            <h3>Ferramentas de <i>bugtrackers</i></h3>
+            <p>As ferramentas de <i>bugtrackers</i> são de extrema importância para os testes. Serão abordados, aqui, o conceito de <i>bugtracker</i> e as ferramentas que são utilizadas para essa finalidade. </p>
+            <p>Você sabe o que são <i>bugtrackers</i>?</p>
+            <p>Eles têm como finalidade auxiliar a equipe de teste e de desenvolvedores a manter o histórico de todos os <i>bugs</i> que ocorreram no <i>software</i>. É nesse tipo de ferramenta que todos os dados referentes aos <i>bugs</i> encontrados são colocados. É um meio formal de sinalizar aos desenvolvedores que os <i>bugs</i> existem. Ocorre da seguinte forma: os <i>bugs</i> encontrados são cadastrados na ferramenta, para que, a partir disso, as equipes possam gerenciá-los.</p>
+            
+            <h3>Ferramentas de automação</h3>
+            <p>A automação de testes está em expansão e, diferente do que os leigos acreditam, não é um processo de testes em si, mas, sim, parte de um processo maior. A implantação de automação geralmente falha quando os testes são imaturos e as responsabilidades não são bem definidas, até mesmo por não terem profissionais suficientemente qualificados ou, ainda, por optarem por ferramentas sem ter a maturidade suficiente para o processo de testes.</p>
+            <p>O objetivo da automação de testes é a redução do envolvimento humano em atividades repetitivas e manuais, e o grande benefício em automatizar os testes está em aumentar a amplitude e a profundidade da cobertura de testes a serem realizados.</p>
+            <p>Antes da escolha de uma ferramenta de testes, tanto automatizados quanto manuais, deve-se levar em consideração a criação de uma prova de conceito. Além disso, deve-se ter certeza de que não ocorrem erros críticos e utilizar sempre a versão mais atualizada da ferramenta, realizando teste de regressão. Outros fatores muito importantes são o dimensionamento e a infraestrutura adequados, pois as ferramentas necessitam de computadores com alto desempenho, processadores rápidos e memória grande, os quais devem ser exclusivos para a automação de testes.</p>
+            <div class="caixa-destaque icone refletir">
+              <p>Lembrem-se de que a automação não substitui os testes manuais. Ela deve ser um adicional para agregar valor.</p>
+            </div>
+            <p>Agora, serão apresentadas algumas das ferramentas mais utilizadas em testes, tanto manuais quanto automatizados, ferramentas comerciais e gratuitas.</p>
+
+            <h3>Ferramentas de <i>bugtrackers</i></h3>
+            <h4>Selenium</h4>
+            <p>Para testes automatizados relacionados a aplicações <i>web</i> pelo <i>browser</i>, há a ferramenta Selenium, utilizada para teste de aceitação, teste funcional, teste de <i>performance</i>/desempenho, teste de carga, teste de estresse, teste regressivo, desenvolvimento orientado a testes e desenvolvimento orientado a comportamento. É uma ferramenta gratuita e que fornece recursos de reprodução de gravação. Várias linguagens de programação podem ser escritas por testadores, por exemplo, JavaScript, PHP (<i>hypertext preprocessor</i>, ou pré-processador de hipertexto), Python, Ruby, Java, Perl, Groovy e C#.</p>
+            <p>O <i>download</i> da ferramenta pode ser realizado no <i>site</i> da Selenium (o qual você encontrar digitando “Selenium” no seu buscador), na aba <b>Download</b>. Já a documentação pode ser encontrada no mesmo <i>site</i>, clicando em <b>Documentação</b> – <b>Diretrizes</b> – <b>Tipos de teste</b>. </p>
+            <p>A ferramenta é uma extensão do Firefox e depende do <i>browser</i> para funcionar. Além disso, também existe disponível o núcleo da Selenium para que seja executado independentemente de plataforma e do Firefox, no qual é disponibilizado somente o JSFTR (JavaScript Functional Test Runner).</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo.</p>
+              <div id="carousel1" class="carousel slide no-print borda-primaria-03" data-ride="carousel" data-interval="false" aria-hidden="true">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel1" data-slide-to="1"></li>
+                  <li data-target="#carousel1" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <p>Após a instalação do Firefox, o próximo passo é fazer o <i>download</i> do Selenium IDE (<i>integrated development environment</i>). Para realizar o <i>download</i> da extensão, basta clicar em <b>Extensões</b> no navegador (ícone em formato de uma peça de quebra-cabeça) e digitar “Selenium” no campo <b>Encontrar mais extensões</b>, conforme apresentado na figura 1. Como resultado, será exibida uma tela com as extensões pertinentes ao que foi digitado, conforme apresentado na figura 2.</p>
+                    <img src="imgs/figura_01.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_01.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_01.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 1 – Exemplo de como encontrar a extensão Selenium IDE no gerenciador de extensões do navegador Firefox <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem colorida do navegador Firefox, onde consta o ícone em formato de peça de quebra-cabeça, que deverá ser clicado para abrir extensões existentes. Além disso, também há o campo digitável, onde deverá ser inserido o nome da extensão desejada, que, neste caso, é Selenium.</p>
+                    <img src="imgs/figura_02.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_02.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_02.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 2 – Extensão Selenium IDE no gerenciador de extensões do navegador Firefox <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem colorida do navegador Firefox, onde consta o resultado da busca, trazendo a extensão Selenium IDE para ser realizado o <i>download</i>.</p>
+                  </div>
+                  <div class="item">
+                    <p>A extensão será apresentada para ser realizado o <i>download</i> conforme apresentado na figura 3, bastando clicar em <b>Adicionar ao Firefox</b>.</p>
+                    <img src="imgs/figura_03.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_03.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_03.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 3 – Extensão Selenium IDE no gerenciador de extensões do navegador Firefox <br>
+                      Fonte: Firefox Browser (2022)
+                    </p>
+                    <p class="acessivel no-print">Imagem colorida do navegador Firefox, onde consta o resultado da busca, trazendo a extensão Selenium IDE para ser realizado o <i>download</i>.</p>
+                  </div>
+                  <div class="item">
+                    <p>Em seguida, é necessário acessar a extensão por meio do ícone em formato de uma peça de quebra-cabeça e selecionar o que deseja fazer ao executá-la. Assim que estiver instalada, a extensão Selenium IDE está pronta para ser utilizada, assim como é demonstrado na figura 4. Ao selecionar essa opção, será visualizada a interface de configuração dos testes do Selenium IDE, onde é possível optar por gravar um novo teste de um novo projeto, abrir um projeto existente, criar um novo projeto ou simplesmente fechar a extensão.</p>
+                    <img src="imgs/figura_04.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_04.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_04.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 4 – Exemplo da ferramenta Selenium IDE após clicar para a sua execução <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo cinza, onde é mostrado um menu inicial da ferramenta, aguardando que o usuário faça uma escolha em relação aos testes.</p>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel1" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <div class="">
+                <p>Após a instalação do Firefox, o próximo passo é fazer o <i>download</i> do Selenium IDE (<i>integrated development environment</i>). Para realizar o <i>download</i> da extensão, basta clicar em <b>Extensões</b> no navegador (ícone em formato de uma peça de quebra-cabeça) e digitar “Selenium” no campo <b>Encontrar mais extensões</b>, conforme apresentado na figura 1. Como resultado, será exibida uma tela com as extensões pertinentes ao que foi digitado, conforme apresentado na figura 2.</p>
+                <img src="imgs/figura_01.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 1 – Exemplo de como encontrar a extensão Selenium IDE no gerenciador de extensões do navegador Firefox <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem colorida do navegador Firefox, onde consta o ícone em formato de peça de quebra-cabeça, que deverá ser clicado para abrir extensões existentes. Além disso, também há o campo digitável, onde deverá ser inserido o nome da extensão desejada, que, neste caso, é Selenium.</p>
+                <img src="imgs/figura_02.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 2 – Extensão Selenium IDE no gerenciador de extensões do navegador Firefox <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem colorida do navegador Firefox, onde consta o resultado da busca, trazendo a extensão Selenium IDE para ser realizado o <i>download</i>.</p>
+              </div>
+              <div class="">
+                <p>A extensão será apresentada para ser realizado o <i>download</i> conforme apresentado na figura 3, bastando clicar em <b>Adicionar ao Firefox</b>.</p>
+                <img src="imgs/figura_03.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 3 – Extensão Selenium IDE no gerenciador de extensões do navegador Firefox <br>
+                  Fonte: Firefox Browser (2022)
+                </p>
+                <p class="acessivel no-print">Imagem colorida do navegador Firefox, onde consta o resultado da busca, trazendo a extensão Selenium IDE para ser realizado o <i>download</i>.</p>
+              </div>
+              <div class="">
+                <p>Em seguida, é necessário acessar a extensão por meio do ícone em formato de uma peça de quebra-cabeça e selecionar o que deseja fazer ao executá-la. Assim que estiver instalada, a extensão Selenium IDE está pronta para ser utilizada, assim como é demonstrado na figura 4. Ao selecionar essa opção, será visualizada a interface de configuração dos testes do Selenium IDE, onde é possível optar por gravar um novo teste de um novo projeto, abrir um projeto existente, criar um novo projeto ou simplesmente fechar a extensão.</p>
+                <img src="imgs/figura_04.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 4 – Exemplo da ferramenta Selenium IDE após clicar para a sua execução <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo cinza, onde é mostrado um menu inicial da ferramenta, aguardando que o usuário faça uma escolha em relação aos testes.</p>
+              </div>
+            </div>
+            <h4>ZipBoard</h4>
+            <p>O zipBoard é uma ferramenta de rastreamento de <i>bugs</i> e <i>feedback</i> visual que permite aos desenvolvedores <i>web</i> trabalharem de maneira colaborativa em seus produtos e projetos, sejam eles <i>web apps</i>, sejam <i>sites</i>, entre outros. Essa ferramenta pode ser utilizada durante a criação de novos <i>sites</i>, <i>e-commerce</i>, ou ainda para melhorias que sejam pertinentes a produtos já existentes, de forma que auxilie no gerenciamento de tarefas. É uma ferramenta gratuita para utilizar durante 15 dias. Após esse período, torna-se paga.</p>
+            <p>Algumas de suas características são: utilização <i>on-line</i> por meio do navegador sem qualquer necessidade de instalação de <i>software</i>; teste de usuário integrado e plataforma de rastreamento de <i>bugs</i>; relatórios de erros visuais, nos quais é possível reproduzir <i>bugs</i> facilmente e com a utilização de relatórios de <i>bugs</i> detalhados dispondo de informações relevantes; medição de desempenho; teste de usuário em que é possível coletar entradas de usuários e clientes sem sair do conteúdo; teste de <i>design</i> responsivo incluindo teste de capacidade de resposta do <i>site</i>; navegação em diferentes resoluções; capturas de telas; e arquivos <i>bugs</i> para resolução específica diretamente do navegador.</p>
+            <p>A ferramenta pode ser acessada no <i>site</i> do zipBoard (digite “zipBoard <i>bug tracking</i>” em seu buscador). Além disso, a inscrição é feita no próprio <i>site</i> e de forma gratuita, sem a necessidade de adição de cartão de crédito para o período pós-teste.</p>
+            <p>Na figura 5, é apresentado o <i>layout</i> da ferramenta, em que é possível cadastrar novos projetos e novas tarefas, deixar mensagens e verificar reportes. Também há a possibilidade de realizar integrações com outras plataformas, por exemplo, Jira, Slack, Microsoft Teams e Wrike para sincronização automatizada.</p>
+            <img src="imgs/figura_05.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_05.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_05.jpg" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 5 – Exemplo da ferramenta zipBoard <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem com fundo cinza, onde é mostrado um menu inicial da ferramenta, aguardando que o usuário faça uma escolha entre: criar novo projeto, verificar outros projetos já criados, visualizar as tarefas, verificar mensagens e reportes.</p>
+            <h4>Jira Software</h4>
+            <p>Jira é a principal ferramenta de rastreamento de <i>bugs</i>, rastreamento de problemas e gerenciamento de projetos. O Jira combina rastreamento de problemas, gerenciamento de projetos ágil, fluxo de trabalho personalizável e uma estrutura de integração por meio de <i>plugins</i> para aumentar a velocidade de sua equipe de desenvolvimento de <i>software</i>. Além disso, o Jira é gratuito para equipes de até 10 pessoas e centraliza relatórios de <i>bugs</i>, com a possibilidade de adicionar contexto a cada tarefa com rótulos, campos personalizados, anexos, entre outros. </p>
+            <p>Há a possibilidade de eliminar os <i>bugs</i> antes que problemas maiores ocorram, priorizando e atribuindo tarefas de acordo com a urgência em que se apresentam. </p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo.</p>
+              <div id="carousel2" class="carousel slide no-print borda-primaria-03" data-ride="carousel" data-interval="false" aria-hidden="true">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel2" data-slide-to="1"></li>
+                  <li data-target="#carousel2" data-slide-to="2"></li>
+                  <li data-target="#carousel2" data-slide-to="3"></li>
+                  <li data-target="#carousel2" data-slide-to="4"></li>
+                  <li data-target="#carousel2" data-slide-to="5"></li>
+                  <li data-target="#carousel2" data-slide-to="6"></li>
+                  <li data-target="#carousel2" data-slide-to="7"></li>
+                  <li data-target="#carousel2" data-slide-to="8"></li>
+                  <li data-target="#carousel2" data-slide-to="9"></li>
+                  <li data-target="#carousel2" data-slide-to="10"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <p>Ainda sobre as questões de <i>bugs</i>, é possível utilizar um fluxo de trabalho criado especificamente para a resolução deles, mantendo o time com foco no que for preciso. Na figura 6, é apresentado um exemplo de um quadro em que constam os <i>bugs</i> mapeados (todos os que têm o ícone quadrado vermelho com um círculo branco ao centro).</p>
+                    <img src="imgs/figura_06.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_06.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_06.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 6 – Exemplo da ferramenta Jira <br>
+                      Fonte: Atlassian (c2023b)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, onde é mostrado um quadro onde constam as tarefas e os <i>bugs</i> relacionados à equipe. Há um menu lateral à esquerda onde contêm os filtros, todas as tarefas, as que foram reportadas especificamente por uma pessoa, as tarefas abertas e fechadas, visualizadas recentemente, atualizadas recentemente e todos os filtros.</p>
+                  </div>
+                  <div class="item">
+                    <p>Para iniciar os trabalhos no Jira, é necessária a criação da conta na plataforma. Ao acessar o endereço, aparecerá a tela apresentada na figura 7, na qual se pode escolher se a preferência é por criar uma conta com um <i>e-mail</i> ou, ainda, utilizar o Google.</p>
+                    <img src="imgs/figura_07.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_07.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_07.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 7 – Exemplo da ferramenta Jira <br>
+                      Fonte: Atlassian (c2023c)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo azul e branco, onde é mostrada a opção de criação de conta, que pode ser feita por meio do Google ou, ainda, da utilização de um <i>e-mail</i>.</p>
+                  </div>
+                  <div class="item">
+                    <p>Após o cadastro (você precisa optar por uma das duas formas), aparecerá a tela de boas-vindas, na qual você disponibilizará o nome de seu <i>site</i>, conforme apresentado na figura 8 a seguir.</p>
+                    <img src="imgs/figura_08.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_08.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_08.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 8 – Exemplo da ferramenta Jira <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo azul e branco, onde é apresentado o <i>e-mail</i> do usuário, após o <i>login</i> e o campo onde deverá ser disponibilizado o nome do <i>site</i>.</p>
+                  </div>
+                  <div class="item">
+                    <p>Após inserir as informações, a plataforma inicializará seu <i>board</i> e você precisará aguardar alguns minutos, conforme apresentado na figura 9.</p>
+                    <img src="imgs/figura_09.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_09.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_09.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 9 – Tela de criação do <i>board</i> <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, apresentando a mensagem de que estão trabalhando para a criação do <i>board</i>.</p>
+                  </div>
+                  <div class="item">
+                    <p>Os próximos passos são: adicionar as informações referentes ao projeto no qual está sendo utilizado o <i>template</i> de controle de <i>bugs</i> escolhido por você anteriormente, criar a chave que identificará o projeto e, finalmente, clicar em <b>Criar projeto</b>, conforme apresentado na figura 10.</p>
+                    <img src="imgs/figura_10.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_10.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_10.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 10 – <i>Template</i> de adição de informações e finalização da criação do projeto <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, apresentando os dois campos: um onde se pode colocar nome e outras informações sobre o projeto e outro onde ficará a chave, além do botão <b>Criar projeto</b>.</p>
+                  </div>
+                  <div class="item">
+                    <p>Há, ainda, a possibilidade de utilizar outras ferramentas que serão integradas e conectadas posteriormente, por exemplo, Slack (mensageiro), Microsoft Teams (mensageiro), GitHub (repositório de códigos), GitLab (repositório de códigos), Jenkins, entre outros.</p>
+                    <p>Pronto! Agora você pode utilizar o <i>board</i> criado para o seu projeto. Para criar o primeiro item, basta clicar em <b>Criar</b> no menu superior, conforme demonstrado na figura 11.</p>
+                    <img src="imgs/figura_11.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_11.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_11.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 11 – <i>Board</i> onde ficarão os itens que serão criados no decorrer do projeto <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, apresentando os dois campos: um onde se pode colocar nome e outras informações sobre o projeto e outro onde ficará a chave, além do botão <b>Criar projeto</b>.</p>
+                  </div>
+                  <div class="item">
+                    <p>Por meio da ferramenta, você pode capturar <i>bugs</i> em qualquer lugar em seus projetos de <i>software</i> com o Jira Software. É possível identificar um <i>bug</i>, criar um problema e adicionar todos os detalhes relevantes, incluindo descrições, nível de gravidade, capturas de tela, versão e muito mais, conforme apresentado na figura 12.</p>
+                    <p>Os problemas podem representar qualquer coisa, desde um <i>bug</i> de <i>software</i> ou uma tarefa de projeto até um formulário de solicitação de licença, e cada tipo de problema exclusivo pode ter o próprio fluxo de trabalho personalizado.</p>
+                    <img src="imgs/figura_12.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_12.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_12.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 12 – Tela de cadastro de <i>bug</i> <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, onde são apresentados os campos a serem preenchidos para a criação do item de <i>bug</i>. Os campos são: projeto, tipo de item, <i>status</i>, resumo, componentes, descrição, relator, versões corrigidas, prioridade, categorias, estimativa original, ambiente, anexo, versões afetadas, data limite, itens associados, responsável, <i>epic link</i> e os botões <b>Cancelar</b> e <b>Criar</b>.</p>
+                  </div>
+                  <div class="item">
+                    <p>Os campos obrigatórios devem ser preenchidos, assim como os demais campos pertinentes ao projeto. Após o preenchimento, basta clicar em <b>Criar</b> e o item terá sido criado no <i>board</i> para ser acompanhado, conforme mostra a figura 13.</p>
+                    <img src="imgs/figura_13.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_13.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_13.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 13 – Tela do <i>board</i> com o item cadastrado <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, onde são apresentados os itens cadastrados para acompanhamento. As informações estão dispostas nas seguintes colunas: tipo, chave, resumo, responsável, relator, prioridade, <i>status</i>, resolução, criado, atualizado e a ser entregue.</p>
+                  </div>
+                  <div class="item">
+                    <p>Quando os <i>bugs</i> são capturados, você pode priorizá-los de acordo com o nível de importância, urgência e capacidade da equipe, atribuindo-os com alguns cliques e priorizando-os por meio do “arrasta e solta” na lista de pendências ou, ainda, na coluna de tarefas pendentes da equipe, conforme apresentado na figura 14.</p>
+                    <img src="imgs/figura_14.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_14.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_14.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 14 – Exemplo de <i>backlog</i> de tarefas que o time tem para realizar <br>
+                      Fonte: Atlassian (c2023a)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, onde são mostradas as tarefas e a quem estão atribuídas.</p>
+                  </div>
+                  <div class="item">
+                    <p>Após a criação e a atribuição do item, é possível realizar a alteração de seu <i>status</i> na página inicial do <i>board</i>. Clicando em <b>Status</b>, aparecem as opções, conforme a figura 15.</p>
+                    <img src="imgs/figura_15.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_15.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_15.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 15 – Exemplo de alteração de <i>status</i> <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, onde são mostradas as tarefas e é possível ver os <i>status</i> delas.</p>
+                  </div>
+                  <div class="item">
+                    <p>Há também como estar sempre informado rastreando <i>bugs</i> e problemas por meio do fluxo de trabalho de sua equipe. O Jira Software tem um poderoso mecanismo de fluxo de trabalho, recursos de planejamento, pesquisa abrangente e recursos de geração de relatórios projetados para ajudar a encontrar, registrar e rastrear <i>bugs</i> em seu <i>software</i>, conforme o exemplo mostrado na figura 16.</p>
+                    <img src="imgs/figura_16.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                    <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                    <a href="imgs/figura_16.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_16.jpg" class="center-block img-responsive"></a>
+                    <p class="legenda-imagem">
+                      Figura 16 – Exemplo de fluxo de trabalho de equipe <br>
+                      Fonte: Site da Atlassian (c2023a)
+                    </p>
+                    <p class="acessivel no-print">Imagem com fundo branco, onde são mostradas as tarefas e a quem estão atribuídas, bem como o fluxo que existe entre elas.</p>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel2" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel2" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <div class="">
+                <p>Ainda sobre as questões de <i>bugs</i>, é possível utilizar um fluxo de trabalho criado especificamente para a resolução deles, mantendo o time com foco no que for preciso. Na figura 6, é apresentado um exemplo de um quadro em que constam os <i>bugs</i> mapeados (todos os que têm o ícone quadrado vermelho com um círculo branco ao centro).</p>
+                <img src="imgs/figura_06.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 6 – Exemplo da ferramenta Jira <br>
+                  Fonte: Atlassian (c2023b)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, onde é mostrado um quadro onde constam as tarefas e os <i>bugs</i> relacionados à equipe. Há um menu lateral à esquerda onde contêm os filtros, todas as tarefas, as que foram reportadas especificamente por uma pessoa, as tarefas abertas e fechadas, visualizadas recentemente, atualizadas recentemente e todos os filtros.</p>
+              </div>
+              <div class="">
+                <p>Para iniciar os trabalhos no Jira, é necessária a criação da conta na plataforma. Ao acessar o endereço, aparecerá a tela apresentada na figura 7, na qual se pode escolher se a preferência é por criar uma conta com um <i>e-mail</i> ou, ainda, utilizar o Google.</p>
+                <img src="imgs/figura_07.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 7 – Exemplo da ferramenta Jira <br>
+                  Fonte: Atlassian (c2023c)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo azul e branco, onde é mostrada a opção de criação de conta, que pode ser feita por meio do Google ou, ainda, da utilização de um <i>e-mail</i>.</p>
+              </div>
+              <div class="">
+                <p>Após o cadastro (você precisa optar por uma das duas formas), aparecerá a tela de boas-vindas, na qual você disponibilizará o nome de seu <i>site</i>, conforme apresentado na figura 8 a seguir.</p>
+                <img src="imgs/figura_08.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 8 – Exemplo da ferramenta Jira <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo azul e branco, onde é apresentado o <i>e-mail</i> do usuário, após o <i>login</i> e o campo onde deverá ser disponibilizado o nome do <i>site</i>.</p>
+              </div>
+              <div class="">
+                <p>Após inserir as informações, a plataforma inicializará seu <i>board</i> e você precisará aguardar alguns minutos, conforme apresentado na figura 9.</p>
+                <img src="imgs/figura_09.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 9 – Tela de criação do <i>board</i> <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, apresentando a mensagem de que estão trabalhando para a criação do <i>board</i>.</p>
+              </div>
+              <div class="">
+                <p>Os próximos passos são: adicionar as informações referentes ao projeto no qual está sendo utilizado o <i>template</i> de controle de <i>bugs</i> escolhido por você anteriormente, criar a chave que identificará o projeto e, finalmente, clicar em <b>Criar projeto</b>, conforme apresentado na figura 10.</p>
+                <img src="imgs/figura_10.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 10 – <i>Template</i> de adição de informações e finalização da criação do projeto <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, apresentando os dois campos: um onde se pode colocar nome e outras informações sobre o projeto e outro onde ficará a chave, além do botão <b>Criar projeto</b>.</p>
+              </div>
+              <div class="">
+                <p>Há, ainda, a possibilidade de utilizar outras ferramentas que serão integradas e conectadas posteriormente, por exemplo, Slack (mensageiro), Microsoft Teams (mensageiro), GitHub (repositório de códigos), GitLab (repositório de códigos), Jenkins, entre outros.</p>
+                <p>Pronto! Agora você pode utilizar o <i>board</i> criado para o seu projeto. Para criar o primeiro item, basta clicar em <b>Criar</b> no menu superior, conforme demonstrado na figura 11.</p>
+                <img src="imgs/figura_11.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 11 – <i>Board</i> onde ficarão os itens que serão criados no decorrer do projeto <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, apresentando os dois campos: um onde se pode colocar nome e outras informações sobre o projeto e outro onde ficará a chave, além do botão <b>Criar projeto</b>.</p>
+              </div>
+              <div class="">
+                <p>Por meio da ferramenta, você pode capturar <i>bugs</i> em qualquer lugar em seus projetos de <i>software</i> com o Jira Software. É possível identificar um <i>bug</i>, criar um problema e adicionar todos os detalhes relevantes, incluindo descrições, nível de gravidade, capturas de tela, versão e muito mais, conforme apresentado na figura 12.</p>
+                <p>Os problemas podem representar qualquer coisa, desde um <i>bug</i> de <i>software</i> ou uma tarefa de projeto até um formulário de solicitação de licença, e cada tipo de problema exclusivo pode ter o próprio fluxo de trabalho personalizado.</p>
+                <img src="imgs/figura_12.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 12 – Tela de cadastro de <i>bug</i> <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, onde são apresentados os campos a serem preenchidos para a criação do item de <i>bug</i>. Os campos são: projeto, tipo de item, <i>status</i>, resumo, componentes, descrição, relator, versões corrigidas, prioridade, categorias, estimativa original, ambiente, anexo, versões afetadas, data limite, itens associados, responsável, <i>epic link</i> e os botões <b>Cancelar</b> e <b>Criar</b>.</p>
+              </div>
+              <div class="">
+                <p>Os campos obrigatórios devem ser preenchidos, assim como os demais campos pertinentes ao projeto. Após o preenchimento, basta clicar em <b>Criar</b> e o item terá sido criado no <i>board</i> para ser acompanhado, conforme mostra a figura 13.</p>
+                <img src="imgs/figura_13.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 13 – Tela do <i>board</i> com o item cadastrado <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, onde são apresentados os itens cadastrados para acompanhamento. As informações estão dispostas nas seguintes colunas: tipo, chave, resumo, responsável, relator, prioridade, <i>status</i>, resolução, criado, atualizado e a ser entregue.</p>
+              </div>
+              <div class="">
+                <p>Quando os <i>bugs</i> são capturados, você pode priorizá-los de acordo com o nível de importância, urgência e capacidade da equipe, atribuindo-os com alguns cliques e priorizando-os por meio do “arrasta e solta” na lista de pendências ou, ainda, na coluna de tarefas pendentes da equipe, conforme apresentado na figura 14.</p>
+                <img src="imgs/figura_14.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 14 – Exemplo de <i>backlog</i> de tarefas que o time tem para realizar <br>
+                  Fonte: Atlassian (c2023a)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, onde são mostradas as tarefas e a quem estão atribuídas.</p>
+              </div>
+              <div class="">
+                <p>Após a criação e a atribuição do item, é possível realizar a alteração de seu <i>status</i> na página inicial do <i>board</i>. Clicando em <b>Status</b>, aparecem as opções, conforme a figura 15.</p>
+                <img src="imgs/figura_15.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 15 – Exemplo de alteração de <i>status</i> <br>
+                  Fonte: Senac EAD (2023)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, onde são mostradas as tarefas e é possível ver os <i>status</i> delas.</p>
+              </div>
+              <div class="">
+                <p>Há também como estar sempre informado rastreando <i>bugs</i> e problemas por meio do fluxo de trabalho de sua equipe. O Jira Software tem um poderoso mecanismo de fluxo de trabalho, recursos de planejamento, pesquisa abrangente e recursos de geração de relatórios projetados para ajudar a encontrar, registrar e rastrear <i>bugs</i> em seu <i>software</i>, conforme o exemplo mostrado na figura 16.</p>
+                <img src="imgs/figura_16.jpg" class="img-responsive center-block">
+                <p class="legenda-imagem">
+                  Figura 16 – Exemplo de fluxo de trabalho de equipe <br>
+                  Fonte: Site da Atlassian (c2023a)
+                </p>
+                <p class="acessivel no-print">Imagem com fundo branco, onde são mostradas as tarefas e a quem estão atribuídas, bem como o fluxo que existe entre elas.</p>
+              </div>
+            </div>
+            <p>Além disso, é possível manter-se atualizado com as notificações, pois não são somente as menções, e também configurar para que os responsáveis sejam notificados de forma automática a cada mudança de <i>status</i>, mantendo, assim, a visibilidade e a transparência entre todos os membros.</p>
+            <p>Agora que você já aprendeu sobre <i>bugtrackers</i> e ferramentas que exercem essa função, você aprenderá sobre as ferramentas de automação.</p>
+
+            <h3>Ferramentas de teste: automação</h3>
+            <p>Há também a possibilidade de utilizar o Jira para a realização dos testes. O Jira é uma ferramenta de <i>software cloud</i> desenvolvida pela australiana Atlassian que permite monitorar tarefas e projetos de forma que seja garantido o gerenciamento em um local único. No Jira, há extensões que podem ser instaladas a fim de permitir que se façam inúmeras atividades, dentre elas a questão de testes, sejam manuais, sejam automatizados.</p>
+            <p>Uma dessas extensões a baixo custo após o período de experimentação (menos de 1 dólar por integrante de equipe para até dez pessoas) é a Xray. Essa extensão tem como objetivo o gerenciamento de teste nativo, ou seja, permite planejar, projetar e executar testes, assim como gerar relatórios deles. </p>
+            <div class="caixa-destaque-livre bg-primaria-03 texto-primaria-02 mt-40">
+              <p>Além disso, para cada fase de teste, é permitido que sejam utilizados os seguintes itens:</p>
+              <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                  <img src="imgs/dest1_1.png" class="img-responsive center-block mt-10">
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                  <p>Fase do plano, em que constam os itens de plano de teste</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                  <img src="imgs/dest1_2.png" class="img-responsive center-block mt-10">
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                  <p>Fase de projeto, em que a especificação é definida por meio de tipos de itens de pré-condição e teste</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                  <img src="imgs/dest1_3.png" class="img-responsive center-block mt-10">
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                  <p>Fase de execução, em que estarão os itens de execução de teste</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-xs-12">
+                  <img src="imgs/dest1_4.png" class="img-responsive center-block mt-10">
+                </div>
+                <div class="col-sm-10 col-xs-12">
+                  <p>Fase de relatório, em que estão inclusos os itens de execução de teste, relatórios de cobertura de requisitos integrados e <i>tickets</i> utilizando as ferramentas do Jira</p>
+                </div>
+              </div>
+            </div>
+            <p class="mt-40">Será abordado, aqui, um passo a passo para a utilização do Xray, iniciando em como fazer a instalação. Para instalar, é necessário ter uma conta criada no Jira e procurar, na página do Atlassian Marketplace (digite “Atlassian Marketplace” no seu buscador), por “Xray Test Management for Jira”, selecionando a opção de fazer teste gratuito.</p>
+            <p>Agora que você já está com a extensão instalada, veja como escrever e especificar testes. É preciso saber que há três tipos de teste padrão: <b>pepino</b>, em que se pode escrever testes em um domínio legível para negócios e linguagem específica (Gherkin); <b>genérico</b>, em que há um teste não estruturado, sem etapas, sendo uma maneira de abstrair e ter a visibilidade de testes automatizados ou exploratórios; e <b>manual</b>. </p>
+            <p>Para criar um novo item de teste, clique em <b>Criar item</b> no menu superior da tela, conforme a figura 17 apresentada a seguir.</p>
+            <img src="imgs/figura_17.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_17.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_17.jpg" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 17 – Exemplo do menu de criação de item de teste <br>
+              Fonte: Freire (c2023)
+            </p>
+            <p class="acessivel no-print">Imagem onde constam os menus <b>YourWork</b>, <b>Projects</b>, <b>Filters</b>, <b>Dashboards</b>, <b>People</b>, <b>Apps</b> e <b>Create</b>, no Jira.</p>
+            <p>A próxima ação é selecionar o projeto no <b>Tipo de item</b> e selecionar <b>Testar</b>. Em seguida, digite a descrição resumida para o teste. É necessário preencher todos os campos obrigatórios que estão sinalizados com o asterisco e, na sequência, clicar em <b>Create</b>, se estiver tudo de acordo com o esperado, conforme apresentado na figura 18.</p>
+            <img src="imgs/figura_18.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_18.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_18.jpg" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 18 – Exemplo do menu de criação de item de teste <br>
+              Fonte: Freire (c2023)
+            </p>
+            <p class="acessivel no-print">Imagem onde constam os campos obrigatórios a serem preenchidos para a criação do item de teste, dentre eles estão: <b>Project</b>, <b>Issue type</b> e <b>Summary</b>.</p>
+            <p>Após completar essa primeira etapa, será abordado como organizar os testes no Xray. Essa é uma etapa de grande importância para as atividades de teste diárias. O Xray oferece duas formas: a primeira é usar os itens de conjuntos de testes, já a segunda é utilizar o repositório de teste. Um conjunto de testes é uma forma de criar diversos grupos de testes, e um teste pode ser incluído em vários conjuntos. Já um repositório de testes é uma estrutura organizada em árvore no nível do projeto, o que torna possível que os testes sejam organizados por hierarquia nas pastas e nas subpastas.</p>
+            <p>Para criar um novo item de conjunto de testes, é necessário clicar em <b>Criar item</b>, na parte superior da tela, para que abra a referida página. Em seguida, selecione o “projeto” e vá em <b>Tipo de item</b>, <b>Conjunto de testes</b>. O próximo passo é digitar um resumo para o teste e preencher os campos obrigatórios. Realizado esse passo, basta clicar em <b>Criar</b>.</p>
+            <p>Para a criação de um repositório de teste, é necessária a criação de uma nova pasta. </p>
+            <div class="caixa-destaque-livre borda-primaria-03">
+              <p>Esse procedimento e feito da seguinte forma:</p>
+              <ul class="bolinha">
+                <li>Clicar na pasta.</li>
+                <li>Clicar no ícone de adicionar (sinal de <b>+</b>), na parte superior da seção de pastas, conforme apresentado na figura 19.</li>
+                <img src="imgs/figura_19.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                <a href="imgs/figura_19.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_19.jpg" class="center-block img-responsive"></a>
+                <p class="legenda-imagem">
+                  Figura 19 – Exemplo de criação de repositório de teste <br>
+                  Fonte: Freire (c2023)
+                </p>
+                <p class="acessivel no-print">Imagem onde consta a estrutura de repositórios, onde você pode incluir todos os que considerar necessários.</p>
+                <li>Digitar o nome desejado para a pasta na caixa de diálogo de criação de pasta, conforme apresentado na figura 20.</li>
+                <li>Por fim, clicar em <b>Create</b> para criar a pasta.</li>
+                <img src="imgs/figura_20.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+                <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+                <a href="imgs/figura_20.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_20.jpg" class="center-block img-responsive"></a>
+                <p class="legenda-imagem">
+                  Figura 20 – Exemplo de criação de repositório de teste <br>
+                  Fonte: Freire (c2023)
+                </p>
+                <p class="acessivel no-print">Imagem onde consta a estrutura de repositórios, onde é disponibilizado o nome da pasta e onde se finaliza clicando em <b>Create</b>.</p>
+              </ul>
+            </div>
+            <p>Conforme visto até o momento, você já sabe como criar um conjunto de testes e como criar um repositório de testes. O próximo passo será verificar como planejar testes. Mas você sabe para que serve o planejamento de testes? O planejamento de testes consente que seja decidida por você a estratégia de teste, em que estão inclusos os itens que você quer validar, a forma de fazer essa validação, se serão testes manuais ou automatizados, de que maneira os recursos serão alocados e o momento e por quem os testes serão executados. Dessa forma, é possível a priorização de testes ou a concentração em requisitos específicos. E de que forma é possível fazer isso no Xray no Jira? Siga em frente para aprender!</p>
+            <p>Realize o passo a passo para a criação do plano de teste:</p>
+            <ul class="cor01">
+              <li>Primeiro, é necessário clicar em <b>Create</b>, na parte superior da tela, para abrir a página <b>Criar item</b>, conforme apresentado na figura 21.</li>
+              <img src="imgs/figura_21.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+              <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+              <a href="imgs/figura_21.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_21.jpg" class="center-block img-responsive"></a>
+              <p class="legenda-imagem">
+                Figura 21 – Exemplo de criação de plano de teste. <br>
+                Fonte: Freire (c2023)
+              </p>
+              <p class="acessivel no-print">Imagem onde constam os menus: <b>YourWork</b>, <b>Projects</b>, <b>Filters</b>, <b>Dashboards</b>, <b>People</b>, <b>Apps</b> e <b>Create</b>, no Jira.</p>
+              <li>A etapa seguinte consiste em selecionar o projeto e, em <b>Tipo de item</b>, selecionar <b>Plano de teste</b>.</li>
+              <li>Da mesma forma como ocorreram em etapas de processos anteriores, é necessário preencher um resumo e todos os campos obrigatórios presentes na tela e, finalmente, clicar no botão <b>Create</b>, conforme apresentado na figura 22.</li>
+              <img src="imgs/figura_22.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+              <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+              <a href="imgs/figura_22.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_22.jpg" class="center-block img-responsive"></a>
+              <p class="legenda-imagem">
+                Figura 22 – Exemplo de criação de plano de teste <br>
+                Fonte: Freire (c2023)
+              </p>
+              <p class="acessivel no-print">Imagem onde constam os campos <b>Project</b>, <b>Issue Type</b>, <b>Summary</b>, <b>Components</b>, <b>Description</b>, além do botão <b>Create</b> localizado ao final da página no canto direito inferior.</p>
+            </ul>
+            <p>Por fim, há a etapa de execução dos testes. A execução dos testes acontece entre o desenvolvimento de <i>scripts</i> e relatórios e a análise de resultados do teste. Essa execução é um tipo de item que acrescenta uma coleção de testes escolhida pelo usuário, em que ele monitora e verifica se os testes estão ocorrendo de acordo com o esperado no contexto e no ambiente destinado. Agora que você já sabe quando ocorre a execução de testes, veja como criar um item de execução de teste:</p>
+            <ul class="cor01">
+              <li>Clicando no sinal de soma apresentado no canto superior esquerdo da página, abrirá a página de criação de item, conforme pode ser visto na figura 23.</li>
+              <img src="imgs/figura_23.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+              <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+              <a href="imgs/figura_23.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_23.jpg" class="center-block img-responsive"></a>
+              <p class="legenda-imagem">
+                Figura 23 – Exemplo de página onde inicia a criação de um item de execução de teste <br>
+                Fonte: Freire (c2023)
+              </p>
+              <p class="acessivel no-print">Imagem onde constam o menu lateral esquerdo com os seguintes itens: <b>My open issues</b>, <b>Reported by me</b>, <b>All issues</b>, <b>Done issues</b>, <b>Viewed recently</b>, <b>Created recently</b>, <b>Resolved recently</b>, <b>Update recently</b> e <b>View all filters</b>.</p>
+            </ul>
+            <img src="imgs/modelo_info.png" class="img-responsive center-block hidden-xs print">
+            <img src="imgs/modelo_mob_info.png" class="img-responsive center-block visible-xs no-print">
+            <div class="acessivel no-print">
+              <ul>
+                <li>O próximo passo é selecionar o projeto e, em <b>Tipo de item</b>, selecionar <b>Execução de teste</b>.</li>
+                <li>É necessário digitar um resumo para a execução de teste e preencher os campos obrigatórios.</li>
+                <li>Na página <b>Criar item</b>, é preciso preencher os campos personalizados de execução de teste, incluindo as datas de início e fim, bem como a revisão.</li>
+                <li>É possível criar uma série de execuções de testes semelhantes no mesmo projeto, sendo apenas necessário selecionar <b>Criar outro</b> na parte inferior da página. Quando estiver tudo como deseja, clicar em <b>Create</b>.</li>
+              </ul>
+            </div>
+            <p class="mt-60">Diante do que foi apresentado, pode-se concluir que o Xray é uma boa opção para utilizar no Jira, dispondo de vários recursos e sendo uma ferramenta intuitiva para o usuário.</p>
+            <p>Há outras ferramentas que podem ser utilizadas para a gestão de testes, algumas delas comerciais (pagas), como Mercury Interactive Test Director, Compuware QA Director e IBM Rational Test Manager, e outras <i>open source</i> (gratuitas), como Bugzilla Test Runner, Software Testing Automation Framework (STAF), JWebUnit, Bugkilla (testes funcionais), JMeter (<i>performance</i>), Mantis e phpBugTracker (sistemas <i>bugtracking</i>).</p>
+            <p>A ferramenta Bugzilla é um sistema de gestão de casos de teste que permite aos programadores a manutenção e a gestão de <i>bugs</i> do <i>software</i> em questão. Além disso, permite registrar alterações de código e <i>bugs</i> (problemas), comunicação entre membros da equipe, submissão e revisão de pacotes e gestão de QA (<i>quality assurance</i>). Na figura 24, é possível visualizar a interface na aplicação.</p>
+            <img src="imgs/figura_24.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_24.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_24.jpg" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 24 – Interface do Bugzilla <br>
+              Fonte: Bugzilla (2023)
+            </p>
+            <p class="acessivel no-print">Imagem onde constam menus referentes à ferramenta: <b>Home</b>, <b>New</b>, <b>Browse</b>, <b>Search</b>, <b>Reports</b>, <b>Requests</b>, <b>New Account</b>, <b>Log In</b>, <b>Forgot Password</b>. Além disso, há três opções: <b>File a Bug</b>, <b>Search</b> e <b>Open a New Account</b>, com um campo de busca <b>Quick Search</b>.</p>
+            <p>A ferramenta Mercury Interactive – Quality Center é uma suíte de aplicações para testes de <i>software</i> que permite gerir e automatizar o processo de QA e tem central de testes baseada na <i>web</i>. Sua ferramenta de gestão de testes é o TestDirector. Além disso, dentro do processo de teste, há grande destaque para metodologia, estrutura, organização e documentação.</p>
+            <p>O TestDirector é utilizado para identificar e definir os requisitos funcionais e de <i>performance</i> de teste e para realizar os testes. Também é possível desenvolver o plano de testes, executar os testes e registrar os defeitos encontrados e sua correção. Por meio da ferramenta, definem-se requisitos e propriedades, árvores de requisitos, agrupamento de requisitos por grupos funcionais e tipos, bem como seus estados, alterações de requisitos com seu respectivo histórico, anexação de documentos nos requisitos, envio de dados por <i>e-mail</i> e três visões da gestão de requisitos, sendo elas, respectivamente: lista de requisitos e propriedades, testes de cada requisito e execuções de teste de cada requisito. </p>
+            <p>Já os planos de teste precisam ser elaborados e organizados de acordo com as unidades funcionais da aplicação que serão testadas. Ainda, é preciso priorizar as relações hierárquicas e de dependência entre testes. </p>
+            <p>A seguir, na figura 25, apresenta-se a interface da ferramenta. É importante salientar que é uma ferramenta de mercado, portanto não é gratuita, e pode ser acessada digitando “TestDirect” em seu buscador. </p>
+            <img src="imgs/figura_25.jpg" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_25.jpg" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_25.jpg" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 25 – Interface do <i>dashboard</i> do TestDirector <br>
+              Fonte: TestDirector (2023)
+            </p>
+            <p class="acessivel no-print">Imagem onde constam menus referentes à ferramenta: <b>Homepage</b>, <b>Schedule</b>, <b>Voice</b>, <b>Projects</b>, <b>Issues</b>, <b>Users</b>, <b>Log</b>, <b>Settings</b>, <b>System</b>, <b>Storage</b> e <b>Reports</b>. Além disso, há três opções: <b>File a Bug</b>, <b>Search</b> e <b>Open a New Account</b>, com um campo de busca <b>Quick Search</b>.</p>
+            <p>A Mercury afirma que essa é uma ferramenta líder de mercado. Além de ser uma ferramenta completa e em nuvem, há a opção de instalação no próprio servidor da empresa, em que se deve ter ao menos dez usuários, optar pelo plano <i>enterprise</i> e cumprir uma série de requisitos de infraestrutura necessários.</p>
+
+            <h3 class="mt-60">Encerramento</h3>
+            <p class="icone concluindo">Espera-se que este conteúdo tenha ajudado a aumentar seu conhecimento sobre ferramentas de teste manuais e automatizadas. Aqui, você aprendeu sobre as principais ferramentas, onde encontrá-las e como usá-las. Agora, você pode escolher entre ferramentas pagas ou gratuitas e aplicá-las no seu dia a dia. </p>
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+
+    
+    <!-- Modais 100% -->
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

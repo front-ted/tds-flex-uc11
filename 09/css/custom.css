@@ -1,0 +1,245 @@
+body{
+  background: url('../imgs/bg.jpg') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.fundo-tecnicos{
+  border-bottom: none !important;
+}
+h1 i,
+h2 i,
+h3 i,
+h4 i {
+  font-weight: bold;
+}
+h3 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+h4 {
+  margin: 0px;
+  margin-top: 40px;
+}
+pre {
+  padding: 0;
+  background: transparent;
+  border: none;
+  margin: 0;
+}
+
+.mt-10{margin-top: 10px;}
+.mt-20{margin-top: 20px;}
+.mt-40{margin-top: 40px;}
+.mt-60{margin-top: 60px;}
+
+.painel1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.painel1 button{
+  width: 301px;
+  height: 151px;
+  margin-bottom: 15px;
+  border: none;
+}
+.bt-instalarwindows{background: url('../imgs/bt01.png') no-repeat;}
+.bt-instalarlinux{background: url('../imgs/bt02.png') no-repeat;}
+
+.bt-instalarwindows:hover{background: url('../imgs/bt01_hover.png') no-repeat;}
+.bt-instalarlinux:hover{background: url('../imgs/bt02_hover.png') no-repeat;}
+
+.painel-abas{padding: 40px;}
+.nav-tabs{
+  margin-left: 0;
+}
+
+.carousel{
+  padding: 20px 40px;
+  margin: 40px auto;
+}
+.carousel-control.left{
+  left: -90px;
+  background: none;
+  color: #2875C6;
+}
+.carousel-control.right{
+  right: -90px;
+  background: none;
+  color: #2875C6;
+}
+.carousel-indicators{
+  bottom: 0;
+  margin-bottom: 0px;
+}
+.carousel-indicators .active{
+  background-color: #2875C6;
+}
+.carousel-indicators li{
+  border: 1px solid #2875C6;
+}
+
+.painel2{
+  width: 701px;
+  height: 601px;
+  margin: 20px auto;
+  background: url('../imgs/painel-bg.png') no-repeat;
+}
+.painel2 button{
+  width: 216px;
+  height: 140px;
+  border: none;
+  margin: 10px;
+}
+.bt-criandotela{background: url('../imgs/painel-bt01.png')}
+.bt-posicionando{background: url('../imgs/painel-bt02.png')}
+.bt-adicionando{background: url('../imgs/painel-bt04.png')}
+.bt-botaofuncionar{background: url('../imgs/painel-bt03.png')}
+
+.bt-criandotela:hover{background: url('../imgs/painel-bt01_hover.png')}
+.bt-posicionando:hover{background: url('../imgs/painel-bt02_hover.png')}
+.bt-adicionando:hover{background: url('../imgs/painel-bt04_hover.png')}
+.bt-botaofuncionar:hover{background: url('../imgs/painel-bt03_hover.png')}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #fff;
+  cursor: default;
+  background-color: #2875C6;
+  border: 1px solid #1d5591;
+  border-bottom-color: transparent;
+}
+
+.codigo-destaque{
+  background: #000;
+  color: #a39e9b;
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+.code-destaque{
+  background-color: #071772 !important;
+}
+
+
+.txt-popover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: #2875C6;
+}
+
+.bt-testes{
+  display: block;
+  width: 220px;
+  height: 300px;
+  border: none;
+  margin: 20px auto;
+}
+.bt-teste01{background: url("../imgs/painel_bt1.png") no-repeat; background-size: 100%;}
+.bt-teste02{background: url("../imgs/painel_bt2.png") no-repeat; background-size: 100%;}
+.bt-teste03{background: url("../imgs/painel_bt3.png") no-repeat; background-size: 100%;}
+.bt-teste01:hover{background-image: url("../imgs/painel_bt1_hover.png");}
+.bt-teste02:hover{background-image: url("../imgs/painel_bt2_hover.png");}
+.bt-teste03:hover{background-image: url("../imgs/painel_bt3_hover.png");}
+
+.marcador-seta li {
+  list-style-image: url("../imgs/setas.png");
+}
+ul.checklist li {
+  list-style-image: url('../imgs/marcador_checklist.png') !important;
+}
+ul.seta li {
+  list-style-image: url('../imgs/marcador_seta.png') !important;
+}
+ul.bolinha li {
+  list-style-image: url('../imgs/marcador_bolinha.png') !important;
+}
+
+.info-titulo{
+  background-color: #004b8e;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  margin: 3px auto;
+}
+.info-item{
+  background-color: #67a2f1;
+  margin: 3px auto;
+  padding-top: 30px;
+  font-size: 16px;
+}
+
+
+/*--- DESAFIO ---*/
+.desafio-frente {
+	padding: 50px 50px 250px 50px;
+	position: relative;
+	background-color: #2875C6;
+	color: white;
+	width: 60%;
+	margin: 0 auto 50px auto;
+	text-align: center;
+}
+.desafio-frente::before {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -30px;
+	margin-left: -77px;
+	width: 155px;
+	height: 154px;
+	background-image: url(../../template/images/desafio.png);
+	content: "";
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.desafio-frente:hover::before {
+	transform: scale(1.05);
+}
+.desafio-verso {
+	padding: 50px;
+	position: relative;
+	background-color: #2875C6;
+	color: white;
+	width: 60%;
+	margin: 0 auto 50px auto;
+	text-align: center;
+}
+.desafio-verso-d3{
+	padding: 50px;
+	position: relative;
+	background-color: #2875C6;
+	font-weight: bold;
+	color: white;
+	width: 90%;
+	margin: 0 auto 50px auto;
+	text-align: center;
+}
+/*--- FIM DESAFIO ---*/
+
+
+
+@media screen and (max-width: 820px){
+  .bt-testes{
+    width: 200px;
+    height: 273px;
+  }
+}
+@media screen and (max-width: 480px){
+  .painel2{
+    padding-top: 300px;
+    height: auto;
+  }
+  .painel2 button{
+    margin: 10px auto;
+    display: block;
+  }
+  .caixa-destaque code{
+    word-break: break-word;
+  }
+
+  .desafio-frente, .desafio-verso{
+    width: 100%;
+  }
+}

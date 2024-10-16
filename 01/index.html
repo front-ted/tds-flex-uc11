@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Testes de software</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+
+            <!-- Menu -->
+            <div class="bg-fundo"></div>
+            <input type="checkbox" id="menu" name="menu" class="menu-checkbox no-print">
+            <label class="menu-toggle no-print" for="menu"><span>Toggle</span></label>
+            <div class="menu no-print" aria-hidden="true">
+              <div id="style-2" class="scroll-bar">
+                <div class="force-overflow">
+                  
+                  <ul class="eng-item-menu">
+                    <li class="item1">
+                      <a href="#t1" class="fundo-item">Introdução</a>
+                      <hr>
+                    </li>
+                    <li class="item2">
+                      <a href="#t2" class="fundo-item">Conceito de teste</a>
+                      <hr>
+                    </li>
+                    <li class="item3">
+                      <a href="#t3" class="fundo-item">Caso de teste</a>
+                      <hr>
+                    </li>
+                    <li class="item4">
+                      <a href="#t4" class="fundo-item">Erro, defeito e falha: entendendo a diferença</a>
+                      <hr>
+                    </li>
+                    <li class="item5">
+                      <a href="#t5" class="fundo-item">Plano de teste</a>
+                      <hr>
+                    </li>
+                    <li class="item6">
+                      <a href="#t6" class="fundo-item">Teste estático e teste dinâmico</a>
+                      <hr>
+                    </li>
+                    <li class="item7">
+                      <a href="#t7" class="fundo-item">Critério de aceitação</a>
+                      <hr>
+                    </li>
+                    <li class="item8">
+                      <a href="#t8" class="fundo-item">Artefatos de testes</a>
+                    </li>
+                    <li class="item9">
+                      <a href="#t9" class="fundo-item">Encerramento</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <h2>Testes de <i>software</i></h2>
+            <h3 id="t1">Introdução</h3>
+            <div class="row">
+              <div class="col-sm-5 col-xs-12">
+                <br><br>
+                <img src="objetos/intro_img.png" class="img-responsive center-block no-print">
+              </div>
+              <div class="col-sm-7 col-xs-12">
+                <p>Em desenvolvimento de <i>software</i> sempre se ouve falar de testes, porém eles nem sempre ganham a importância que deveriam. Mas, afinal, o que são testes? </p>
+                <p>Pode-se dizer, de maneira informal, que teste é uma forma de fazer uma verificação e/ou validação. E na prática, como se pode definir o teste?</p>
+                <p>Realizar o processo de testes, ou seja, testar o <i>software</i>, é executá-lo a procura de defeitos. O objetivo é encontrar defeitos, todos ou uma boa parte deles.</p>
+                <p>No conteúdo a seguir, serão explorados conceitos, aspectos e definições sobre testes de <i>software</i>, ressaltando sua relevância em um projeto de <i>software</i>.</p>
+              </div>
+            </div>
+            <img src="objetos/figura_01.png" class="img-responsive center-block mt-40 imprime-menor">
+            <p class="legenda-imagem">
+              Figura 1 – Representação gráfica dos profissionais de teste de <i>software</i> <br>
+              Fonte: FireWork (2021)
+            </p>
+            <p class="acessivel no-print">Na imagem, há três profissionais que desempenham o papel de testador de <i>software</i> e há algumas engrenagens, simulando os testes de <i>software</i>.</p>
+
+            <h3 id="t2">Conceito de teste</h3>
+            <p>Pode-se dizer que teste de <i>software</i> é um processo normatizado que usa técnicas de execução de sistema para encontrar defeitos antes que este seja entregue ao cliente/usuário final. Essas técnicas, combinadas com o conhecimento do analista de testes, aumentam a confiabilidade do usuário no <i>software</i> que está sendo testado, fazendo com que o usuário tenha a garantia de que o sistema foi validado em relação às suas regras de negócio e de que está atendendo às suas expectativas.</p>
+            <img src="objetos/figura_02.png" class="img-responsive center-block imprime-menor">
+            <p class="legenda-imagem">
+              Figura 2 – Ciclo do teste de <i>software</i> <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Imagem representativa do ciclo do teste de <i>software</i>. 1, planejar; 2, desenvolver; 3, testar; e 4, entregar.</p>
+            <p>Como é possível ver na imagem, testar é um ciclo. O teste de <i>software</i> permite que ele esteja sempre em constante verificação, pois erros são comuns. Porém, essa prática faz com o que o <i>software</i> possa ser usado constantemente, sem necessidade de parar o trabalho do usuário para que sejam corrigidas as falhas (ou erros) que acabaram passando despercebidos, em razão da falta de teste. </p>
+            <p>O responsável por esses testes, chamado de analista de testes, tem a função de explorar falhas de um sistema e tentar, por meio de combinações incorretas, expor alguma vulnerabilidade do <i>software</i>. Por isso, é possível dizer que as atividades de teste têm característica “destrutiva”, porém esses testes aumentam a segurança e a confiabilidade do sistema, por meio de exposição desses erros e dessas falhas.</p>
+
+            <h3 id="t3">Caso de teste</h3>
+            <p>Segundo o glossário da ISTQB (International Software Testing Qualifications Board), um selo de qualidade para testadores de <i>software</i>, define-se caso de teste como um conjunto de <b>valores de entrada, pré-condições de execução, resultados esperados e pós-condições de execução</b>, desenvolvido para um objetivo particular ou uma condição de teste. </p>
+            <div class="icone pequeno pergunta">
+              <p><b>Sabendo disso, como posso usar o caso de teste na prática?</b></p>
+            </div>
+            <p>Entenda, agora, um pouco melhor esse conceito.</p>
+            <p><b>Valores de entrada</b> são dados que os seres humanos, ou uma máquina, fornecem para o <i>software</i>. O <i>software</i> recebendo esses dados fará o processamento e dará uma resposta que é comparada com os resultados esperados. Em resumo: você passará um grupo de valores de entrada, o <i>software</i> processará e, quando devolver o resultado, você analisará se os resultados esperados são iguais aos resultados processados.</p>
+            <p>Para que se possa enviar uma informação ao <i>software</i> e para que ele possa processar de uma maneira especifica, é necessário que o sistema esteja em um estado inicial ou mais avançado, mas que já tenha um escopo desenvolvido, que foi criado com base na regra de negócio. É possível citar algumas <b>pré-condições</b> para o teste: que já se tenha um usuário cadastrado, ou que já tenha saldo na conta, ou que já tenha algum requisito específico já configurado no <i>software</i>. </p>
+            <p>Já a <b>pós-condição</b> é qualquer tipo de informação que acontecerá no <i>software</i> depois que um determinado teste for executado.</p>
+            <img src="objetos/figura_03.png" class="img-responsive center-block">
+            <p class="legenda-imagem">
+              Figura 3 – Exemplo de caso de teste <br>
+              Fonte: Brasil Escola (2014)
+            </p>
+            <p class="acessivel no-print">Um exemplo de caso de teste de uma tela de abertura de nota fiscal eletrônica, contendo todos os passos necessários, que são: contador, localização, criticidade, objeto de teste, caso de teste, pré-condição, procedimento e resultado esperado.</p>
+            <h4>Caso de teste <i>versus</i> cenário de teste</h4>
+            <p>Quando se vai realizar testes em alguma aplicação, não se deve confundir as definições de caso de teste e de cenário de teste. Muitas vezes, por não entender muito do assunto, acaba-se achando que os dois são a mesma coisa, porém não são.</p>
+            <p><b>Caso de teste</b> é um conjunto de ações executadas para verificar algum recurso ou alguma função da aplicação. <b>Cenário de teste</b> é qualquer funcionalidade da aplicação que possa ser testada. O caso de teste foca mais em como testar, já o cenário de teste concentra-se no que testará.</p>
+            <p>A equipe de controle de qualidade e desenvolvimento da aplicação é a responsável por escrever os casos de teste. Já em um cenário de teste, os responsáveis pela sua criação são os analistas e/ou gerentes de negócios.</p>
+            <p>Falando em escrita, veja, agora, como escrever um caso de teste.</p>
+            <h4>Escrita do caso de teste</h4>
+            <p>Para realizar a escrita de um caso de teste, deve-se, primeiro, conhecer o que se está testando e, depois disso, criar uma espécie de documento que pode conter todas (ou algumas) as etapas descritas a seguir:</p>
+            <div class="no-print" aria-hidden="true">
+              <img src="objetos/info_1.png" class="img-responsive center-block hidden-xs">
+              <img src="objetos/mob_info1_1.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info1_2.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info1_3.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info1_4.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info1_5.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info1_6.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info1_7.png" class="img-responsive center-block visible-xs no-print">
+            </div>
+            <div class="acessivel print">
+              <ol>
+                <li>ID: é um número único e exclusivo do caso de teste. Isso fará com que cada caso de teste se diferencie do outro. <br></li>
+                <li>Descrição: é um texto breve, porém adequado ao que se está testando (recurso, unidade, função etc.), com detalhes importantes do caso de teste. <br></li>
+                <li>Pré-condições: como visto anteriormente, é tudo que deve ser observado antes da execução do teste. <br></li>
+                <li>Etapas de teste: é muito importante descrever cada passo (cada etapa) usando uma linguagem de fácil compreensão. <br></li>
+                <li>Resultado esperado/desejado: nesta etapa, são explicados os resultados esperados pelo caso de teste. <br></li>
+                <li>Pós-condições: aqui, serão descritas as condições que devem ser atendidas após a execução com sucesso do caso de teste. <br></li>
+                <li>Estado: com base nos resultados obtidos, deve-se mencionar se o <i>status</i> do caso de teste é aprovado, caso tenham sido obtidos os resultados desejados, ou reprovado, caso os resultados não tenham sido os esperados.</li>
+              </ol>
+            </div>
+            <div class="caixa-destaque-livre borda-primaria-03 icone fundamental mt-40">
+              <p>Exemplificando:</p>
+              <p>O cliente João realizará uma transferência para Maria (será a favorecida neste exemplo). Não será necessário ir até o banco, pois tudo será feito <i>on-line</i>, por meio de um <i>software</i> específico. Essa transferência será feita em razão de um processo judicial no qual João deve pagar a quantia de R$ 800,00 para Maria. No ato da transferência, João tinha essa quantia em sua conta e Maria criou uma conta para esse fim, a qual se encontra sem nenhum dinheiro.</p>
+              <p>Como essa transferência se deve a um processo judicial, João terá de realizá-la usando um <i>software</i> específico. Nesse sistema, ele informará os próprios dados de <i>login</i>. Após isso, irá na aba de <b>Transferência Judicial</b>, informará os dados da conta de Maria e confirmará a transferência. Feito isso, João sairá do sistema, para que o seu usuário não fique “logado”. Se tudo der certo, Maria ficará com o saldo de R$ 800,00 e o processo judicial terá sido executado com sucesso.</p>
+            </div>
+            <p>Com base no cenário anterior, é possível montar um caso de teste, conforme o exemplo a seguir.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Exemplo de caso de teste</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>ID:</b> 001 <br>
+                      <b>Descrição:</b> Transferência de valor com saldo positivo <br>
+                      <b>Pré-condições de execução:</b> <br>
+                      - O cliente João precisa ter saldo de R$ 800,00. <br>
+                      - A favorecida (pessoa que receberá o dinheiro) precisa ter saldo de R$ 0,00. <br>
+                      <b>Valores de entradas:</b> <br>
+                      - Maria como favorecida <br>
+                      - R$ 800,00 como valor de transferência <br>
+                      <br>
+                      <b>Etapas de teste:</b>
+                      <div class='table-responsive'>
+                        <table class='senac'>
+                          <tbody>
+                            <tr>
+                              <th><b>Etapa</b></th>
+                              <th><b>Descrição</b></th>
+                              <th><b>Resultado esperado</b></th>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>Faça <i>login</i> com os dados do cliente</td>
+                              <td>Tela secreta apresentada</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Inicie uma transferência de valores</td>
+                              <td>Foco no campo <b>Favorecido</b></td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Informe R$ 800,00 para Maria</td>
+                              <td>Mensagem de confirmação é apresentada</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>Confirme a transferência</td>
+                              <td>Mensagem de sucesso na transferência é apresentada</td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>Faça <i>logoff</i> do sistema</td>
+                              <td>Tela de <i>login</i> é apresentada</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <b>Resultados esperados:</b><br>
+                      - Sucesso ao transferir a quantia<br>
+                      <b>Pós-condições de execução:</b><br>
+                      - Novo saldo do cliente que realizou a transferência será de R$ 0,00.<br>
+                      - Novo saldo da favorecida (Maria) será de R$ 800,00.<br>
+                      <b>Estado:</b> Aprovado
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 1 – Exemplo de caso de teste <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p>Veja, a seguir, outro exemplo.</p>
+            <div class="caixa-destaque borda-primaria-03 icone anotar">
+              <p>Gustavo finalizou a programação de uma tela de cadastro que será implementada em sistema <i>desktop</i> já existente. Na empresa onde esse sistema <i>desktop</i> é usado, somente alguns usuários poderão preencher essa tela de cadastro e salvar os dados. Foi solicitado que um usuário com a devida permissão faça o cadastro e tente salvar. O usuário em questão acessou o sistema, colocou os próprios dados de <i>login</i>, acessou a tela de cadastro e conseguiu realizar um cadastro com sucesso.</p>
+            </div>
+            <p>Baseando-se no cenário anterior, é possível montar um caso de teste, conforme o exemplo a seguir.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Exemplo de caso de teste</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>ID:</b> 002 <br>
+                      <b>Descrição:</b> Preenchimento e salvamento de dados em uma tela de cadastro <br>
+                      <b>Pré-condições de execução:</b> <br>
+                      - O usuário precisa ter permissão para acessar a tela de cadastro. <br>
+                      - O <i>login</i> e a senha do usuário precisam ser válidos. <br>
+                      <b>Valores de entrada:</b> <br>
+                      - Usuário com acesso à tela de cadastro. <br>
+                      - Usuário fornece os dados de <i>login</i> dele. <br>
+                      <br>
+                      <b>Etapas de teste:</b>
+                      <div class='table-responsive'>
+                        <table class='senac'>
+                          <tbody>
+                            <tr>
+                              <th><b>Etapa</b></th>
+                              <th><b>Descrição</b></th>
+                              <th><b>Resultado esperado</b></th>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>Faça <i>login</i> com os dados do cliente</td>
+                              <td>Direcionamento para o menu de opções</td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Acesse a tela de cadastro</td>
+                              <td>Tela de cadastro é apresentada</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Preencha todos os campos do cadastro</td>
+                              <td>Os dados estão corretos</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>Salve o cadastro</td>
+                              <td>Mensagem de cadastro realizado com sucesso é apresentada</td>
+                            </tr>
+                            <tr>
+                              <td>5</td>
+                              <td>Faça <i>logoff</i> do sistema</td>
+                              <td>Tela de <i>login</i> é apresentada</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <b>Resultados esperados:</b> <br>
+                      - Cadastro realizado com sucesso. <br>
+                      <b>Pós-condições de execução:</b> <br>
+                      - Usuário autorizado consegue preencher a tela de cadastro e salvar. <br>
+                      Estado: Aprovado                    
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 2 – Exemplo de caso de teste <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <div class="caixa-destaque-livre borda-primaria-03 icone desafio">
+              <p>Pratique por meio do desafio a seguir.</p>
+              <img src="objetos/figura_04.png" class="img-responsive center-block hiddem-sm hidden-xs imprime-menor html1-fig4 print">
+              <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+              <a href="objetos/figura_04.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="objetos/figura_04.png" class="center-block img-responsive"></a>
+              <p class="legenda-imagem">
+                Figura 4 – Calculadora do Windows <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Na imagem, está a calculadora do Windows, no seu modo padrão.</p>
+              <p>A equipe de teste da empresa Senac Tecnologia foi contratada para testar um <i>software</i> que simula uma calculadora virtual. Devem ser testadas todas as funcionalidades apresentadas pela calculadora para efetuar os cálculos (não precisa testar teclas nem abas de função). A equipe deverá preparar um documento de teste contendo pelo menos três casos de teste.</p>
+            </div>
+
+            <h3 id="t4">Erro, defeito e falha: entendendo a diferença</h3>
+            <p>Antes de conceituar essas três palavras, veja um pequeno cenário criado em que, na prática, erro, defeito e falha acontecerão.</p>
+            <div class="caixa-destaque-livre borda-primaria-03 icone anotar">
+              <p>Jorge foi contratado por uma empresa para criar um cadastro de produtos dentro de um sistema que está em andamento. Ao codificar, Jorge se esqueceu de alguns detalhes muito importantes em seu código, mas, mesmo assim, enviou suas linhas de código para os outros desenvolvedores, que implementaram no sistema. Logo após isso, o sistema apresentou <b>erro</b> ao cadastrar, em razão do código incompleto. Os desenvolvedores não sabiam o que fazer e executaram o sistema, que apresentou um grande <b>defeito</b>, em razão do erro de Jorge. Após essa execução não ter sido bem sucedida, o sistema <b>falha</b>.</p>
+            </div>
+            <p>Resumindo: </p>
+            <ul class="cor01">
+              <li><b>Erro:</b> foi cometido por Jorge, ao raciocinar o que precisava fazer.</li>
+              <li><b>Defeito:</b> foi inserido pelo código errado de Jorge.</li>
+              <li><b>Falha:</b> foi causada porque o sistema passou pelo fluxo defeituoso.</li>
+            </ul>
+            <p>A seguir, veja as definições formais dessas palavras.</p>
+            <p><b>Erro:</b> estado inconsistente, observado em momento de execução, de um produto ou sistema de <i>software</i>. Esse erro pode ou não causar uma falha.</p>
+            <p><b>Defeito/<i>bug</i>:</b> passo, processo ou definição de dados incorretos; ou, ainda, qualquer problema existente no <i>software</i> ou no sistema sob teste que possa causar sua falha em atender às expectativas do usuário. Em outras palavras, um defeito é uma fonte potencial de insatisfação com o produto.</p>
+            <p><b>Falha:</b> estado inesperado do produto ou do sistema de <i>software</i>, ocasionado por um erro.</p>
+            <img src="objetos/figura_5.png" class="img-responsive center-block hidden-xs print">
+            <img src="objetos/mob_figura5.png" class="img-responsive center-block visible-xs no-print">
+            <p class="legenda-imagem">
+              Figura 5 – Explicação de erro, defeito e falha <br>
+              Fonte: adaptado de Jordan (2018)
+            </p>
+            <p class="acessivel no-print">Na imagem, há o ícone de uma pessoa com a mensagem “Uma pessoa comete um erro...”, depois, na sequência, um inseto representando o <i>bug</i> (defeito) com a mensagem “...que cria um defeito no <i>software</i>...” e, por fim, uma bomba representando a falha, com a mensagem “...que pode causar uma falha na operação”.</p>
+
+            <h3 id="t5">Plano de teste</h3>
+            <p>O plano de teste contém os casos de uso, as telas e o projeto que serão testados, os responsáveis pelo teste, por elaborar roteiros e criar ambiente, os erros que podem ser encontrados, os riscos do processo etc. É o planejamento inicial do teste sobre a demanda enviada para a equipe.</p>
+            <p>Dependendo do tamanho do projeto de desenvolvimento, é possível ter diversos planos de teste para um mesmo projeto de teste de <i>software</i>. Esses planos podem ser separados por módulos, funcionalidades ou requisitos, ou, ainda, por um grupo de cada um desses elementos. Além disso, os planos podem também ser classificados por nível de teste: unitário, integração, sistema e aceitação. Quando o sistema for pequeno, não há necessidade da criação de vários planos de teste, embora, mesmo nesses casos, possa ser razoável ter os planos de teste separados por nível de teste.</p>
+            <p>Além de definir a agenda de teste e os procedimentos necessários para testar o produto, o plano de teste define a infraestrutura necessária. Nesse sentido, no plano de teste, encontram-se também as anotações sobre os recursos humanos, de <i>hardware</i> e de <i>software</i> necessários. Essas estimativas são úteis principalmente para os gerentes de projetos e configuração que são responsáveis por garantir que esses recursos estarão disponíveis para a execução dos testes.</p>
+            <p>Um plano de testes menos formal pode ser utilizado em pequenos sistemas, mas deve ser utilizado um documento formal para auxiliar o planejamento do processo de teste. Os planos de teste não são documentos estáticos, pois evoluem durante o processo de desenvolvimento, mas existe uma padronização dos planos de teste que está descrita na norma IEEE 829 4.1.4. Essa sigla refere-se ao Instituto de Engenheiros Eletricistas e Eletrônicos.</p>
+            <p>Você pode conferir mais detalhes sobre esses documentos no conteúdo <b>Plano de teste</b> desta unidade curricular.</p>
+
+            <h3 id="t6">Teste estático e teste dinâmico</h3>
+            <p>As atividades para avaliação da qualidade de <i>software</i> podem ser divididas em duas categorias amplas: teste estático e teste dinâmico.</p>
+            <h4>Teste estático</h4>
+            <p>Como o termo “estático” sugere, baseia-se no exame de uma série de documentos, nomeadamente documentos de requisitos, <i>software</i>, modelos, documentos de <i>design</i> e código-fonte. O teste estático tradicional inclui revisão de código, inspeção, passo a passo, análise de algoritmo e prova de veracidade. Não envolve a execução real do código em desenvolvimento. Em vez disso, ele examina o código e os motivos de todos os comportamentos possíveis que podem surgir durante o tempo de execução. </p>
+            <p>Pode-se dizer que, quando se está olhando um código e analisando-o, um teste e/ou uma análise estática estão sendo feitos. Nessa análise, é possível realizar algumas verificações, como:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03 icone refletir">
+              <ul class="bolinha">
+                <li>O código foi documentado?</li>
+                <li>As variáveis, as constantes e as classes estão com uma nomenclatura aceitável?</li>
+                <li>O código está organizado e é de fácil compreensão?</li>
+                <li>O programador, ao codificar, obedece à arquitetura do sistema?</li>
+              </ul>
+            </div>
+            <h4>Teste dinâmico</h4>
+            <p>O teste dinâmico de um sistema envolve a execução do programa para expor suas possíveis falhas. As propriedades comportamentais e de desempenho do programa também são observadas. Os programas são executados com valores de entrada típicos e cuidadosamente escolhidos.</p>
+            <p>Esse teste acontece dentro do ambiente de desenvolvimento e envolve verificações como:</p>
+            <ul class="bolinha">
+              <li>Entrar e sair do sistema.</li>
+              <li>Inserir <i>login</i> e senha e verificar se autorizará.</li>
+              <li>Abrir as opções desejadas no menu.</li>
+              <li>Clicar em determinada opção e o <i>software</i> direcionar a ela.</li>
+            </ul>
+            <p>Portanto, nos testes, alguns comportamentos representativos do programa são observados e é possível chegar a uma conclusão sobre a qualidade do sistema. </p>
+            <p>Ao realizar testes estáticos e dinâmicos, os profissionais desejam identificar o máximo de falhas possível, para que estas sejam corrigidas em um estágio inicial de desenvolvimento do <i>software</i>. A análise estática e a análise dinâmica são complementares por natureza e, para ter melhor eficácia, ambas devem ser realizadas de forma repetida e alternada.</p>
+
+            <h3 id="t7">Critério de aceitação</h3>
+            <p>Antes de realizar um teste de aceitação (tipo de teste que acontece geralmente antes da implantação do <i>software</i> e tem como objetivo verificar se ele está pronto, aceito pelo cliente, e já pode ser utilizado para a sua finalidade), é preciso definir, de forma clara, quais critérios serão utilizados. Tais critérios são divididos em: critério de aceitação funcional e critério de aceitação não funcional.</p>
+            <p>O <b>critério de aceitação funcional</b> diz respeito ao comportamento do sistema, em como ele ajudará os seus usuários a realizar determinado trabalho. Refere-se às funções ou aos recursos que o sistema oferece.</p>
+            <p>Já o <b>critério de aceitação não funcional</b> especifica todos os requisitos. Ele avalia sobre como o sistema funciona sem levar muito em consideração os códigos, e sim os aspectos de acessibilidade, a facilidade de uso, a sua segurança e privacidade, a velocidade entre as telas, a confiabilidade, entre outros aspectos.</p>
+            <h4>Como definir os critérios de aceitação</h4>
+            <p>Após entender os conceitos dos critérios de aceitação, você aprenderá como definir esses critérios, que incluem os requisitos de desempenho e as condições essenciais que serão atendidas antes de se realizar a entrega do projeto. Os critérios determinam sob quais situações o cliente aceitará o resultado final do projeto. Assim, é possível medir e provar ao cliente que o trabalho está completo.</p>
+            <p>Algumas técnicas podem ser usadas para definir critérios de aceitação. Para funcionalidades em que é possível definir um cenário de uso, o esquema “dado que/quando/então” (<i>given/when/then</i>) pode ser útil.</p>
+            <ul class="cor01">
+              <li>“Dado que” alguma pré-condição</li>
+              <li>“Quando” uma ação é executada</li>
+              <li>“Então” espera-se algum resultado</li>
+            </ul>
+            <p>Veja, a seguir, um exemplo dessa técnica aplicada a um caso de uso para um caixa eletrônico.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <td colspan="2">
+                      História de usuário: <br>
+                      Como usuário, quero ser capaz de solicitar o saque de um terminal de caixa eletrônico de maneira que eu possa receber o dinheiro da minha conta bancária rapidamente em diferentes locais.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Cenário 1: Solicitar o saque de uma conta com crédito</td>
+                  </tr>
+                  <tr>
+                    <td><b>Dado que</b></td>
+                    <td>A conta possui saldo</td>
+                  </tr>
+                  <tr>
+                    <td>E</td>
+                    <td>O cartão é válido</td>
+                  </tr>
+                  <tr>
+                    <td>E</td>
+                    <td>O caixa eletrônico tem notas</td>
+                  </tr>
+                  <tr>
+                    <td><b>Quando</b></td>
+                    <td>O usuário solicita o saque</td>
+                  </tr>
+                  <tr>
+                    <td><b>Então</b></td>
+                    <td>Assegure-se que a conta seja debitada no valor solicitado</td>
+                  </tr>
+                  <tr>
+                    <td>E</td>
+                    <td>Assegure-se que as notas sejam disponibilizadas pela máquina</td>
+                  </tr>
+                  <tr>
+                    <td>E</td>
+                    <td>Assegure-se que o cartão é liberado ao usuário</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 3 – Exemplo do esquema “dado que/quando/então” <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <div class="caixa-destaque borda-primaria-03 icone desafio">
+              <p>Modernize a história de usuário exemplificada anteriormente trocando caixa eletrônico por Pix. Considere o cenário em que o usuário vai transferir dinheiro a outra pessoa usando uma chave Pix.</p>
+            </div>
+            <p>Em outros casos mais técnicos, em que seja difícil aplicar o esquema “dado que/quando/então”, como a interação com uma interface gráfica, pode ser necessário usar um esquema orientado a regras. Nesse formato, usa-se geralmente uma <i>checklist</i> de regras que descrevem o comportamento de um sistema ou de uma funcionalidade específica. Com base nessas regras, pode-se desenhar cenários mais específicos.</p>
+            <p>Veja, no exemplo a seguir, uma história de usuário para um sistema <i>web</i> que faz busca por hotéis.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <td>
+                      História de usuário: <br>
+                      Como usuário, quero ser capaz de usar um campo de pesquisa no sistema para encontrar opções de hotel, informando cidade, nome ou rua.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Critérios básicos de aceitação para busca: <br>
+                      <ul class="cor01">
+                        <li>O campo de busca está posicionado no topo da tela.</li>
+                        <li>A busca inicia ao clicar no ícone <b>Lupa</b>.</li>
+                        <li>O campo está vazio.</li>
+                        <li>A busca é realizada se um usuário informar uma cidade, um nome de hotel, uma rua ou todos essas informações combinadas.</li>
+                        <li>A busca ocorre em português.</li>
+                        <li>O usuário não pode digitar mais que 200 caracteres.</li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 4 – Exemplo de busca <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p>Outros formatos próprios para escrita de critério de aceitação podem ser aplicados, como tabelas com valores possíveis para uma funcionalidade ou texto explicativo do que deve ou não ocorrer em um cenário de uso específico.</p>
+            <p>Veja, a seguir, alguns exemplos de critérios de aceitação não funcionais.</p>
+            <div class="no-print" aria-hidden="true">
+              <img src="objetos/info2.png" class="img-responsive center-block hidden-xs">
+              <img src="objetos/mob_info2_1.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info2_2.png" class="img-responsive center-block visible-xs no-print">
+              <img src="objetos/mob_info2_3.png" class="img-responsive center-block visible-xs no-print">
+            </div>
+            <div class="acessivel print">
+              <ol>
+                <li>
+                  <b>Requisito</b>: O sistema deve ser capaz de processar a listagem de dados automaticamente. <br>
+                  <b>Critério de aceitação</b>: A falha no processamento de dados não pode ultrapassar 5%; <br>
+                </li>
+                <li>
+                  <b>Requisito</b>: O processo de <i>backup</i> e restauração devem estar em perfeito funcionamento. <br>
+                  <b>Critério de aceitação</b>: O processo de <i>backup</i> e restauração foi testado com sucesso. <br>
+                </li>
+                <li>
+                  <b>Requisito</b>: A funcionalidade de <i>login</i> não deve permitir que um usuário não cadastrado no banco de dados faça <i>login</i> no sistema. <br>
+                  <b>Critério de aceitação</b>: Somente usuários autenticados (cadastrados no banco de dados) acessam o sistema.
+                </li>
+              </ol>
+            </div>
+            <h4>Características dos critérios de aceitação</h4>
+            <p>- Os critérios de aceitação devem ser fáceis de serem testados pelo usuário. Seus resultados devem ser de simples interpretação. Dentro do teste de aceitação, as respostas esperadas seriam: sim ou não, aprovado ou reprovado, aprovado ou resultados inconclusivos etc.</p>
+            <p>- Os critérios de aceitação devem ser compreensíveis e resumidos. Não há necessidade de uma extensão documentação; a finalidade é tentar ser o mais claro e breve possível.</p>
+            <p>- Os critérios de aceitação devem ser compreendidos por todos os usuários. </p>
+            <p>- Os critérios de aceitação devem fornecer uma perspectiva do usuário. Eles farão com que o problema seja percebido pelo ponto de vista do usuário, e isso com certeza trará resultados positivos para o sistema.</p>
+
+            <h3 id="t8">Artefatos de testes</h3>
+            <p>Cada empresa e cada metodologia definidas no começo do processo de desenvolvimento de <i>software</i> pedem um tipo de artefato para resolver as necessidades do projeto/sistema. Não há um documento padrão seguido por todas as equipes e empresas do mundo. É preciso saber como o processo de teste na empresa foi montado para, então, ver quais documentos devem ser produzidos.</p>
+            <p>O artefato de teste é uma parte integrante do teste do <i>software</i>, e o conjunto de documentos que o compõe fazem parte do ciclo de vida do teste do <i>software</i>. </p>
+            <p>Sabendo disso, há alguns tipos de documentos que podem/devem ser usados para entender se a necessidade do projeto/sistema foi, de fato, resolvida. Veja, a seguir, informações sobre alguns desses documentos.</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class='panel-group gaitinha' id='accordion01' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading01'>
+                    <h3 class='panel-title'>
+                      <a role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse01' aria-expanded='false' aria-controls='collapse01'>
+                        Estratégia de teste
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
+                    <div class='panel-body'>
+                      <p>Geralmente é desenvolvida pelo gerente de projeto. Uma estratégia de teste é um documento que lista os detalhes sobre como todo o projeto prosseguirá. Isso inclui requisitos e recursos para o projeto, estratégias de teste envolvidas, <i>design</i> de teste, fases incrementais envolvidas, processos de comunicação com o cliente etc. É o resumo do documento que descreve a abordagem de teste do ciclo de desenvolvimento de <i>software</i> e lista como alcançar o resultado esperado usando os recursos disponíveis.</p>
+                      <p>Para desenvolver essa estratégia, há vários pontos que devem ser considerados. A seguir, veja alguns deles.</p>
+                      <img src="objetos/info3.png" class="img-responsive center-block hidden-xs">
+                      <img src="objetos/mob_info3_1.png" class="img-responsive center-block visible-xs">
+                      <img src="objetos/mob_info3_2.png" class="img-responsive center-block visible-xs">
+                      <img src="objetos/mob_info3_3.png" class="img-responsive center-block visible-xs">
+                      <img src="objetos/mob_info3_4.png" class="img-responsive center-block visible-xs">
+                      <img src="objetos/mob_info3_5.png" class="img-responsive center-block visible-xs">
+                      <img src="objetos/mob_info3_6.png" class="img-responsive center-block visible-xs">
+                      <img src="objetos/mob_info3_7.png" class="img-responsive center-block visible-xs">
+                      <img src="objetos/mob_info3_8.png" class="img-responsive center-block visible-xs">
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading02'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse02' aria-expanded='false' aria-controls='collapse02'>
+                        Plano de teste
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse02' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading02'>
+                    <div class='panel-body'>
+                      <p>Como citado anteriormente, é um documento de planejamento do processo de teste do <i>software</i>.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading03'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse03' aria-expanded='false' aria-controls='collapse03'>
+                        Cenário de teste
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse03' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading03'>
+                    <div class='panel-body'>
+                      <p>É uma condição criada para realizar testes de ponta a ponta bem-sucedidos. Vários casos de teste vêm em um cenário de teste. </p>
+                      <p>Às vezes, também se refere a uma condição ou uma possibilidade de teste. Um cenário de teste resolve o dilema da aplicação do <i>software</i> na vida real.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading04'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse04' aria-expanded='false' aria-controls='collapse04'>
+                        Casos de teste
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse04' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading04'>
+                    <div class='panel-body'>
+                      <p>Este artefato de teste foi citado dentro deste conteúdo.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading05'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse05' aria-expanded='false' aria-controls='collapse05'>
+                        Dados de teste
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse05' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading05'>
+                    <div class='panel-body'>
+                      <p>Para executar os casos de teste, o engenheiro de controle de qualidade precisa de alguns dados sobre os quais o caso de teste foi aprovado ou reprovado para decidir. Para isso, é criado um documento que contém todos os dados de teste necessários para a execução dos casos de teste criados.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading06'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse06' aria-expanded='false' aria-controls='collapse06'>
+                        Relatório de defeito/<i>bug</i>
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse06' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading06'>
+                    <div class='panel-body'>
+                      <p>Um relatório de defeitos é um documento criado após a execução de todos os casos de teste e o registro dos resultados. Ele lista todos os <i>bugs</i> encontrados durante o teste. Isso torna mais fácil, para a equipe de desenvolvimento, a correção de <i>bugs</i>.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading07'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse07' aria-expanded='false' aria-controls='collapse07'>
+                        Relatório de resumo de teste
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse07' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading07'>
+                    <div class='panel-body'>
+                      <p>Ao final de cada um dos ciclos de teste completos, um relatório final é criado. Esse relatório inclui os detalhes de todo o processo de teste. Por exemplo: detalhes sobre casos de teste, resultados obtidos, <i>bugs</i> corrigidos, <i>status</i> atual do projeto etc.</p>
+                      <p>Esse documento é importante e deve ser apresentado às partes interessadas para mantê-las atualizadas sobre o andamento do projeto. É um documento formal e tudo está claramente documentado para que qualquer pessoa possa entender o relatório.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading08'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse08' aria-expanded='false' aria-controls='collapse08'>
+                        Guia do usuário
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse08' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading08'>
+                    <div class='panel-body'>
+                      <p>Com todo <i>software</i> desenvolvido e pronto para ser implantado no mercado, o guia do usuário é criado ao final. Esse guia é útil para usuários finais e fornece informações detalhadas sobre o <i>software</i> e sobre o uso deste.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <h4>Estratégia de teste</h4>
+              <p>Geralmente é desenvolvida pelo gerente de projeto. Uma estratégia de teste é um documento que lista os detalhes sobre como todo o projeto prosseguirá. Isso inclui requisitos e recursos para o projeto, estratégias de teste envolvidas, <i>design</i> de teste, fases incrementais envolvidas, processos de comunicação com o cliente etc. É o resumo do documento que descreve a abordagem de teste do ciclo de desenvolvimento de <i>software</i> e lista como alcançar o resultado esperado usando os recursos disponíveis.</p>
+              <p>Para desenvolver essa estratégia, há vários pontos que devem ser considerados. A seguir, veja alguns deles.</p>
+              <p>
+                - Qual é o principal objetivo do teste e o motivo pelo qual você deseja realizá-lo? <br>
+                - Quais são as diretrizes que devem ser seguidas para a realização de testes? <br>
+                - Quais são todos os requisitos necessários para o teste, como requisitos funcionais, cenários de teste, recursos etc.? <br>
+                - Quais são as funções e as responsabilidades de cada função e cada gerente de projeto para concluir o teste? <br>
+                - Quais são os diferentes níveis de teste? <br>
+                - Qual será a principal entrega desse teste? <br>
+                - Quais riscos existem em relação aos testes com os riscos do projeto? <br>
+                - Existe algum método para resolver problemas que possam surgir?
+              </p>
+              <h4>Plano de teste</h4>
+              <p>Como citado anteriormente, é um documento de planejamento do processo de teste do <i>software</i>.</p>
+              <h4>Cenário de teste</h4>
+              <p>É uma condição criada para realizar testes de ponta a ponta bem-sucedidos. Vários casos de teste vêm em um cenário de teste. </p>
+              <p>Às vezes, também se refere a uma condição ou uma possibilidade de teste. Um cenário de teste resolve o dilema da aplicação do <i>software</i> na vida real.</p>
+              <h4>Casos de teste</h4>
+              <p>Este artefato de teste foi citado dentro deste conteúdo.</p>
+              <h4>Dados de teste</h4>
+              <p>Para executar os casos de teste, o engenheiro de controle de qualidade precisa de alguns dados sobre os quais o caso de teste foi aprovado ou reprovado para decidir. Para isso, é criado um documento que contém todos os dados de teste necessários para a execução dos casos de teste criados.</p>
+              <h4>Relatório de defeito/<i>bug</i></h4>
+              <p>Um relatório de defeitos é um documento criado após a execução de todos os casos de teste e o registro dos resultados. Ele lista todos os <i>bugs</i> encontrados durante o teste. Isso torna mais fácil, para a equipe de desenvolvimento, a correção de <i>bugs</i>.</p>
+              <h4>Relatório de resumo de teste</h4>
+              <p>Ao final de cada um dos ciclos de teste completos, um relatório final é criado. Esse relatório inclui os detalhes de todo o processo de teste. Por exemplo: detalhes sobre casos de teste, resultados obtidos, <i>bugs</i> corrigidos, <i>status</i> atual do projeto etc.</p>
+              <p>Esse documento é importante e deve ser apresentado às partes interessadas para mantê-las atualizadas sobre o andamento do projeto. É um documento formal e tudo está claramente documentado para que qualquer pessoa possa entender o relatório.</p>
+              <h4>Guia do usuário</h4>
+              <p>Com todo <i>software</i> desenvolvido e pronto para ser implantado no mercado, o guia do usuário é criado ao final. Esse guia é útil para usuários finais e fornece informações detalhadas sobre o <i>software</i> e sobre o uso deste.</p>
+            </div>
+
+            <h3 id="t9">Encerramento</h3>
+            <div class="icone concluindo">
+              <p>Testar um <i>software</i> é muito importante, porém ainda mais importante é saber o que testar. Um <i>software</i> sem defeito não significa que está perfeito, pode significar também que não foi totalmente testado ou foi testado de maneira errada.</p>
+            </div>
+            <p>Dentro de qualquer projeto, é muito importante sempre verificar a documentação, para compreender melhor o <i>software</i> e também o usuário final. Dentro dos testes de <i>software</i>, isso é essencial, pois é o usuário final quem utilizará o sistema no dia a dia, então é quem pode melhor dizer se há erros ou não.</p>
+          </div>
+
+          
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <ul class="pagination">
+
+          </ul>
+        </footer>
+
+
+        <!-- Modais -->
+
+        <!-- Modais 100% -->
+
+        
+
+      </div>
+
+    </div>
+
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="js/custom.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<!-- Versao atual do handtalk -->
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+
+</script>

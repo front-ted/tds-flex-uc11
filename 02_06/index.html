@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Estratégias e níveis de teste</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção Grau de pontuação/símbolos, acesse Preferências – Configurações – Fala. Altere o padrão Pouco para Tudo. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade. </p>
+            
+            <h2>Estratégias e níveis de teste</h2>
+            <p>Para o bom andamento de um projeto, é essencial que exista planejamento na realização de algumas funções, e com a etapa de teste isso não é diferente. Para o sucesso do projeto, é necessária a existência de um roteiro para a realização das tarefas, definindo questões como tempo, esforço a ser realizado, recursos necessários e passos a serem executados.</p>
+            <h3>Estratégias de teste: preventiva e reativa</h3>
+            <p>A estratégia deve nortear alguns requisitos que são necessários para o acompanhamento, portanto deve ter os seguintes itens: indicar os objetivos do teste que está sendo realizado; indicar quais serão os papéis e as pessoas envolvidas no plano de teste; e determinar qual é o padrão que as documentações seguirão, por exemplo, como será desenvolvido o documento padrão de relatório de defeitos. Além de determinar quais serão os tipos de testes que cada nível terá, é preciso especificar quais serão as técnicas de testes aplicadas, assim como determinar a utilização de testes automáticos/manuais.</p>
+            <p>Requisitos de cobertura e métrica também devem estar especificados no documento de estratégias, portanto deve conter a quantidade de <i>bugs</i> esperados e definir a quantidade de <i>bugs</i> por linha e a quantidade de vezes que uma tarefa retorna para o desenvolvimento. Também deve especificar quais serão as ferramentas utilizadas para o acompanhamento dos defeitos, ou seja, o uso de ferramentas como Jira e Mantis, e definir como deve ser realizada a descrição dos problemas. </p>
+            <p>Ao criar a estratégia, devem-se considerar também os ambientes de testes que serão utilizados (desenvolvimento, homologação e produção) e a definição de quais relatórios serão realizados e quais devem ser entregues.</p>
+            <p>Esses itens são os sugeridos pela norma do IEEE (Instituto de Engenheiros Eletricistas e Eletrônicos) que especifica o padrão a ser seguido, porém algumas empresas realizam adaptações conforme a sua realidade, considerando técnicas e metodologias de desenvolvimento aplicadas.</p>
+            <p>Geralmente a estratégia de teste fica em um <i>wiki</i>, em uma página <i>web</i> interna, em razão da fácil manutenção e do fácil acesso a todos da instituição, pois manter outras formas de documento gerará entraves para acesso, como a necessidade de licenças para realizar edições ou até mesmo a necessidade de <i>download</i> de arquivo toda vez que a estratégia passar por alterações.</p>
+            <p>Alguns fatores são essenciais para a criação da estratégia. O primeiro passo é compreender a realidade de desenvolvimento da instituição, ou seja, ambientar-se às ferramentas que a empresa usa, compreendendo como acontecem os processos e seus fluxos e inteirando-se das tecnologias que são utilizadas (linguagem de programação e teste com suas métricas de cobertura). O segundo fator de grande importância é conhecer a quantidade de ambientes de testes que estarão disponíveis e se serão utilizados ambientes gerais ou ambientes específicos para cada tipo de teste, por exemplo, o teste de carga.</p>
+            <p>Outro fator preponderante é conhecer quais são as áreas mais importantes do sistema que está sendo desenvolvido. Desse modo, deve-se compreender quais pontos, caso sejam liberados com falhas, podem ser fatais ao projeto, significando uma mancha irrecuperável para a imagem do cliente.</p>
+            <p>Um exemplo para uma situação dessas seria projetar um <i>software</i> para um sistema hospitalar que auxiliará médicos em diagnósticos de exames de alto grau de risco. Nesse caso, uma falha poderia trazer sérias consequências, pois geraria um diagnóstico que poderia colocar um paciente em grave risco de vida. No caso de ocorrência de uma fatalidade, isso afetaria a integridade dessa instituição junto à opinião pública, acarretando uma marca negativa tanto para o cliente quanto para a empresa de desenvolvimento. Além disso, possíveis problemas jurídicos poderiam ser desencadeados.</p>
+            <p>Outro fator essencial é conhecer a pirâmide de teste automatizado, para iniciar pelas bases da pirâmide, verificando se já existe alguma métrica de cobertura ou, no caso de estar sendo realizada a primeira bateria de testes em um <i>software</i> novo, criando esses parâmetros. Após essas definições serem realizadas, o próximo passo é subir para os degraus mais altos da estrutura e, por fim, verificar quais são os testes não funcionais que devem ser realizados.</p>
+            <p>Esses são os fatores que devem ser considerados na hora da criação de estratégias, aplicando-os também para atualizações futuras. </p>
+            <p>Existem algumas abordagens que podem ser aplicadas, como no caso da abordagem preventiva ou reativa, que considera o período em que os testes devem iniciar, e da abordagem analítica ou heurística, que considera a base de dados conhecida.</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class='panel-group gaitinha' id='accordion' role='tablist' aria-multiselectable='true'>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading01'>
+                    <h3 class='panel-title'>
+                      <a role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse01' aria-expanded='false' aria-controls='collapse01'>
+                        Estratégia preventiva
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
+                    <div class='panel-body'>
+                      <p>A abordagem preventiva considera a participação da equipe de teste desde o momento em que o projeto é iniciado, minimizando, dessa forma, os custos, pois, ao especificar casos de teste e aplicá-los, possíveis falhas são encontradas com antecedência no processo. Assim, evita-se que ocorra retrabalho pela equipe de desenvolvimento, otimizando o tempo para o desenvolvimento de tarefas essenciais.</p>
+                      <p>Um exemplo de projeto em que podem ser utilizadas estratégias preventivas é o desenvolvimento de uma aplicação Java para a organização de tarefas pessoais, em que, durante o processo de desenvolvimento, testes unitários foram produzidos para serem executados com periodicidade, garantindo a funcionalidade das classes e dos métodos da aplicação. Também foram produzidos testes de integração para cobrir a interação correta entre as classes e os métodos, validando entradas de dados e inclusão de operações de adição, edição e remoção de tarefas. </p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading02'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse02' aria-expanded='false' aria-controls='collapse02'>
+                        Estratégia reativa
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse02' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading02'>
+                    <div class='panel-body'>
+                      <p>Em uma abordagem de teste reativa, a equipe de teste participará do projeto já durante o desenvolvimento, ou seja, quando funcionalidades já foram desenvolvidas e muitas delas integradas, o que, após a realização dos testes e com o encontro de falhas, pode significar em retrabalho e onerar custos.</p>
+                      <p>Um exemplo de projeto em que uma estratégia de teste reativa foi aplicada é o desenvolvimento de um aplicativo de gerenciamento de finanças pessoais. Durante o processo de desenvolvimento, foram realizados testes reativos para garantir a funcionalidade e a correção de erros no aplicativo. Isso incluiu testes de unidade para verificar o comportamento de cada componente individualmente, testes de integração para verificar a interação entre componentes e testes de sistema para verificar a funcionalidade geral do aplicativo.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class='panel panel-default'>
+                  <div class='panel-heading' role='tab' id='heading03'>
+                    <h3 class='panel-title'>
+                      <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion' href='#collapse03' aria-expanded='false' aria-controls='collapse03'>
+                        Abordagem analítica e heurística
+                      </a>
+                    </h3>
+                  </div>
+                  <div id='collapse03' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading03'>
+                    <div class='panel-body'>
+                      <p>Na abordagem analítica, são utilizados dados para realizar o planejamento dos testes. É adicionada uma métrica para finalizar os testes, por exemplo: os testes são interrompidos quando chegarem a uma cobertura de 95%. Dessa forma, os testes são realizados considerando parâmetros como custo e tempo para definir a quantidade e a intensidade dos testes.</p>
+                      <p>A técnica de analise heurística consiste na avaliação da usabilidade, para identificar problemas de usabilidade em sistemas interativos, como <i>softwares</i> e aplicações. Nessa abordagem heurística, os testes são realizados considerando o conhecimento e o domínio da equipe de teste, conforme os requisitos especificados no projeto. Após a realização dos testes, é fornecido um <i>feedback</i> sobre os problemas com a interface e a experiência do usuário.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <h4>Estratégia preventiva</h4>
+              <p>A abordagem preventiva considera a participação da equipe de teste desde o momento em que o projeto é iniciado, minimizando, dessa forma, os custos, pois, ao especificar casos de teste e aplicá-los, possíveis falhas são encontradas com antecedência no processo. Assim, evita-se que ocorra retrabalho pela equipe de desenvolvimento, otimizando o tempo para o desenvolvimento de tarefas essenciais.</p>
+              <p>Um exemplo de projeto em que podem ser utilizadas estratégias preventivas é o desenvolvimento de uma aplicação Java para a organização de tarefas pessoais, em que, durante o processo de desenvolvimento, testes unitários foram produzidos para serem executados com periodicidade, garantindo a funcionalidade das classes e dos métodos da aplicação. Também foram produzidos testes de integração para cobrir a interação correta entre as classes e os métodos, validando entradas de dados e inclusão de operações de adição, edição e remoção de tarefas. </p>
+              <h4>Estratégia reativa</h4>
+              <p>Em uma abordagem de teste reativa, a equipe de teste participará do projeto já durante o desenvolvimento, ou seja, quando funcionalidades já foram desenvolvidas e muitas delas integradas, o que, após a realização dos testes e com o encontro de falhas, pode significar em retrabalho e onerar custos.</p>
+              <p>Um exemplo de projeto em que uma estratégia de teste reativa foi aplicada é o desenvolvimento de um aplicativo de gerenciamento de finanças pessoais. Durante o processo de desenvolvimento, foram realizados testes reativos para garantir a funcionalidade e a correção de erros no aplicativo. Isso incluiu testes de unidade para verificar o comportamento de cada componente individualmente, testes de integração para verificar a interação entre componentes e testes de sistema para verificar a funcionalidade geral do aplicativo.</p>
+              <h4>Abordagem analítica e heurística</h4>
+              <p>Na abordagem analítica, são utilizados dados para realizar o planejamento dos testes. É adicionada uma métrica para finalizar os testes, por exemplo: os testes são interrompidos quando chegarem a uma cobertura de 95%. Dessa forma, os testes são realizados considerando parâmetros como custo e tempo para definir a quantidade e a intensidade dos testes.</p>
+              <p>A técnica de analise heurística consiste na avaliação da usabilidade, para identificar problemas de usabilidade em sistemas interativos, como <i>softwares</i> e aplicações. Nessa abordagem heurística, os testes são realizados considerando o conhecimento e o domínio da equipe de teste, conforme os requisitos especificados no projeto. Após a realização dos testes, é fornecido um <i>feedback</i> sobre os problemas com a interface e a experiência do usuário.</p>
+            </div>
+
+            <h2>Níveis de teste: unitário, sistema, integração e aceitação</h2>
+            <p>A realização de testes é uma etapa importante para assegurar a qualidade de um <i>software</i>, portanto é necessária a realização de gerenciamento e organização dos testes, o que abrange a definição de níveis de testes a serem executados.</p>
+            <p>Sendo o conjunto de tarefas relacionadas ao gerenciamento e à organização dos testes, os níveis de testes consistem em: componentes, integração, sistema e aceite. Cada tarefa é realizada em um determinado momento do desenvolvimento do projeto, gerando uma esfera de teste, podendo ser realizado em unidades individuais ou componentes até englobar sistemas totalmente concluídos, tendo relação com diferentes tarefas nas etapas do desenvolvimento de <i>software</i>.</p>
+            <p>Cada nível de teste deve ter um ambiente condizente com a sua realidade. É possível citar como exemplo o teste de aceitação, em que o ideal é a realização com aspectos semelhantes ao ambiente de produção em que o sistema será executado. Já um teste de componente geralmente é realizado no ambiente de desenvolvimento.</p>
+            <p>Um nível de teste deve ter as seguintes propriedades: objetivos específicos; bases de teste diferentes para serem utilizadas para criar casos de testes; objeto de teste, que é aquilo que será testado; defeitos e falhas típicas e abordagens; e responsabilidades específicas.</p>
+            <p>O teste de componentes também é conhecido como teste de unidade. O teste de integração tem duas partes, sendo divido em: integração entre componentes e integração entre sistemas. Já o teste de aceite ou aceitação pode ser: aceite de usuário, aceite operacional, aceite contratual e alfa/beta teste.</p>
+            <div class="no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo. </p>
+              <div class='caixa-destaque-livre borda-primaria-03'>
+                <ul id='abas' class='nav nav-tabs' role='tablist'>
+                  <li role='presentation' class='active'><a href='#home' aria-controls='home' role='tab' data-toggle='tab'>Teste de componente (unidade)</a></li>
+                  <li role='presentation'><a href='#profile' aria-controls='profile' role='tab' data-toggle='tab'>Teste de integração </a></li>
+                  <li role='presentation'><a href='#messages' aria-controls='messages' role='tab' data-toggle='tab'>Teste de sistema</a></li>
+                  <li role='presentation'><a href='#settings' aria-controls='settings' role='tab' data-toggle='tab'>Teste de aceite</a></li>
+                </ul>
+                <div class='tab-content'>
+                  <div role='tabpanel' class='tab-pane fade in active' id='home'>
+                    <p>Será um teste realizado no menor fragmento do sistema, podendo ser realizado em uma função, uma classe ou um componente do <i>software</i>. Portanto, é necessário ter acesso ao código-fonte, sendo realizado pelo próprio desenvolvedor, de forma isolada de outras partes do sistema, como ao testar uma função que calculará o valor a ser pago em um período dentro de um estacionamento. A função deve executar outra função ao final do pagamento, a qual emite a nota fiscal. O teste deve ser executado apenas na função de cálculo do pagamento, simulando a sequência da execução da outra função. Isso é uma característica essencial do teste de unidade. Outra característica marcante é a rapidez com a qual o teste pode ser executado. Em metodologias ágeis, ele é realizado antes do desenvolvimento do código, conhecido como TDD, que significa <i>test driven development</i> (desenvolvimento guiado por teste, em português). Outra propriedade desse tipo de teste é a automatização dele.</p>
+                    <p>Esse teste tem como objetivos reduzir risco, considerar aspectos de requisitos funcionais e não funcionais dos componentes esperados e especificados, gerar uma relação de confiança na qualidade do componente, buscar defeitos no componente e evitar que os problemas se expandam para níveis mais altos de teste. </p>
+                    <p>Para a base de teste é utilizado o projeto detalhado, o código e as especificações dos componentes. O objeto de teste é a própria estrutura de código, considerando classes e módulos de bancos de dados. </p>
+                    <p>São consideradas falhas típicas funções que não têm lógica e/ou estrutura de desenvolvimento de códigos corretos e que destoam do que foi informado na especificação do projeto. A velocidade de correção do teste se dá em razão de a realização do teste ser feita pelo próprio desenvolvedor, que, ao perceber a falha, já realiza a correção, sem a necessidade de abrir um chamado que parará em uma lista de eventuais ajustes.</p>
+                    <p>Considere o seguinte código:</p>
+                    <pre>
+                      <code>
+public class Calculadora {
+    public int soma(int a, int b) {
+        return a + b;
+    }
+
+    public int subtrai(int a, int b) {
+        return a - b;
+    }
+
+    public int multiplica(int a, int b) {
+        return a * b;
+    }
+
+    public int divide(int a, int b) {
+        if (b == 0) {
+            throw new IllegalArgumentException("Não é possível dividir por zero.");
+        }
+        return a / b;
+    }
+}
+                      </code>
+                    </pre>
+                    <p>Agora, pense no seguinte exemplo. Ao criar uma classe para realizar as quatro operações básicas da matemática, serão realizados testes para verificar se a soma, a subtração, a multiplicação e a divisão estão retornando o valor correto do cálculo e se na divisão, ao informar um valor 0, uma exceção é lançada.  </p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='profile'>
+                    <p>No teste de integração, assim como no teste de unidade, é necessário acesso ao código-fonte, de modo a realizar testes baseados na integração entre componentes ou em sistemas, se for o caso. Desenvolvedores geralmente realizam testes nos componentes desenvolvidos, enquanto os testadores realizarão os testes caso exista a integração entre um ou mais sistemas.</p>
+                    <p>O teste de integração de <i>software</i> é um tipo de teste que verifica se as diferentes partes de um sistema de <i>software</i> estão funcionando corretamente juntas, isto é, se há uma integração adequada entre as partes. Ele é importante porque permite identificar problemas que não podem ser detectados por meio de testes unitários isolados, por exemplo, problemas de comunicação entre componentes, problemas de consistência de dados entre módulos, entre outros.</p>
+                    <p>O objetivo do teste de integração é assegurar que o sistema como um todo funciona corretamente, antes do lançamento em produção. Ele é realizado após o término dos testes unitários e geralmente envolve a combinação de vários módulos ou componentes para formar o sistema completo.</p>
+                    <p>É importante ressaltar que o teste de integração é subdivido em duas partes. A primeira é o teste de integração de componentes, que é realizado após o teste de componentes, tendo o objetivo de testar as interações e interfaces nos componentes integrados, de forma automatizada na maioria das situações. Em um desenvolvimento interativo e incremental, esses testes ocorrem na execução de integração contínua. </p>
+                    <p>A segunda parte é a integração de sistema, voltada para a interação entre interfaces do sistema, considerando inclusive interfaces que possam ser fornecidas por sistemas de terceiros, por exemplo, um sistema que realizará vendas e consumirá uma API (<i>application programming interface</i>, ou, em português, interface de programação de aplicação) de transações bancárias para realizar a funcionalidade de pagamento.</p>
+                    <p>Como base de teste pode ser utilizado o próprio <i>software</i>, o diagrama de sequência, os protocolos de comunicação e as especificações de interfaces, os casos de uso e a arquitetura em nível de componente ou sistema. Como objetos de testes, tem-se: subsistemas, bancos de dados, infraestrutura, interfaces e APIs.</p>
+                    <p>Os defeitos típicos que podem ser encontrados no teste de integração entre componentes são: ausência de dados, dados errôneos e desenvolvimento de código incorreto. O uso de bibliotecas incompatíveis pode gerar falhas por falta de comunicação na troca de informações entre os componentes, assim como a falta de tratamento para essas falhas. Para os testes de integração de sistemas, há, além dos já citados, os seguintes defeitos típicos: mensagens incoerentes entre os sistemas e não seguimento de especificações obrigatórias de segurança.</p>
+                    <p>Considere o seguinte código:</p>
+                    <pre>
+                      <code>
+public class SistemaPedidos {
+    private ProdutoDAO produtoDAO;
+    private PedidoDAO pedidoDAO;
+    private EstoqueService estoqueService;
+
+    public void realizaPedido(Pedido pedido) {
+        List&lt;Produto> produtos = produtoDAO.buscaProdutos(pedido.getIdsProdutos());
+        if (!estoqueService.temEstoque(produtos)) {
+            throw new IllegalArgumentException("Produto sem estoque");
+        }
+        estoqueService.diminuiEstoque(produtos);
+        pedidoDAO.salvaPedido(pedido);
+    }
+}
+                      </code>
+                    </pre>
+                    <p>Agora, analise a seguinte situação. A classe <b>SistemaPedidos</b> representa um sistema de gerenciamento de pedidos. Ela depende de outras três classes: <b>ProdutoDAO</b>, <b>PedidoDAO</b> e <b>EstoqueService</b>.</p>
+                    <p>Nesse caso, o teste de integração desse sistema verificaria se essas três estruturas estão sendo utilizadas de forma correta pela classe <b>SistemaPedidos</b>. Dessa forma, seriam realizados testes para verificar se a busca dos produtos pelo ID está funcionando corretamente. Ao acessar a classe <b>ProdutoDAO</b>, verifica se o estoque está funcionando corretamente; ao acessar a classe <b>EstoqueService</b>, verifica se está diminuindo corretamente do estoque também presente na classe <b>EstoqueService</b>; por fim, ao acessar a classe <b>PedidoDAO</b>, verifica se a persistência do pedido está funcionando de forma correta. Garante-se, assim, que todas essas partes do sistema estejam funcionando corretamente em conjunto.</p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='messages'>
+                    <p>É realizado no momento em que o sistema está mais próximo para a liberação de uso ao usuário final. Com base nos dados gerados nesse teste, é decidido ou não se haverá a liberação para a publicação do sistema, pois, como os testes são realizados utilizando um ambiente próximo ao contexto que o usuário utilizará, falhas impactantes podem mudar o rumo de uma finalização do projeto.</p>
+                    <p>Praticamente todas as funções do sistema são testadas, incluindo requisitos legais e regulamentares do <i>software</i>. Por exemplo, em um <i>software</i> da área contábil, esse nível de teste verificará se os cálculos de impostos estão adequados ao que está estipulado por lei.</p>
+                    <p>Os objetivos assemelham-se aos níveis anteriores, buscando verificar se o sistema segue os itens projetados e especificados, assim como o ponto de oclusão em que está, encontrando defeitos e evitando que falhas possam chegar ao nível de uso do usuário, ou seja, liberar um produto que tem sérios <i>bugs</i> e falhas.</p>
+                    <p>A base de teste são os casos de uso, as <i>users stories</i>, os diagramas de estado, os manuais de usuário, o relatório de análise de riscos e as especificações de requisitos do sistema. Com isso, são testadas as aplicações em si, os sistemas operacionais, os sistemas de <i>hardware</i> e <i>software</i> e as configurações do sistema.</p>
+                    <p>As falhas esperadas nesse nível são baseadas em critérios definidos pelos manuais do sistema, por exemplo, cálculos expressos e situações condicionais que devem ser seguidas conforme o fluxo esperado, além de encontrar falhas nos comportamentos definidos por meio dos requisitos funcionais e não funcionais do sistema.</p>
+                  </div>
+                  <div role='tabpanel' class='tab-pane fade' id='settings'>
+                    <p>O objetivo deste nível de teste é garantir que o sistema esteja operando conforme as definições, expressando a qualidade do <i>software</i> na sua totalidade, de modo que o usuário final não encontre problemas de falhas. Caso <i>bugs</i> sejam encontrados nesse ponto, significa que existem grandes riscos ao escopo do <i>software</i>, pois o objetivo desse teste é não encontrar falhas, tendo em vista que o nível anterior, o teste de sistema, deve coletar informações essenciais para o aceite ou não da publicação do projeto. Logo, disponibilizar um sistema com problemas pode causar transtornos à área de <i>marketing</i> da empresa desenvolvedora, que ficará marcada por permitir o lançamento de um projeto incompleto.</p>
+                    <p>Neste nível de teste, pode ocorrer a integração de uma equipe de colaboradores, operadores e administradores da empresa que utilizará o sistema, de modo que as pessoas que utilizarão o sistema validem o projeto. Essa pratica é conhecida como teste de aceite de usuário. </p>
+                    <p>Outra prática é o teste de aceite operacional, em que são executados testes que visam à confiabilidade do sistema em se manter operando de forma adequada para os usuários do ambiente de produção, realizando validações em <i>backups</i>, restaurações, <i>performances</i> e vulnerabilidades de segurança do sistema. Também é realizada a prática de teste de aceite contratual e regulatório, focando a garantia das definições contratuais que foram estabelecidas no momento em que o acordo foi oficializado via assinatura contratual. Os resultados são supervisionados por possíveis testemunhas ou agências regulamentadoras, durante a execução dos testes. </p>
+                    <p>A última pratica deste nível de teste é a de alfa e beta, realizada por organizações que já vendem soluções prontas, ou seja, empresas que seguem um padrão de desenvolvimento e disponibilizam seus projetos de forma padronizada no mercado, conhecidas também como desenvolvedoras de <i>software</i> de prateleira.</p>
+                    <p>Essa é uma prática que visa encontrar falhas relacionadas ao ambiente, pois algumas situações não são possíveis de serem validadas pelo time de desenvolvimento. O teste alfa é realizado no ambiente da empresa desenvolvedora, sendo realizado por testadores independentes, clientes ou operadores. Já o teste beta é realizado geralmente por potencial cliente em seu próprio local, utilizando versão do sistema comumente chamado de beta.</p>
+                    <p>A base do nível de teste de aceite considera, de forma geral, basicamente itens da documentação do projeto, sendo estes: casos de uso, requisitos de sistema, documento de regulamentação e normas, contratos legais, procedimentos de instalação e relatório de análise de risco.</p>
+                    <p>Já para aceite operacional, ou seja, quando o sistema está performando como se espera, é realizado tendo como base o pacote de dados, normas e regulamentos de segurança, as métricas de <i>performance</i>, os requisitos não funcionais, os procedimentos para recuperação de desastres, os procedimentos de <i>backup</i> e a restauração, assim como as documentações de operações e instruções de implantação e instalação.</p>
+                    <p>Os objetos de testes são o próprio sistema, a configuração do sistema e dos dados de configuração, os processos de negócios para um sistema totalmente integrado, os relatórios, os dados de produção existentes e os processos operacionais e de manutenção.</p>
+                    <p>As falhas típicas esperadas são em relação aos requisitos de negócios ou do usuário, à validação das regras de negócio, ao <i>software</i> não estar seguindo os requisitos contratuais ou regulatórios, assim como às vulnerabilidades de segurança, às falhas não funcionais e à eficácia da <i>performance</i>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <h4>Teste de componente (unidade)</h4>
+              <div>
+                <p>Será um teste realizado no menor fragmento do sistema, podendo ser realizado em uma função, uma classe ou um componente do <i>software</i>. Portanto, é necessário ter acesso ao código-fonte, sendo realizado pelo próprio desenvolvedor, de forma isolada de outras partes do sistema, como ao testar uma função que calculará o valor a ser pago em um período dentro de um estacionamento. A função deve executar outra função ao final do pagamento, a qual emite a nota fiscal. O teste deve ser executado apenas na função de cálculo do pagamento, simulando a sequência da execução da outra função. Isso é uma característica essencial do teste de unidade. Outra característica marcante é a rapidez com a qual o teste pode ser executado. Em metodologias ágeis, ele é realizado antes do desenvolvimento do código, conhecido como TDD, que significa <i>test driven development</i> (desenvolvimento guiado por teste, em português). Outra propriedade desse tipo de teste é a automatização dele.</p>
+                <p>Esse teste tem como objetivos reduzir risco, considerar aspectos de requisitos funcionais e não funcionais dos componentes esperados e especificados, gerar uma relação de confiança na qualidade do componente, buscar defeitos no componente e evitar que os problemas se expandam para níveis mais altos de teste. </p>
+                <p>Para a base de teste é utilizado o projeto detalhado, o código e as especificações dos componentes. O objeto de teste é a própria estrutura de código, considerando classes e módulos de bancos de dados. </p>
+                <p>São consideradas falhas típicas funções que não têm lógica e/ou estrutura de desenvolvimento de códigos corretos e que destoam do que foi informado na especificação do projeto. A velocidade de correção do teste se dá em razão de a realização do teste ser feita pelo próprio desenvolvedor, que, ao perceber a falha, já realiza a correção, sem a necessidade de abrir um chamado que parará em uma lista de eventuais ajustes.</p>
+                <p>Considere o seguinte código:</p>
+                <pre>
+                  <code>
+public class Calculadora {
+public int soma(int a, int b) {
+    return a + b;
+}
+
+public int subtrai(int a, int b) {
+    return a - b;
+}
+
+public int multiplica(int a, int b) {
+    return a * b;
+}
+
+public int divide(int a, int b) {
+    if (b == 0) {
+        throw new IllegalArgumentException("Não é possível dividir por zero.");
+    }
+    return a / b;
+}
+}
+                  </code>
+                </pre>
+                <p>Agora, pense no seguinte exemplo. Ao criar uma classe para realizar as quatro operações básicas da matemática, serão realizados testes para verificar se a soma, a subtração, a multiplicação e a divisão estão retornando o valor correto do cálculo e se na divisão, ao informar um valor 0, uma exceção é lançada.  </p>
+              </div>
+              <h4>Teste de integração</h4>
+              <div>
+                <p>No teste de integração, assim como no teste de unidade, é necessário acesso ao código-fonte, de modo a realizar testes baseados na integração entre componentes ou em sistemas, se for o caso. Desenvolvedores geralmente realizam testes nos componentes desenvolvidos, enquanto os testadores realizarão os testes caso exista a integração entre um ou mais sistemas.</p>
+                <p>O teste de integração de <i>software</i> é um tipo de teste que verifica se as diferentes partes de um sistema de <i>software</i> estão funcionando corretamente juntas, isto é, se há uma integração adequada entre as partes. Ele é importante porque permite identificar problemas que não podem ser detectados por meio de testes unitários isolados, por exemplo, problemas de comunicação entre componentes, problemas de consistência de dados entre módulos, entre outros.</p>
+                <p>O objetivo do teste de integração é assegurar que o sistema como um todo funciona corretamente, antes do lançamento em produção. Ele é realizado após o término dos testes unitários e geralmente envolve a combinação de vários módulos ou componentes para formar o sistema completo.</p>
+                <p>É importante ressaltar que o teste de integração é subdivido em duas partes. A primeira é o teste de integração de componentes, que é realizado após o teste de componentes, tendo o objetivo de testar as interações e interfaces nos componentes integrados, de forma automatizada na maioria das situações. Em um desenvolvimento interativo e incremental, esses testes ocorrem na execução de integração contínua. </p>
+                <p>A segunda parte é a integração de sistema, voltada para a interação entre interfaces do sistema, considerando inclusive interfaces que possam ser fornecidas por sistemas de terceiros, por exemplo, um sistema que realizará vendas e consumirá uma API (<i>application programming interface</i>, ou, em português, interface de programação de aplicação) de transações bancárias para realizar a funcionalidade de pagamento.</p>
+                <p>Como base de teste pode ser utilizado o próprio <i>software</i>, o diagrama de sequência, os protocolos de comunicação e as especificações de interfaces, os casos de uso e a arquitetura em nível de componente ou sistema. Como objetos de testes, tem-se: subsistemas, bancos de dados, infraestrutura, interfaces e APIs.</p>
+                <p>Os defeitos típicos que podem ser encontrados no teste de integração entre componentes são: ausência de dados, dados errôneos e desenvolvimento de código incorreto. O uso de bibliotecas incompatíveis pode gerar falhas por falta de comunicação na troca de informações entre os componentes, assim como a falta de tratamento para essas falhas. Para os testes de integração de sistemas, há, além dos já citados, os seguintes defeitos típicos: mensagens incoerentes entre os sistemas e não seguimento de especificações obrigatórias de segurança.</p>
+                <p>Considere o seguinte código:</p>
+                <pre>
+                  <code>
+public class SistemaPedidos {
+private ProdutoDAO produtoDAO;
+private PedidoDAO pedidoDAO;
+private EstoqueService estoqueService;
+
+public void realizaPedido(Pedido pedido) {
+    List&lt;Produto> produtos = produtoDAO.buscaProdutos(pedido.getIdsProdutos());
+    if (!estoqueService.temEstoque(produtos)) {
+        throw new IllegalArgumentException("Produto sem estoque");
+    }
+    estoqueService.diminuiEstoque(produtos);
+    pedidoDAO.salvaPedido(pedido);
+}
+}
+                  </code>
+                </pre>
+                <p>Agora, analise a seguinte situação. A classe <b>SistemaPedidos</b> representa um sistema de gerenciamento de pedidos. Ela depende de outras três classes: <b>ProdutoDAO</b>, <b>PedidoDAO</b> e <b>EstoqueService</b>.</p>
+                <p>Nesse caso, o teste de integração desse sistema verificaria se essas três estruturas estão sendo utilizadas de forma correta pela classe <b>SistemaPedidos</b>. Dessa forma, seriam realizados testes para verificar se a busca dos produtos pelo ID está funcionando corretamente. Ao acessar a classe <b>ProdutoDAO</b>, verifica se o estoque está funcionando corretamente; ao acessar a classe <b>EstoqueService</b>, verifica se está diminuindo corretamente do estoque também presente na classe <b>EstoqueService</b>; por fim, ao acessar a classe <b>PedidoDAO</b>, verifica se a persistência do pedido está funcionando de forma correta. Garante-se, assim, que todas essas partes do sistema estejam funcionando corretamente em conjunto.</p>
+              </div>
+              <h4>Teste de sistema</h4>
+              <div>
+                <p>É realizado no momento em que o sistema está mais próximo para a liberação de uso ao usuário final. Com base nos dados gerados nesse teste, é decidido ou não se haverá a liberação para a publicação do sistema, pois, como os testes são realizados utilizando um ambiente próximo ao contexto que o usuário utilizará, falhas impactantes podem mudar o rumo de uma finalização do projeto.</p>
+                <p>Praticamente todas as funções do sistema são testadas, incluindo requisitos legais e regulamentares do <i>software</i>. Por exemplo, em um <i>software</i> da área contábil, esse nível de teste verificará se os cálculos de impostos estão adequados ao que está estipulado por lei.</p>
+                <p>Os objetivos assemelham-se aos níveis anteriores, buscando verificar se o sistema segue os itens projetados e especificados, assim como o ponto de oclusão em que está, encontrando defeitos e evitando que falhas possam chegar ao nível de uso do usuário, ou seja, liberar um produto que tem sérios <i>bugs</i> e falhas.</p>
+                <p>A base de teste são os casos de uso, as <i>users stories</i>, os diagramas de estado, os manuais de usuário, o relatório de análise de riscos e as especificações de requisitos do sistema. Com isso, são testadas as aplicações em si, os sistemas operacionais, os sistemas de <i>hardware</i> e <i>software</i> e as configurações do sistema.</p>
+                <p>As falhas esperadas nesse nível são baseadas em critérios definidos pelos manuais do sistema, por exemplo, cálculos expressos e situações condicionais que devem ser seguidas conforme o fluxo esperado, além de encontrar falhas nos comportamentos definidos por meio dos requisitos funcionais e não funcionais do sistema.</p>
+              </div>
+              <h4>Teste de aceite</h4>
+              <div>
+                <p>O objetivo deste nível de teste é garantir que o sistema esteja operando conforme as definições, expressando a qualidade do <i>software</i> na sua totalidade, de modo que o usuário final não encontre problemas de falhas. Caso <i>bugs</i> sejam encontrados nesse ponto, significa que existem grandes riscos ao escopo do <i>software</i>, pois o objetivo desse teste é não encontrar falhas, tendo em vista que o nível anterior, o teste de sistema, deve coletar informações essenciais para o aceite ou não da publicação do projeto. Logo, disponibilizar um sistema com problemas pode causar transtornos à área de <i>marketing</i> da empresa desenvolvedora, que ficará marcada por permitir o lançamento de um projeto incompleto.</p>
+                <p>Neste nível de teste, pode ocorrer a integração de uma equipe de colaboradores, operadores e administradores da empresa que utilizará o sistema, de modo que as pessoas que utilizarão o sistema validem o projeto. Essa pratica é conhecida como teste de aceite de usuário. </p>
+                <p>Outra prática é o teste de aceite operacional, em que são executados testes que visam à confiabilidade do sistema em se manter operando de forma adequada para os usuários do ambiente de produção, realizando validações em <i>backups</i>, restaurações, <i>performances</i> e vulnerabilidades de segurança do sistema. Também é realizada a prática de teste de aceite contratual e regulatório, focando a garantia das definições contratuais que foram estabelecidas no momento em que o acordo foi oficializado via assinatura contratual. Os resultados são supervisionados por possíveis testemunhas ou agências regulamentadoras, durante a execução dos testes. </p>
+                <p>A última pratica deste nível de teste é a de alfa e beta, realizada por organizações que já vendem soluções prontas, ou seja, empresas que seguem um padrão de desenvolvimento e disponibilizam seus projetos de forma padronizada no mercado, conhecidas também como desenvolvedoras de <i>software</i> de prateleira.</p>
+                <p>Essa é uma prática que visa encontrar falhas relacionadas ao ambiente, pois algumas situações não são possíveis de serem validadas pelo time de desenvolvimento. O teste alfa é realizado no ambiente da empresa desenvolvedora, sendo realizado por testadores independentes, clientes ou operadores. Já o teste beta é realizado geralmente por potencial cliente em seu próprio local, utilizando versão do sistema comumente chamado de beta.</p>
+                <p>A base do nível de teste de aceite considera, de forma geral, basicamente itens da documentação do projeto, sendo estes: casos de uso, requisitos de sistema, documento de regulamentação e normas, contratos legais, procedimentos de instalação e relatório de análise de risco.</p>
+                <p>Já para aceite operacional, ou seja, quando o sistema está performando como se espera, é realizado tendo como base o pacote de dados, normas e regulamentos de segurança, as métricas de <i>performance</i>, os requisitos não funcionais, os procedimentos para recuperação de desastres, os procedimentos de <i>backup</i> e a restauração, assim como as documentações de operações e instruções de implantação e instalação.</p>
+                <p>Os objetos de testes são o próprio sistema, a configuração do sistema e dos dados de configuração, os processos de negócios para um sistema totalmente integrado, os relatórios, os dados de produção existentes e os processos operacionais e de manutenção.</p>
+                <p>As falhas típicas esperadas são em relação aos requisitos de negócios ou do usuário, à validação das regras de negócio, ao <i>software</i> não estar seguindo os requisitos contratuais ou regulatórios, assim como às vulnerabilidades de segurança, às falhas não funcionais e à eficácia da <i>performance</i>.</p>
+              </div>
+            </div>
+
+            <h3>Encerramento</h3>
+            <div class="icone concluindo">
+              <p>Neste material, você aprendeu quais fatores são essências para a elaboração de uma estratégia de teste, verificou conceitos sobre itens que devem ser considerados e compreendeu o uso de algumas estratégias de abordagem.</p>
+            </div>
+            <p>Além disso, você também verificou conceitos de níveis de teste, compreendendo que há quatro níveis e que cada nível de teste deve ter um ambiente adequado e as próprias propriedades.</p>
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+    <div class="modal fade" id="modal-ODBC" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">ODBC</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>ODBC</b>, ou Open Database Connectivity, é um conjunto de classes-modelo para conexão disponível em qualquer linguagem de programação, diferindo-se da JDBC, que é exclusiva para Java.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modal-JDBC" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="myModalLabel">JDBC</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>JDBC</b>, ou Java EE Database Connectivity, é uma <b>API (<i>application programming interfaces</i>) que possibilita a interação do código Java com um banco de dados</b>, na qual as instruções SQL são executadas por meio de um <i>driver</i>, composto por um grupo de classes e interfaces desenvolvido em Java. Esse processo possibilita a execução de instruções SQLs que se conectarão com a base de dados, permitindo a manipulação dos valores.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

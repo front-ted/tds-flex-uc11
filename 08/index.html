@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Testes unitários automatizados: conceito, ferramentas, aplicabilidade</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção Grau de pontuação/símbolos, acesse Preferências – Configurações – Fala. Altere o padrão Pouco para Tudo. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade. </p>
+            
+            <h2>Testes unitários automatizados: conceito, ferramentas, aplicabilidade</h2>
+            <h3>Conceito</h3>
+            <p>O desenvolvimento de <i>software</i> envolve diferentes etapas e processos, desde escrever código e testar todas as funções até depurar e implantar. O teste de unidade é um importante método de teste usado pelas equipes de controle de qualidade para garantir que um produto de <i>software</i> esteja livre de erros e atenda a todos os requisitos essenciais. </p>
+            <p>Atualmente, o teste de unidade tornou-se indiscutível no ciclo de teste de <i>software</i> para garantir que cada unidade desse produto seja completamente funcional e opere conforme foi planejada. No teste de unidade, os testadores validam cada parte testável de um sistema para garantir que cada unidade do código funcione conforme o esperado. Ele é executado nos estágios iniciais de desenvolvimento de <i>software</i> por desenvolvedores ou testadores.</p>
+            <div class="caixa-destaque borda-primaria-03">
+              <p>O teste de unidade é essencial para o desenvolvimento de <i>software</i> rápido e ágil. Também pode ajudar as equipes de desenvolvimento e controle de qualidade a obter vários benefícios de curto e longo prazos, principalmente em relação à melhoria geral da qualidade do sistema e à satisfação do cliente.</p>
+            </div>
+            <h4>Fundamentos </h4>
+            <p>Em um <i>software</i>, a menor parte de um código que pode ser testada é chamada de unidade de código. O teste de unidade é um método de teste usado no ciclo de desenvolvimento de <i>software</i> para validar se uma unidade de código se comportará como pretendido e se o código testado produzirá o mesmo resultado toda vez que o teste for executado. O teste de unidade está incluído no teste de caixa-branca e geralmente é feito escrevendo casos de teste que exercitam funções, métodos e classes individuais.</p>
+            <div class="caixa-destaque-livre borda-primaria-03">
+              <p>A seguir, veja as etapas importantes usadas para executar testes de unidade.</p>
+              <ul class="seta">
+                <li><b>Escrever casos de teste:</b> desenvolver vários casos de teste de componente do <i>software</i>.</li>
+                <li><b>Revisar e editar:</b> verificar os casos de teste escritos e editá-los se houver algum erro.</li>
+                <li><b>Executar:</b> executar casos de teste para identificar possíveis erros.</li>
+              </ul>
+              <p>Os casos de teste dos testes de unidade são simples e claros para que sejam fáceis de ler e entender, mesmo que tenham lógica complexa e muitas variáveis. </p>
+            </div>
+            <h4>Importância dos testes unitários</h4>
+            <p>O teste de unidade é crucial para os desenvolvedores durante o desenvolvimento de <i>software</i>, pois, quando feito de maneira adequada no estágio inicial do desenvolvimento, pode ajudá-los a economizar tempo e dinheiro. Os programadores geralmente executam esse teste no ambiente de desenvolvimento antes de combinar o código com outros módulos funcionais de código existentes. Há uma alta probabilidade de o código ser defeituoso quando o teste de unidade do <i>software</i> não for executado.</p>
+            <div class="caixa-destaque-livre borda-primaria-03">
+              <p>A seguir, veja as principais razões pelas quais os testadores consideram o teste de unidade uma parte importante do ciclo de teste de <i>software</i>:</p>
+              <ul class="seta">
+                <li><b>Identificar <i>bugs</i> ou erros nos estágios iniciais:</b> executando testes de unidade, possíveis erros e <i>bugs</i> podem ser detectados no início do ciclo de desenvolvimento, antes que se tornem generalizados.</li>
+                <li><b>Isolar uma unidade de código e verificar se ela funciona corretamente:</b> o teste de unidade ajuda os especialistas em controle de qualidade a tornar o código mais fácil de manter, permitindo que eles o modifiquem sem alterar outras partes do aplicativo.</li>
+                <li><b>Testar a funcionalidade do aplicativo de <i>software</i>:</b> com a ajuda do teste de unidade, os testadores podem validar cada unidade de módulo antes de integrá-la a um aplicativo de <i>software</i>.</li>
+                <li><b>Reduzir custos e economizar tempo:</b> como o teste unitário é o primeiro a ser executado no ciclo de testes, as equipes de controle de qualidade podem economizar muito tempo e reduzir drasticamente o custo geral.</li>
+              </ul>
+            </div>
+            <div class="caixa-destaque bg-primaria-02 borda-primaria-03 mt-40">
+              <p><img src="imgs/ico_exemplo.png" class=""> Escrevendo um teste para a classe <b>Calculadora</b>?</p>
+            </div>
+            <p>No código-fonte a seguir, pode-se observar que a classe <b>Calculadora</b> tem quatro métodos: somar, subtrair, multiplicar e dividir. Todos eles recebem como entrada dois números inteiros, realizam operações aritméticas correspondentes e retornam o resultado.</p>
+            <pre>
+              <code>
+public class Calculadora {
+    
+    public int somar(int n1, int n2) {
+        return n1 + n2;
+    }
+
+    public int subtrair(int n1, int n2) {
+        return n1 - n2;
+    }
+    
+    public int multiplicar(int n1, int n2) {
+        return n1 * n2;
+    }
+
+    public int dividir(int n1, int n2) {
+        return  n1 / n2;
+    }
+}
+              </code>
+            </pre>
+            <p>Observe que no método <b>dividir</b> há um problema proposital. Não se está validando a possibilidade de uma divisão por zero, ou seja, da forma apresentada sem esse tratamento, ocorrerá erro.</p>
+            <p>Veja, a seguir, como criar a classe <b>MinhaCalculadora</b> com o método <b>main</b>.</p>
+            <p>Neste exemplo, você tem v1 = 4 e v2 = 2.</p>
+            <pre>
+              <code>
+public class MinhaCalculadora {
+
+    public static void main(String[] args) {
+        
+    Calculadora calc = new Calculadora();
+    int v1, v2;
+    v1 = 4;
+    v2 = 2;
+    
+    System.out.println("Soma: " + calc.somar(v1, v2) );
+    System.out.println("Subtração: " + calc.subtrair(v1, v2) );
+    System.out.println("Multiplicação: " + calc.multiplicar(v1, v2) );
+    System.out.println("Divisão: " + calc.dividir(v1, v2) );
+    }
+}
+              </code>
+            </pre>
+            <p>Resultado:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <code>
+                run: <br>
+                Soma: 6 <br>
+                Subtração: 2 <br>
+                Multiplicação: 8 <br>
+                Divisão: 2 <br>
+                BUILD SUCCESSFUL (total time: 0 seconds)
+              </code>
+            </div>
+            <p>Agora, veja como criar a classe <b>TesteCalculadora</b> para testar a classe <b>Calculadora</b>.</p>
+            <p>Na classe <b>TesteCalculadora</b>, serão criados os métodos de teste <b>testaSoma()</b>, <b>testaSubtracao()</b>, <b>testaMultiplicacao()</b> e <b>testaDivisao()</b>, que realizarão suas respectivas operações com os valores 3 e 2.</p>
+            <p>Desse modo, o resultado deverá ser 5 para operação de soma, 1 para operação de subtração, 6 para multiplicação e 1 para divisão. Caso o resultado de cada operação esteja correto, será exibido “OK”; caso contrário, aparecerá “ERRO”.</p>
+            <p>O método <b>main()</b> é responsável apenas por realizar a chamada de cada método.</p>
+            <pre>
+              <code>
+public class TesteCalculadora {
+
+    public void testaSoma(){
+        Calculadora calc = new Calculadora();
+        int resultado = calc.somar(3, 2);
+        System.out.println("testaSoma: " + (resultado==5 ? "OK" : "ERRO"));
+    }
+        
+    public void testaSubtracao(){
+        Calculadora calc = new Calculadora();
+        int resultado = calc.subtrair(3, 2);
+        System.out.println("testaSub: " + (resultado==1 ? "OK" : "ERRO"));
+    }    
+        
+    public void testaMultiplicacao(){
+        Calculadora calc = new Calculadora();
+        int resultado = calc.multiplicar(3, 2);
+        System.out.println("testaMult: " + (resultado==6 ? "OK" : "ERRO"));
+    }    
+        
+    public void testaDivisao(){
+        Calculadora calc = new Calculadora();
+        int resultado = calc.dividir(3, 2);
+        System.out.println("testaDiv: " + (resultado==1 ? "OK" : "ERRO"));
+    }      
+        
+    public static void main(String[] args) {
+        new TesteCalculadora().testaSoma();
+        new TesteCalculadora().testaSubtracao();
+        new TesteCalculadora().testaMultiplicacao();
+        new TesteCalculadora().testaDivisao();
+    }
+        
+}
+              </code>
+            </pre>
+            <p>Resultado:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <code>
+                run: <br>
+                testaSoma: OK <br>
+                testaSub: OK <br>
+                testaMult: OK <br>
+                testaDiv: OK <br>
+                BUILD SUCCESSFUL (total time: 0 seconds)
+              </code>
+            </div>
+            <p>O que se pode observar nesse exemplo é que não ocorreram erros, pois os dados validados correspondem ao resultado esperado. Porém, caso ocorram futuramente alterações dentro de algum método da classe <b>Calculadora</b>, no momento da execução dos testes na classe <b>TestaCalculadora</b>, a mensagem de erro será exibida. Esse é o objetivo principal dos testes unitários, testar cada parte do código, conforme os testes forem definidos.</p>
+            <p>Você pode estar se questionando agora se essa classe de teste está pronta. Você se lembra do método de divisão que não trata a divisão por zero? Então, caso sejam informados, no método <b>testaDivisao</b>, os valores 3 e 0 em vez de 3 e 2, veja o que correrá:</p>
+            <pre>
+              <code>
+public void testaDivisao(){
+    Calculadora calc = new Calculadora();
+    int resultado = calc.dividir(3, 0);
+    System.out.println("testaDiv: " + (resultado==1 ? "OK" : "ERRO"));
+}
+              </code>
+            </pre>
+            <p>Resultado:</p>
+            <div class="caixa-destaque-livre bg-primaria-02 borda-primaria-03">
+              <code>
+                run: <br>
+                testaSoma: OK <br>
+                testaSub: OK <br>
+                testaMult: OK <br>
+                Exception in thread "main" java.lang.ArithmeticException: / by zero <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;at calculadora.Calculadora.dividir(Calculadora.java:18) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;at calculadora.TesteCalculadora.testaDivisao(TesteCalculadora.java:25) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;at calculadora.TesteCalculadora.main(TesteCalculadora.java:33) <br>
+                BUILD FAILED (total time: 0 seconds)
+              </code>
+            </div>
+            <p>Conforme o resultado apresentado, foi gerada uma exceção e não houve um resultado do teste. Para ter certeza de que o seu código não tem erro, é preciso testar todas as possíveis entradas de um método. Para esse caso, é possível testar alguns valores-chave que representam as possíveis entradas: -1000, -1, 0, <i>null</i>, +1, +1000.</p>
+            <p>Portanto, a classe <b>TesteCalculadora</b> é funcional, mas, para a boa prática de programação, erros devem ser tratados com exceções (blocos <i>try catch</i>), e não com simples avaliações condicionais (<i>if</i> e <i>else</i>). Criar testes dessa maneira, com controle de exceções, além de poluir o código com blocos <i>try catch</i>, é muito trabalhoso. É neste momento que se mostra útil a utilização de um <i>framework</i> para automatização de testes.</p>
+            <p>Existem muitas ferramentas automatizadas disponíveis no mercado para dar suporte a testes unitários. Algumas delas são JTest, JUnit, PHPUnit etc. O <i>framework</i> JUnit é a ferramenta de teste automatizado mais popular, baseada na linguagem Java. Ele fornece asserções para identificar vários métodos de teste. </p>
+
+            <h3>Ferramentas e aplicabilidade</h3>
+            <p>Aqui, serão apresentados os <i>frameworks</i> JUnit e Mockito, além de exemplos de aplicabilidade em testes unitários. </p>
+            <p class="no-print text-center mt-40" aria-hidden="true">Clique ou toque para acessar o conteúdo</p>
+            <div class="row no-print" aria-hidden="true">
+              <div class="col-sm-6 col-xs-12">
+                <a href="index.html?page=2" class="btn-frameworks btn-JUnit" target="_blank"><span class="sr-only">JUnit</span></a>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <a href="index.html?page=3" class="btn-frameworks btn-Mockito" target="_blank"><span class="sr-only">Mockito</span></a>
+              </div>
+            </div>
+
+            <div class="no-print" aria-hidden="true">
+              <h3>Encerramento</h3>
+              <div class="row mt-40">
+                <div class="col-md-3 col-xs-12">
+                  <img src="imgs/img_conclusao.png" class="img-responsive center-block mt-20 no-print" aria-hidden="true">
+                </div>
+                <div class="col-md-9 col-xs-12">
+                  <p>Neste conteúdo, foi possível verificar diversos aspectos da utilização dos <i>frameworks</i> JUnit e Mockito em testes unitários. Por meio de diversos exemplos, foi possível verificar quanto o uso desses <i>frameworks</i> trazem mais praticidade na construção e na execução dos testes. </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Botão JUnit -->
+          <div class="pagina">
+            <h3>JUnit</h3>
+            <p>JUnit é um <i>framework</i> de testes em Java que facilita a escrita de testes confiáveis e eficientes. Ele pode ser usado para <i>softwares</i> feitos na maioria das linguagens, mas é particularmente adequado para testar aplicativos Java. </p>
+            <p>A estrutura JUnit oferece vários recursos que facilitam a escrita de testes, incluindo suporte para vários casos de teste, asserções e executores de teste. Ele permite que você crie e execute testes com eficiência e tornou-se uma das estruturas de teste Java mais populares e amplamente utilizadas. O JUnit é usado principalmente para testes de unidade, mas também pode ser usado para outros testes, como funcionais e de integração.</p>
+            <p>A seguir, você verá as anotações e as <i>assertions</i>. Além disso, saberá como criar testes unitários com JUnit no NetBeans, com diversos exemplos.</p>
+            <h4>Definindo métodos de teste</h4>
+            <p>O JUnit usa anotações para marcar métodos como métodos de teste e para configurá-los antes e depois da execução do teste. </p>
+            <p>A tabela a seguir apresenta um resumo das principais anotações do JUnit 4. Todas essas anotações podem ser usadas nos métodos de teste.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Anotação</th>
+                    <th>Descrição</th>
+                  </tr>
+                  <tr>
+                    <td>@Test</td>
+                    <td>Indica que o método ao qual está anexado pode ser executado como um caso de teste.</td>
+                  </tr>
+                  <tr>
+                    <td>@Before</td>
+                    <td>Indica que esse método deve ser executado antes de cada teste da classe, de forma a executar algumas pré-condições necessárias para o teste.</td>
+                  </tr>
+                  <tr>
+                    <td>@BeforeClass</td>
+                    <td>Indica que o método estático ao qual está anexado deve ser executado uma vez e antes de todos os testes da classe. Isso acontece quando os métodos de teste compartilham configuração computacionalmente cara (por exemplo, conectar ao banco de dados).</td>
+                  </tr>
+                  <tr>
+                    <td>@After</td>
+                    <td>Indica que esse método é executado após a execução de cada teste (por exemplo, redefinir algumas variáveis após a execução de cada teste, excluir variáveis temporárias etc.).</td>
+                  </tr>
+                  <tr>
+                    <td>@AfterClass</td>
+                    <td>Pode ser usada quando um método precisa ser executado após a execução de todos os testes em uma classe de teste com JUnit. Por exemplo: limpar a configuração; desconectar de um banco de dados. </td>
+                  </tr>
+                  <tr>
+                    <td>@Ignore</td>
+                    <td>Pode ser utilizada quando se deseja desabilitar temporariamente a execução de um teste específico. </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 1 – Principais anotações do JUnit 4 <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <div class="caixa-destaque borda-primaria-03 icone atencao">
+              <p>As anotações <b>@BeforeClass</b> e <b>@AfterClass</b> devem ser utilizadas em métodos definidos como estáticos.</p>
+            </div>
+            <h4>Usando <i>assertions</i></h4>
+            <p>As <i>assertions</i> são uma parte fundamental nos testes unitários. Elas permitem verificar o comportamento esperado de um sistema. O JUnit fornece um conjunto de métodos de asserção para você verificar se uma condição testada é verdadeira e, além disso, apresenta os resultados de um teste. Isso ajuda a evitar <i>bugs</i> e falhas no seu código. Todas as <i>assertions</i> estão na classe <b>Assert</b>.</p>
+            <p>Agora que você já tem uma visão geral, veja como utilizar as <i>assertions</i> no JUnit:</p>
+            <p><b>assertEquals:</b> verifica se dois valores são iguais.</p>
+            <pre>
+              <code>
+@Test
+public void testaStringsIguais() {
+    String expectativa = "SENAC";
+    String atual = "SENAC"; 
+    assertEquals(expectativa, atual);
+}
+              </code>
+            </pre>
+            <p><b>assertArrayEquals:</b> afirmar que dois <i>arrays</i> são iguais.</p>
+            <pre>
+              <code>
+@Test
+public void testaArrayIguais() {
+    char[] expectativa = {'J', 'u', 'n', 'i', 't'};
+    char[] atual = "Junit".toCharArray();
+    assertArrayEquals(expectativa, atual);
+}
+              </code>
+            </pre>
+            <p><b>assertNull:</b> verificar se um objeto, ou uma variável, é nulo.</p>
+            <pre>
+              <code>
+@Test
+public void testaEhNullo() {
+    String nome = null;
+    assertNull("Variável é nula", nome);
+}
+              </code>
+            </pre>
+            <p><b>assertNotNull:</b> verificar se um objeto, ou uma variável, não pode ser nulo.</p>
+            <pre>
+              <code>
+@Test
+public void testaNaoNullo() {
+    String nome = "SENAC";
+    assertNotNull("Variável não é nula", nome);
+}
+              </code>
+            </pre>
+            <p><b>assertNotSame e assertSame:</b> com <b>assertNotSame</b>, verificar se duas variáveis não se referem ao mesmo objeto; com <b>assertSame</b>, verificar se duas variáveis se referem ao mesmo objeto.</p>
+            <pre>
+              <code>
+@Test
+public void testaObjetosDiferentes() {
+    Object gato = new Object();
+    Object cachorro = new Object();
+     assertNotSame(cachorro, gato);
+}
+              </code>
+            </pre>
+            <p><b>assertTrue e assertFalse:</b> verificar se uma determinada condição é verdadeira ou falsa (usar, respectivamente, <b>assertTrue</b> ou <b>assertFalse</b>).</p>
+            <pre>
+              <code>
+@Test
+public void testeCondicaoVerdadeFalse() {
+    assertTrue("5 é maior que 4", 5 > 4);
+    assertFalse("5 não é maior que 6", 5 > 6);
+}
+              </code>
+            </pre>
+            <p><b>assertThat:</b> verificar se um <i>array</i> contém valores específicos.</p>
+            <pre>
+              <code>
+@Test
+public void testAssertThatHasItems() {
+    assertThat(
+      Arrays.asList("Java", "JUnit", "Test"), 
+      hasItems("Java", "SENAC"));
+}
+              </code>
+            </pre>
+            <h4>Exemplo de teste unitário com JUnit 4 no NetBeans IDE</h4>
+            <p>A seguir, você verá os fundamentos da escrita e execução de testes unitários usando JUnit 4 no NetBeans IDE (<i>integrated development environment</i>, ou ambiente de desenvolvimento integrado). Como já visto, testar um <i>software</i> é parte integrante no ciclo de desenvolvimento de <i>software</i>, por isso escrever e manter testes de unidade podem ajudar e garantir que métodos individuais em seu código-fonte funcionem corretamente.</p>
+            <p>O NetBeans IDE tem suporte para estrutura de testes com JUnit. Isso permite que desenvolvedores criem casos de testes rapidamente. Embora existam inúmeros <i>plugins</i> úteis disponíveis, esse exemplo de aplicabilidade ficará concentrado apenas na criação dos casos de teste.</p>
+            <p>Crie um teste unitário usando JUnit para a classe <b>Calculadora</b>. Para isso, clique com o botão direito do <i>mouse</i> em <b>Test Packages</b> > <b>New</b> > <b>Other</b> > <b>Unit Tests</b> > <b>JUnit Test</b>.</p>
+            <img src="imgs/figura_01.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_01.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_01.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 1 – Criando uma classe de teste com JUnit <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">À esquerda, painel <b>Projetos</b> do NetBeans com a pasta <b>Test Packages</b> selecionada e menu <i>pop-up</i> aberto com a opção <b>New</b> selecionada, revelando um submenu onde a opção <b>Other</b> está selecionada. À direita, janela de criação de novo arquivo (<b>New File</b>), onde está selecionado no campo <b>Categorias</b> a opção <b>Unit Tests</b>. À direita desse campo, no campo <b>File Types</b>, está selecionada a opção <b>JUnit Test</b>.</p>
+            <p>Em <b>Class name</b>, informe o nome da classe de teste, por exemplo <b>TestaCalculadoraJUnit</b>. Em <b>Package</b>, informe ou selecione o pacote onde foi criada a classe <b>Calculadora</b>. Nesse exemplo, o pacote é “calculadora”. Por fim, marque todas as opções em <b>Generated Code</b> e <b>Generated Comments</b>.</p>
+            <img src="imgs/figura_02.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_02.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_02.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 2 – Definindo o nome, <i>package</i> da classe <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Janela de criação de novo teste com JUnit Test no NetBeans. Destacados os campos <b>Class Name</b> com o nome da classe “TestaCalculadoraJUnit” e <b>Package</b> com o nome do pacote “calculadora”. Em <b>Generated Code</b> e <b>Generated Comments</b>, todas as opções estão selecionadas. Abaixo, o botão <b>Finish</b> está destacado.</p>
+            <p>A seguir, veja o código da classe <b>TestaCalculadoraJUnit</b>, que tem o papel de testar os métodos da classe <b>Calculadora</b>.</p>
+            <pre>
+              <code>
+package calculadora;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TestaCalculadoraJUnit {
+    
+    private Calculadora calc;
+
+    public TestaCalculadoraJUnit() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+        calc = new Calculadora();
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
+    public void testaSoma() {
+        int resultado = calc.somar(2, 5);
+        int valorEsperado = 7;
+        assertEquals(resultado, valorEsperado);
+    }
+}
+              </code>
+            </pre>
+            <p>Agora, você entenderá o código anterior. Inicialmente, é possível ver que, no método <b>setUp()</b>, há a anotação <b>@Before</b>. Como visto anteriormente, é um espaço de preparação para a execução dos testes, em que se faz a instanciação de objetos necessários e a configuração de objetos ou de conexão com o banco de dados, se houver. Nesse exemplo, está sendo instanciado o objeto <b>calc</b> da classe <b>Calculadora</b> que está sendo testada.</p>
+            <p>Em um segundo momento, verifique que existe a anotação <b>@Test</b>, acima do método <b>testaSoma()</b>. Essa anotação indica que o método <b>public void testaSoma()</b> ao qual está sendo anexada pode ser executado como um caso de teste. </p>
+            <p>No corpo do método, é possível notar que há uma variável inteira <b>resultado</b>, que recebe o resultado da soma dos números 2 e 5 que ocorre por meio da chamada do método <b>somar</b>. Há também a variável <b>valorEsperado</b>, sendo atribuído 7. Por fim, na última linha, há a <b>assertEquals</b>, que é um método fornecido pela classe <b>Assert</b> do JUnit, responsável por receber dois objetos ou variáveis e afirmar que ambos são iguais.</p>
+            <p>Para executar o teste dessa classe, clique com o botão direito do <i>mouse</i> sobre a classe <b>TestaCalculadoraJUnit</b>, selecionando <b>Test File</b> ou aperte <b>Ctrl</b> + <b>F6</b>. Observe a imagem a seguir, em que o resultado do teste foi apresentado com sucesso.</p>
+            <img src="imgs/figura_03.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_03.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_03.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 3 – Como executar o teste e apresentar os resultados <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">No painel de projetos do NetBeans, projeto “Calculadora”, dentro da pasta <b>Test Packages</b>, no pacote “calculadora”, classe “TestaCalculadoraJUnit” está selecionada e está aberto um menu <i>pop-up</i> com a opção <b>TestFile</b> selecionada. Abaixo, é apresentando o painel do resultado do teste realizado. Um faixa verde indica que 100% dos testes foram realizados e um bola verde indica que o método <b>testaSoma</b> está em sucesso.</p>
+            <p>Agora, você retornará à situação do método <b>dividir</b> da classe <b>Calculadora</b>, em que o desenvolvedor esqueceu de tratar a divisão por zero. </p>
+            <p>Na classe de teste <b>TestaCalculadoraJUnit</b>, crie o método <b>testaDivisao()</b>, informando os valores 3 e 0.</p>
+            <pre>
+              <code>
+@Test
+public void testaDivisao() {
+    int resultado = calc.dividir(3, 0);
+    int valorEsperado = 1;
+    assertEquals(resultado, valorEsperado);        
+}
+              </code>
+            </pre>
+            <p>Execute o teste novamente, clicando com o botão direito do <i>mouse</i> sobre a classe <b>TestaCalculadoraJUnit</b>, selecionando a opção <b>Test File</b> ou aperte <b>Ctrl</b> + <b>F6</b>. </p>
+            <p>Veja, agora, o resultado em que o JUnit aponta o erro e ainda apresenta a possível causa. Isso realmente é fantástico, pois o teste consegue interceptar um problema e até mesmo apresentar a causa para correções.</p>
+            <img src="imgs/figura_04.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_04.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_04.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 4 – Execução do teste com erros <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Painel de resultado do teste, com uma faixa em vermelho indicando que o método “testaDivisao” apresentou erro causado pela divisão por zero.</p>
+            <h4>Teste parametrizado</h4>
+            <p>O teste parametrizado permite que um teste seja executado diversas vezes usando valores diferentes. Ele ajuda o desenvolvedor a economizar tempo na execução de um mesmo teste, que difere apenas em suas entradas e seus resultados esperados. </p>
+            <p>Para exemplificar, ajuste a classe <b>TestaCalculadoraJUnit</b>, realizando os seguintes passos:</p>
+            <p><b>Passo 1:</b> crie três atributos privados do tipo <i>int</i>, <b>primeiroNumero</b>, <b>segundoNumero</b> e <b>resultadoEsperado</b>. </p>
+            <p>Você deve informar, acima do nome da classe, que ela é de teste parametrizado, por meio da anotação <b>@RunWith(Parameterized.class)</b>.</p>
+            <p><b>Passo 2:</b> o método <b>construtor</b> deverá agora receber os dados que serão testados e alimentar os três atributos privados criado no passo 1.</p>
+            <p><b>Passo 3:</b> esta classe deverá conter um método estático com retorno do tipo <b>Collection</b> e anotação <b>@Parameters</b>. Esse método gera e retorna uma coleção de <i>arrays</i>. Cada item dessa coleção é usado como parâmetro para o método de teste, informando os dados de entrada e o resultado esperado.</p>
+            <p>Exemplos:</p>
+            <p>
+              {1,2,3}, onde 1 e 2 (números a serem somados) e 3 (resultado esperado). <br>
+              {11,22,35}, 11 e 22 (números a serem somados) e 35 (resultado esperado).
+            </p>
+            <p>Observe que o correto seria 33, entretanto você estará validando como o teste se comporta com resultados indesejados.</p>
+            <p><b>Passo 4:</b> no método <b>testaSoma()</b>, os números a serem somados e o resultado esperado serão provenientes dos atributos privados da classe, que serão gerados no passo 3.</p>
+            <p>O código a seguir mostra um exemplo de um teste parametrizado:</p>
+            <pre>
+              <code>
+package calculadora;
+
+import java.util.Arrays;
+import java.util.Collection;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+@RunWith(Parameterized.class)
+public class TestaCalculadoraJUnit {
+
+    private Calculadora calc;
+    private int primeiroNumero;
+    private int segundoNumero;
+    private int resultadoEsperado;
+
+    public TestaCalculadoraJUnit(int n1, int n2, int esperado) {
+        this.primeiroNumero = n1;
+        this.segundoNumero = n2;
+        this.resultadoEsperado = esperado;
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+        calc = new Calculadora();
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Parameters
+    public static Collection&lt;Object[]> entradas() {
+       return Arrays.asList(
+            new Object[][] {
+                {1,2,3},
+                {11,22,35},
+                {111,222,333},
+                {10,9,19}
+            }
+       );
+    }
+
+    @Test
+    public void testaSoma() {
+        int resultado = calc.somar(primeiroNumero, segundoNumero);
+        assertEquals(resultado, resultadoEsperado);
+    }
+}
+              </code>
+            </pre>
+            <p>Para executar esses testes detalhados, clique com o botão direito do <i>mouse</i> sobre a classe <b>TestaCalculadoraJUnit</b>, selecionando <b>Test File</b> ou aperte <b>Ctrl</b> + <b>F6</b>.</p>
+            <img src="imgs/figura_05.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_05.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_05.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 5 – Resultado dos testes <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Painel de resultado do teste, com uma faixa em vermelho indicando que 75% dos testes foram executados com sucesso, com bolas em verde. Já o método “testaSoma” apresentou erro (imagem de alerta com o motivo). Apresenta falha, pois o resultado da soma deveria ser 33, mas retornou 35.</p>
+            <p>Em razão do segundo caso, em que o resultado esperado seria 33, porém foi informado 35, o teste retorna com erro. Dessa forma, 75% dos testes passaram.</p>
+            <h4>Outros exemplos com <i>assertion</i></h4>
+            <p>Agora, você criará outra classe de teste. Para isso, clique com o botão direito do <i>mouse</i> em <b>Test Packages</b> > <b>New</b> > <b>Other</b> > <b>Unit Tests</b> > <b>JUnit Test</b>. Informe o nome da classe <b>TestaExemplosAssertion</b>.</p>
+            <p>Crie o seguinte teste:</p>
+            <pre>
+              <code>
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class TestaExemplosAssertion {
+
+    public TestaExemplosAssertion() {
+    }
+
+    @Test
+    public void test() {
+        String obj1 = "junit";
+        String obj2 = "junit";
+        String obj3 = "test";
+        String obj4 = "test";
+        String obj5 = null;
+        int var1 = 1;
+        int var2 = 2;
+        int[] arithmetic1 = {1, 2, 3};
+        int[] arithmetic2 = {1, 2, 3};
+
+        assertEquals(obj1, obj2);
+        assertSame(obj3, obj4);
+        assertNotSame(obj2, obj4);
+        assertNotNull(obj1);
+        assertNull(obj5);
+        assertTrue(var2 > var1);
+        assertArrayEquals(arithmetic1, arithmetic2);
+    }
+
+}
+              </code>
+            </pre>
+            <p>Na classe anterior, é possível ver como esses métodos <b>assert</b> funcionam.</p>
+            <ul class="bolinha">
+              <li>O método <b>assertEquals()</b> retornará normalmente se os dois objetos comparados forem iguais. Caso contrário, uma falha será exibida na janela do JUnit e o teste será abortado.</li>
+              <li>Os métodos <b>assertSame()</b> e <b>assertNotSame()</b> testam se duas referências de objeto apontam exatamente para o mesmo objeto.</li>
+              <li>Os métodos <b>assertNull()</b> e <b>assertNotNull()</b> testam se uma variável é nula ou não nula.</li>
+              <li>Os métodos <b>assertTrue()</b> e <b>assertFalse()</b> testam se uma condição ou uma variável é verdadeira ou falsa.</li>
+              <li>O método <b>assertArrayEquals()</b> comparará os dois <i>arrays</i> e, se forem iguais, prosseguirá sem erros. Caso contrário, uma falha será exibida na janela do JUnit e o teste será abortado.</li>
+            </ul>
+            <p>Para executar esses testes detalhados, clique com o botão direito do <i>mouse</i> sobre a classe <b>TestaExemplosAssertion</b> selecionando <b>Test File</b> ou aperte <b>Ctrl</b> + <b>F6</b>.</p>
+            <img src="imgs/figura_06.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_06.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_06.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 6 – Resultado dos testes <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Painel do resultado do teste realizado. Um faixa verde indica que 100% dos testes foram realizados e um bola verde indica que o método “calculadora.TestaExemplosAssertion” está em sucesso.</p>
+            <p>Pratique com mais um exemplo passo a passo. Abra o NetBeans e acompanhe a montagem desses testes unitários. Antes de copiar os códigos de teste, tente desenvolvê-los por conta.</p>
+            <p><b>Passo 1:</b> crie um projeto com Java Ant, clicando em <b>File</b> > <b>New Project</b> > <b>Biblioteca</b>.</p>
+            <p><b>Passo 2:</b> crie a classe <b>Livro</b> com três atributos privados: <b>livroId</b> tipo <i>int</i>, <b>titulo</b> tipo <i>String</i> e <b>anoPublicacao</b> tipo <i>int</i>. Crie os métodos <b>construtor</b>, <b>get</b> e <b>set</b>.</p>
+            <pre>
+              <code>
+package biblioteca;
+
+public class Livro {
+
+    private int livroId;
+    private String titulo;
+    private int anoPublicacao;
+
+    public Livro(int livroId, String titulo, int anoPublicacao) {
+        this.livroId = livroId;
+        this.titulo = titulo;
+        this.anoPublicacao = anoPublicacao;
+    }    
+
+    public int getLivroId() {
+        return livroId;
+    }
+
+    public void setLivroId(int livroId) {
+        this.livroId = livroId;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
+
+    public void setAnoPublicacao(int anoPublicacao) {
+        this.anoPublicacao = anoPublicacao;
+    }
+   
+}
+              </code>
+            </pre>
+            <p><b>Passo 3:</b> crie a classe <b>LivroService</b> que contenha uma lista de livros privada com os seguintes métodos:</p>
+            <ul class="bolinha">
+              <li><b>adicionarLivro</b>: responsável por inserir um livro na lista.</li>
+              <li><b>listarLivros</b>: retorna uma lista com todos os livros.</li>
+              <li><b>getLivroPorId</b>: recebe o <b>id</b> de um livro e retorna o objeto <b>Livro</b>, caso exista.</li>
+              <li><b>listarTitulosPorPublicacao</b>: recebe o ano e retorna uma lista de títulos dos livros que foram publicados no ano informado.</li>
+            </ul>
+            <pre>
+              <code>
+package biblioteca;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class LivroService {
+
+    private List&lt;Livro> livros = new ArrayList&lt;>();
+
+    public void adicionarLivro(Livro livro) {
+        livros.add(livro);
+    }
+
+    public List&lt;Livro> listarLivros() {
+        return livros;
+    }
+
+    public Livro getlivroPorId(int livroId) {
+        for (Livro livro : livros) {
+            if (livroId == livro.getLivroId()) {
+                return livro;
+            }
+        }
+        return null;
+    }
+
+    public List&lt;String> listarTitulosPorPubicacao(int ano) {
+        List&lt;String> listaTitulos = new ArrayList&lt;>();
+        for (Livro livro : livros) {
+            if (ano == livro.getAnoPublicacao()) {
+                listaTitulos.add(livro.getTitulo());
+            }
+        }
+        return listaTitulos;
+    }
+
+}
+              </code>
+            </pre>
+            <p><b>Passo 4:</b> crie um teste unitário usando JUnit para a classe <b>LivroService</b>. Para isso, no NetBeans:</p>
+            <ul class="bolinha">
+              <li>Clique com o botão direito do <i>mouse</i> sobre a classe <b>LivroService</b> > <b>Tools</b> > <b>Create/Update Testes</b>.</li>
+              <li>Indique a versão JUnit 4 em <i>framework</i> e clique em <b>Ok</b>. Observe que será criada no NetBeans a classe em <b>Test Packages</b> > <b>Biblioteca</b> > <b>LivroServiceTest</b>.</li>
+              <li>Na classe <b>LivroServiceTest</b>, crie atributo <b>livroService</b>, sendo privado e do tipo <b>LivroService</b>.</li>
+              <li>No método <b>setUp()</b>, verifique se existe a anotação <b>@Before</b>. Cria uma instância para o objeto <b>livroService</b> e inclua dois livros:</li>
+              <ul class="cor01">
+                <li><b>id 1</b>, nome “Java” e publicado em 2019</li>
+                <li><b>id 2</b>, nome “Testes Unitários” e publicado em 2023</li>
+              </ul>
+            </ul>
+            <pre>
+              <code>
+package biblioteca;
+import java.util.List;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class LivroServiceTest {
+
+    private LivroService livroService;
+
+    public LivroServiceTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+        livroService = new LivroService();
+        Livro livro1 = new Livro(1, "Java", 2019);
+        livroService.adicionarLivro(livro1);
+        Livro livro2 = new Livro(2, "Testes Unitários com JUnit", 2023);
+        livroService.adicionarLivro(livro2);
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
+    public void testar() {
+
+    }
+
+}
+              </code>
+            </pre>
+            <p><b>Passo 5:</b> crie testes unitários com a anotação <b>@Test</b>.</p>
+            <ul class="bolinha">
+              <li>Teste unitário 1: testar se a biblioteca tem ao menos dois livros cadastrados.</li>
+            </ul>
+            <pre>
+              <code>
+@Test
+public void testar_listaPossuiAoMenosDoisLivros() {
+    assertTrue(livroService.listarLivros().size()>=2);
+}
+              </code>
+            </pre>
+            <ul class="bolinha">
+              <li>Teste unitário 2: testar se o nome do primeiro livro do acervo da biblioteca tem o nome de “Java”.</li>
+            </ul>
+            <pre>
+              <code>
+@Test
+public void testar_primeiroLivroPossuiNomeJava() {
+    Livro livroAtual = livroService.getlivroPorId(1);
+    assertEquals("Java",livroAtual.getTitulo());
+}
+              </code>
+            </pre>
+            <ul class="bolinha">
+              <li>Teste unitário 3: testar se a biblioteca tem alguma publicação de livro no ano de 2000.</li>
+            </ul>
+            <pre>
+              <code>
+@Test
+public void testar_livrosPublicadosEm2000() {
+    assertTrue(livroService.listarTitulosPorPubicacao(2000).size()>0);
+}
+              </code>
+            </pre>
+
+            <a href="index.html?page=1" class="botao bg-primaria-03 texto-primaria-02 btn-inicio no-print" onclick="window.close();">Tela Inicial</a>
+          </div>
+
+          <!-- Botão Mockito -->
+          <div class="pagina">
+            <h3>Mockito</h3>
+            <p>O termo <i>mock</i> é utilizado em testes para descrever um caso especial de objetos que imitam objetos reais do sistema. São normalmente criados para testar o comportamento de outros objetos. Em outras palavras, os objetos <i>mock</i> são objetos “falsos” que simulam o comportamento de uma classe ou objeto “real” para que seja possível focar o teste na unidade a ser testada.</p>
+            <p>Mockito é um <i>framework</i> em Java usado em conjunto com o JUnit. Ele permite criar e configurar objetos fictícios nos testes unitários. O uso do Mockito simplifica significativamente o desenvolvimento de testes para classes com dependências externas.</p>
+            <div class="caixa-destaque-livre borda-primaria-03">
+              <p>Antes de usar a técnica <i>mock</i>, você deve saber quais são as principais vantagens dela:</p>
+              <ul class="seta">
+                <li>Se você quer testar um componente que depende de outro, mas está em desenvolvimento, pode usar essa técnica. Geralmente é usada quando se trabalha em equipe e as atividades são divididas entre vários colegas de equipe. Nesse caso, o uso de <i>mock</i> desempenha um papel essencial no teste desse componente, criando objetos que simulam o comportamento do que ainda está sendo desenvolvido. Sem <i>mock</i>, é preciso aguardar a conclusão dos elementos necessários para o teste.</li>
+                <li>Se os componentes reais executam operações lentas ao manipular com conexões de banco de dados ou outra operação complexa de leitura/gravação, você pode usar <i>mock</i>. Às vezes, as consultas ao banco de dados podem levar 10, 20 ou mais segundos para serem executadas. Nesses casos, você pode utilizar objetos fictícios para realizar testes que apenas retornam dados para teste, mas que os criam e retornam direto da memória, ao invés de buscá-los no banco de dados.</li>
+              </ul>
+            </div>
+            <h4>Anotações do Mockito</h4>
+            <p>A seguir, veja as principais anotações.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Anotação</th>
+                    <th>Definição</th>
+                  </tr>
+                  <tr>
+                    <td>@Mock</td>
+                    <td>Cria uma instância de uma classe, porém “mocada”. Se você chamar um método, ele não chamará o método real.</td>
+                  </tr>
+                  <tr>
+                    <td>@InjectMocks</td>
+                    <td>Cria uma instância e injeta as dependências necessárias que estão anotadas com <b>@Mock</b>.</td>
+                  </tr>
+                  <tr>
+                    <td>@RunWith</td>
+                    <td>
+                      Responsável por fazer que todas as anotações do Mockito funcionem. Essa anotação deverá ficar anexada em cima do nome da classe que será testada: <br>
+                      <b>@RunWith(MockitoJUnitRunner.class)</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 2 – Principais anotações do Mockito <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <h4>Utilizando Mockito no NetBeans com banco de dados</h4>
+            <p>Para utilizar o Mockito no NetBeans, você precisa do JAR, que pode ser baixado diretamente nos repositórios do Maven.</p>
+            <p>Em seu buscador, digite “Maven Repository Mockito All”, acesse o <i>site</i> Maven Repositoty, selecione a versão mais estável e baixe o arquivo JAR. Nesse exemplo, será adotada a versão 1.10.19, como nome do arquivo “mockito-all-1.10.19.jar”. Podem existir versões mais recentes disponíveis no momento do seu acesso.</p>
+            <p>Agora, crie uma aplicação nova no NetBeans:</p>
+            <p><b>Passo 1:</b> crie um projeto no NetBeans com Java Ant com nome de “Agenda”.</p>
+            <p><b>Passo 2:</b> Adicione o JAR do Mockito baixado anteriormente. Para isso, clique com o botão direito do <i>mouse</i> em <b>Libraries</b> > <b>Add Jar/Folder</b>. Em seguida, vá para o local onde você baixou o JAR e clique em <b>Ok</b>.</p>
+            <p><b>Passo 3:</b> crie a classe <b>Contato</b> com três atributos privados: <b>contatoId</b> tipo <i>int</i>, <b>nome</b> tipo <i>String</i> e <b>telefone</b> tipo <i>String</i>. Crie os métodos <b>construtor</b>, <b>get</b> e <b>set</b>.</p>
+            <pre>
+              <code>
+package agenda;
+
+public class Contato {
+
+    private int contatoId;
+    private String nome;
+    private String telefone;
+
+    public Contato() {
+    }
+
+    public Contato(int contatoId, String nome, String telefone) {
+        this.contatoId = contatoId;
+        this.nome = nome;
+        this.telefone = telefone;
+    }
+
+    public int getContatoId() {
+        return contatoId;
+    }
+
+    public void setContatoId(int contatoId) {
+        this.contatoId = contatoId;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+}
+              </code>
+            </pre>
+            <p><b>Passo 4:</b> crie a classe <b>ContatoDao</b>, com os métodos <b>conectar()</b>,<b>salvar()</b>,<b>consultar()</b> e <b>desconectar()</b>.</p>
+            <pre>
+              <code>
+package agenda;
+
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class ContatoDao {
+
+    Connection conn;
+    PreparedStatement st;
+    ResultSet rs;
+
+    public boolean conectar() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/exemplo_senac", "root", "");
+            return true;
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println("Erro ao conectar: " + ex.getMessage());
+            return false;
+        }
+    }
+
+    public int salvar(Contato contato) {
+        int status;
+        try {
+            st = conn.prepareStatement("INSERT INTO Contatos VALUES(?,?,?)");
+            st.setInt(1, contato.getContatoId());
+            st.setString(2, contato.getNome());
+            st.setString(3, contato.getTelefone());
+            status = st.executeUpdate();
+            return status; 
+        } catch (SQLException ex) {
+            System.out.println("Erro ao conectar: " + ex.getMessage());
+            return ex.getErrorCode();
+        }
+    }
+
+    public Contato consultar(int id) {
+
+        try {
+            Contato contato = new Contato();
+            st = conn.prepareStatement("SELECT * from Contatos WHERE livroId = ?");
+            st.setInt(1, id);
+            rs = st.executeQuery();
+            
+            if (rs.next()) { 
+                contato.setContatoId(rs.getInt("contatoId"));
+                contato.setNome(rs.getString("nome"));
+                contato.setTelefone(rs.getString("telefone"));
+                return contato;
+            } else {
+                return null;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro ao conectar: " + ex.getMessage());
+            return null;
+        }
+    }
+
+    public void desconectar() {
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+        }
+    }
+
+}
+              </code>
+            </pre>
+            <p><b>Passo 5:</b> no banco de dados MySQL, crie o banco de dados <b>exemplo_senac</b> e a tabela <b>Livro</b> com a seguinte estrutura:</p>
+            <pre>
+              <code>
+use exemplo_senac;
+
+create table Livro(
+    livroId int(11) auto_increment,
+    titulo varchar(100),
+    anoPublicacao int(4),
+    primary key (livroId)
+);
+              </code>
+            </pre>
+            <p><b>Passo 6:</b> crie um teste unitário usando JUnit para a classe <b>ContatoDao</b>. Para isso, no NetBeans:</p>
+            <ul class="bolinha">
+              <li>Clique com o botão direito do <i>mouse</i> sobre a classe <b>ContatoDao</b> > <b>Tools</b> > <b>Create/Update Testes</b>.</li>
+              <li>Indique a versão JUnit 4 em <i>framework</i> e clique em <b>Ok</b>. Observe que será criada no NetBeans a classe em <b>Test Packages</b> > <b>Agenda</b> > <b>ContatoDaoTest</b>.</li>
+              <li>Informe, acima do nome da classe, que ela usará o Mockito com JUnit, por meio da anotação <b>@RunWith(MockitoJUnitRunner.class)</b>.</li>
+              <li>Crie o atributo privado <b>contatoDao</b> do tipo <b>ContatoDao</b> anexando a anotação <b>@Mock</b>.</li>
+              <li>Crie o método <b>public void TestaContatos()</b> com a anotação <b>@Test</b>. Observe que uma instância da classe <b>contatoDao</b> foi “mocada”, então, quando for perguntado sobre o contato com <b>id</b> = 1, ele retornará “SENAC EAD” com telefone “51 99555544”. Em seguida, é verificado se o <i>mock</i> funciona ou não, verificando o método <b>consultar(1)</b>.</li>
+            </ul>
+            <p>Repare que se está usando <b>assertEquails</b>, que verifica se o resultado “mocado” é igual ao esperado.</p>
+            <pre>
+              <code>
+package agenda;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
+
+@RunWith(MockitoJUnitRunner.class)
+public class ContatoDaoTest {
+
+    @Mock
+    private ContatoDao contatoDao;
+
+    public ContatoDaoTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    @Test
+    public void TestaContatos() {
+        Contato contato1 = new Contato(1, "SENAC EAD", "51 99555544");
+        Mockito.when(contatoDao.consultar(1)).thenReturn(contato1);
+
+        Contato l = contatoDao.consultar(1);
+        assertEquals(l.getNome(), "SENAC EAD");
+        assertEquals(l.getTelefone(), "51 99555544");
+    }
+}
+              </code>
+            </pre>
+            <p>Para executar os testes detalhados anteriormente, clique com o botão direito do <i>mouse</i> sobre a classe <b>ContatoDaoTest</b> selecionando <b>Test File</b> ou aperte <b>Ctrl</b> + <b>F6</b>.</p>
+            <img src="imgs/figura_07.png" class="center-block img-responsive hidden-sm hidden-xs print">
+            <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+            <a href="imgs/figura_07.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img src="imgs/figura_07.png" class="center-block img-responsive"></a>
+            <p class="legenda-imagem">
+              Figura 7 – Resultado dos testes <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Painel do resultado do teste realizado. Um faixa verde indica que 100% dos testes foram realizados e um bola verde indica que o método “TestaContato” está em sucesso.</p>
+
+            <a href="index.html?page=1" class="botao bg-primaria-03 texto-primaria-02 btn-inicio no-print" onclick="window.close();">Tela Inicial</a>
+            <div class="acessivel print">
+              <h3>Encerramento</h3>
+              <div class="row mt-40">
+                <div class="col-md-3 col-xs-12">
+                  <img src="imgs/img_conclusao.png" class="img-responsive center-block mt-20 no-print">
+                </div>
+                <div class="col-md-9 col-xs-12">
+                  <p>Neste conteúdo, foi possível verificar diversos aspectos da utilização dos <i>frameworks</i> JUnit e Mockito em testes unitários. Por meio de diversos exemplos, foi possível verificar quanto o uso desses <i>frameworks</i> trazem mais praticidade na construção e na execução dos testes. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+
+    
+    <!-- Modais 100% -->
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

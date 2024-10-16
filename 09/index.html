@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Ferramentas de depuração passo a passo</title>
+
+    <!-- Bootstrap -->
+    <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+    <link href="../template/css/cores.css" rel="stylesheet">
+    <link href="../template/css/modal-100.css" rel="stylesheet">
+    <link href="../template/css/devibeans.min.css" rel="stylesheet">
+      <!--Extras - novas classes para facilitar-->
+      <link rel="stylesheet" href="../template/css/extras.css">
+    <link href="../template/css/sncload.css" rel="stylesheet">
+    <link href="../template/css/magnific-popup.css" rel="stylesheet">
+    <!-- referencia ao arquivo css com estilos especificos da pagina -->
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
+    <!-- css necessario para o print -->
+    <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+    <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+    <!-- MARCA D´ÁGUA -->
+    <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+    <!-- /MARCA D´ÁGUA -->
+
+    <div id='sncloader' class='over-loader'><div class="over-cell"><div id="sncload"></div></div></div>
+    <header id="topo" class="senac no-print">
+        <div  class="header-tecnicos container">
+        	  <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+            <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+        </div>
+        <div id="sombra"></div>
+    </header>
+
+    <div id="booklet" class="container fundo-tecnicos">
+        <header class="no-print">
+          <!-- BTO IMPRIMIR -->
+          <div class="grupo-imprimir no-print">
+            <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+                <span class="fa fa-print"></span> <span>Imprimir</span>
+            </button>
+          </div>
+          <!-- /BTO IMPRIMIR -->
+        </header>
+<!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+        <section class="paginas">
+
+          <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+          <div class="pagina">
+            <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção Grau de pontuação/símbolos, acesse Preferências – Configurações – Fala. Altere o padrão Pouco para Tudo. Dessa forma, o leitor passará a ler os segmentos de código em sua totalidade. </p>
+            
+            <h2>Ferramentas de depuração passo a passo</h2>
+            <p>No contexto de testes, ferramentas que permitam a análise da execução de um código são bem-vindas, especialmente como testes de caixa-branca. Elas permitem a análise do que está acontecendo no código em tempo real.</p>
+            <p>O processo de depuração complementa o processo de testes. Enquanto o teste identifica os erros que acontecem no programa e os efeitos de uma falha, a depuração (ou <i>debugging</i>) serve para localizar onde o erro se origina e planejar como corrigi-lo.</p>
+            <p>Felizmente, os IDEs (<i>integrated development environment</i>, ou ambiente de desenvolvimento integrado), desde 1983, com o lançamento do Borland Turbo Pascal, trazem ferramentas que permitem, baseando-se no ambiente de desenvolvimento, um processo de depuração, incluindo pontos de parada no código, executando passo a passos as instruções programadas e permitindo a visualização dos valores guardados em memória. Esses recursos estão presentes e aprimorados em IDEs modernos, como o NetBeans. </p>
+            <p>A seguir, veja os comandos presentes para a depuração no NetBeans e suas utilizações.</p>
+
+            <h3>Recursos de IDE</h3>
+            <p>De maneira sucinta, é assim que se realiza a depuração automatizada com NetBeans IDE:</p>
+            <div class="hidden-xs no-print" aria-hidden="true">
+              <p>Clique ou toque para visualizar o conteúdo.</p>
+              <div id="carousel1" class="carousel slide no-print borda-primaria-03" data-ride="carousel" data-interval="false" aria-hidden="true">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel1" data-slide-to="1"></li>
+                  <li data-target="#carousel1" data-slide-to="2"></li>
+                  <li data-target="#carousel1" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <img src="imgs/ico_1.png" class="img-responsive center-block mt-20">
+                      </div>
+                      <div class="col-sm-11">
+                        <p>Marcar um <i>breakpoint</i> (ponto de parada) na linha de código desejada. Para fazer isso, deve-se clicar, na barra lateral onde ficam os números das linhas, na linha em que se deseja que a execução pause (ou seja, o programa executará todas as instruções que acontecerem antes da marcada com <i>breakpoint</i>).</p>
+                      </div>
+                    </div>
+                    <img src="imgs/figura_1.jpg" class="img-responsive center-block">
+                    <p class="legenda-imagem">
+                      Figura 1 – <i>Breakpoint</i> posicionado na linha 18 do código <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Tela do NetBeans com trecho de código mostrando a linha 18 com um ícone de quadrado cor salmão sobre o número da linha, e a linha de código com fundo em cor salmão.</p>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <img src="imgs/ico_2.png" class="img-responsive center-block mt-20">
+                      </div>
+                      <div class="col-sm-11">
+                        <p>Acionar a depuração pelo ícone <b>Debug Project</b> na barra principal de ferramentas.</p>
+                      </div>
+                    </div>
+                    <img src="imgs/figura_2.jpg" class="img-responsive center-block">
+                    <p class="legenda-imagem">
+                      Figura 2 – Ícone <b>Debug Project</b> <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Detalhe da barra de ferramentas do NetBeans destacando o ícone <b>Debug Project</b>, à direita do ícone de <i>play</i>.</p>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <img src="imgs/ico_3.png" class="img-responsive center-block mt-20">
+                      </div>
+                      <div class="col-sm-11">
+                        <p>Acionar a barra de ferramentas de <i>debug</i>, o que acontece quando se aciona o <i>debug</i>. Em breve, cada um desses recursos será relembrado.</p>
+                      </div>
+                    </div>
+                    <img src="imgs/figura_3.jpg" class="img-responsive center-block">
+                    <p class="legenda-imagem">
+                      Figura 3 – Ferramentas de <i>debug</i> do NetBeans <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">Detalhe da barra principal de ferramentas do NetBeans destacando a sequência de ícones para as funcionalidades de <i>debug</i>.</p>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="col-sm-1">
+                        <img src="imgs/ico_4.png" class="img-responsive center-block mt-20">
+                      </div>
+                      <div class="col-sm-11">
+                        <p>Avançar linha a linha por meio das ferramentas de <i>debug</i>.</p>
+                      </div>
+                    </div>
+                    <p>No momento em que está pausada a execução em um <i>breakpoint</i>, é possível utilizar um dos recursos essenciais da depuração: a visualização dos valores em memória. Para isso, pode-se passar com o <i>mouse</i> sobre o nome de uma variável ou um objeto, e um painel <i>pop-up</i> abrirá com os valores.</p>
+                    <img src="imgs/figura_4.jpg" class="img-responsive center-block">
+                    <p class="legenda-imagem">
+                      Figura 4 – Visualização de valores no editor do NetBeans. Abaixo, a visão expandida, mostrando os valores dos atributos do objeto <b>novaDespesa</b> <br>
+                      Fonte: Senac EAD (2023)
+                    </p>
+                    <p class="acessivel no-print">A figura mostra duas imagens: a de cima é uma imagem do editor mostrando uma linha de código “despesaDao.cadastrar(novaDespesa);” e um <i>pop-up</i> mostrando “>novaDespesa = (br.com.senac.financasjpa.persistencia.Despesa)”. Na imagem abaixo, o <i>pop-up</i> mostra: “novaDespesa”, e abaixo uma tabela com valores “id, int, 0”, “descrição, String, “abc””, “valor, double, 123.0”, “data, LocalData, #2150”.</p>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel1" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="visible-xs no-print" aria-hidden="true">
+              <div>
+                <div class="">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <img src="imgs/ico_1.png" class="center-block mt-20">
+                    </div>
+                    <div class="col-xs-10">
+                      <p>Marcar um <i>breakpoint</i> (ponto de parada) na linha de código desejada. Para fazer isso, deve-se clicar, na barra lateral onde ficam os números das linhas, na linha em que se deseja que a execução pause (ou seja, o programa executará todas as instruções que acontecerem antes da marcada com <i>breakpoint</i>).</p>
+                    </div>
+                  </div>
+                  <img src="imgs/figura_1.jpg" class="img-responsive center-block">
+                  <p class="legenda-imagem">
+                    Figura 1 – <i>Breakpoint</i> posicionado na linha 18 do código <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Tela do NetBeans com trecho de código mostrando a linha 18 com um ícone de quadrado cor salmão sobre o número da linha, e a linha de código com fundo em cor salmão.</p>
+                </div>
+                <div class="">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <img src="imgs/ico_2.png" class="center-block mt-20">
+                    </div>
+                    <div class="col-xs-10">
+                      <p>Acionar a depuração pelo ícone <b>Debug Project</b> na barra principal de ferramentas.</p>
+                    </div>
+                  </div>
+                  <img src="imgs/figura_2.jpg" class="img-responsive center-block">
+                  <p class="legenda-imagem">
+                    Figura 2 – Ícone <b>Debug Project</b> <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Detalhe da barra de ferramentas do NetBeans destacando o ícone <b>Debug Project</b>, à direita do ícone de <i>play</i>.</p>
+                </div>
+                <div class="">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <img src="imgs/ico_3.png" class="center-block mt-20">
+                    </div>
+                    <div class="col-xs-10">
+                      <p>Acionar a barra de ferramentas de <i>debug</i>, o que acontece quando se aciona o <i>debug</i>. Em breve, cada um desses recursos será relembrado.</p>
+                    </div>
+                  </div>
+                  <img src="imgs/figura_3.jpg" class="img-responsive center-block">
+                  <p class="legenda-imagem">
+                    Figura 3 – Ferramentas de <i>debug</i> do NetBeans <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">Detalhe da barra principal de ferramentas do NetBeans destacando a sequência de ícones para as funcionalidades de <i>debug</i>.</p>
+                </div>
+                <div class="">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <img src="imgs/ico_4.png" class="center-block mt-20">
+                    </div>
+                    <div class="col-xs-10">
+                      <p>Avançar linha a linha por meio das ferramentas de <i>debug</i>.</p>
+                    </div>
+                  </div>
+                  <p>No momento em que está pausada a execução em um <i>breakpoint</i>, é possível utilizar um dos recursos essenciais da depuração: a visualização dos valores em memória. Para isso, pode-se passar com o <i>mouse</i> sobre o nome de uma variável ou um objeto, e um painel <i>pop-up</i> abrirá com os valores.</p>
+                  <img src="imgs/figura_4.jpg" class="img-responsive center-block">
+                  <p class="legenda-imagem">
+                    Figura 4 – Visualização de valores no editor do NetBeans. Abaixo, a visão expandida, mostrando os valores dos atributos do objeto <b>novaDespesa</b> <br>
+                    Fonte: Senac EAD (2023)
+                  </p>
+                  <p class="acessivel no-print">A figura mostra duas imagens: a de cima é uma imagem do editor mostrando uma linha de código “despesaDao.cadastrar(novaDespesa);” e um <i>pop-up</i> mostrando “>novaDespesa = (br.com.senac.financasjpa.persistencia.Despesa)”. Na imagem abaixo, o <i>pop-up</i> mostra: “novaDespesa”, e abaixo uma tabela com valores “id, int, 0”, “descrição, String, “abc””, “valor, double, 123.0”, “data, LocalData, #2150”.</p>
+                </div>
+              </div>
+            </div>
+            <div class="acessivel print">
+              <p>1.	Marcar um <i>breakpoint</i> (ponto de parada) na linha de código desejada. Para fazer isso, deve-se clicar, na barra lateral onde ficam os números das linhas, na linha em que se deseja que a execução pause (ou seja, o programa executará todas as instruções que acontecerem antes da marcada com <i>breakpoint</i>).</p>
+              <img src="imgs/figura_1.jpg" class="img-responsive center-block">
+              <p class="legenda-imagem">
+                Figura 1 – <i>Breakpoint</i> posicionado na linha 18 do código <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Tela do NetBeans com trecho de código mostrando a linha 18 com um ícone de quadrado cor salmão sobre o número da linha, e a linha de código com fundo em cor salmão.</p>
+              <p>2.	Acionar a depuração pelo ícone <b>Debug Project</b> na barra principal de ferramentas.</p>
+              <img src="imgs/figura_2.jpg" class="img-responsive center-block">
+              <p class="legenda-imagem">
+                Figura 2 – Ícone <b>Debug Project</b> <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Detalhe da barra de ferramentas do NetBeans destacando o ícone <b>Debug Project</b>, à direita do ícone de <i>play</i>.</p>
+              <p>3.	Acionar a barra de ferramentas de <i>debug</i>, o que acontece quando se aciona o <i>debug</i>. Em breve, cada um desses recursos será relembrado.</p>
+              <img src="imgs/figura_3.jpg" class="img-responsive center-block">
+              <p class="legenda-imagem">
+                Figura 3 – Ferramentas de <i>debug</i> do NetBeans <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">Detalhe da barra principal de ferramentas do NetBeans destacando a sequência de ícones para as funcionalidades de <i>debug</i>.</p>
+              <p>4.	Avançar linha a linha por meio das ferramentas de <i>debug</i>.</p>
+              <p>No momento em que está pausada a execução em um <i>breakpoint</i>, é possível utilizar um dos recursos essenciais da depuração: a visualização dos valores em memória. Para isso, pode-se passar com o <i>mouse</i> sobre o nome de uma variável ou um objeto, e um painel <i>pop-up</i> abrirá com os valores.</p>
+              <img src="imgs/figura_4.jpg" class="img-responsive center-block">
+              <p class="legenda-imagem">
+                Figura 4 – Visualização de valores no editor do NetBeans. Abaixo, a visão expandida, mostrando os valores dos atributos do objeto <b>novaDespesa</b> <br>
+                Fonte: Senac EAD (2023)
+              </p>
+              <p class="acessivel no-print">A figura mostra duas imagens: a de cima é uma imagem do editor mostrando uma linha de código “despesaDao.cadastrar(novaDespesa);” e um <i>pop-up</i> mostrando “>novaDespesa = (br.com.senac.financasjpa.persistencia.Despesa)”. Na imagem abaixo, o <i>pop-up</i> mostra: “novaDespesa”, e abaixo uma tabela com valores “id, int, 0”, “descrição, String, “abc””, “valor, double, 123.0”, “data, LocalData, #2150”.</p>
+            </div>
+            <p>As variáveis podem ser observadas também no painel <b>Variables</b>, no qual é possível cadastrar um observador (ou <i>watch</i>) para uma variável ou um objeto. Por padrão, o painel, que fica na parte inferior da janela do NetBeans, mostra as variáveis presentes no escopo atual da execução.</p>
+            <img src="imgs/figura_5.jpg" class="img-responsive center-block">
+            <p class="legenda-imagem">
+              Figura 5 – Aba <b>Variables</b> no NetBeans <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Detalhe da tela do NetBeans com aba inferior <b>Variables</b> ativada, mostrando uma tabela com colunas “name, type, value”. Na tabela, a primeira linha tem texto “&lt;Enter new watch>”. As linhas seguintes têm: “this, CadastroDespesa, #1917”, “evt, ActionEvent, #1918”, “novaDespesa, Despesa, #1920”, “id, int, 0”, “descrição, String, “abc””, “valor, double, 123.0”, “data, LocalData, #2150”, “despesaDao, DespesaDAO, #2145”. À esquerda da tabela, ícones de diamantes para incluir novo observador.</p>
+            <p>Contudo, também é possível incluir um novo <i>watch</i>, ou seja, incluir um monitoramento para alguma variável, algum atributo ou um objeto qualquer. No campo <b>&lt;Enter new watch></b>, basta incluir a expressão que se quer monitorar. Isso também pode ser feito por meio do ícone de diamante com um sinal de <b>+</b> (<b>Create new watch</b>).</p>
+            <img src="imgs/figura_6.jpg" class="img-responsive center-block">
+            <p class="legenda-imagem">
+              Figura 6 – Incluindo novo <i>watch</i> para a expressão <b>txtDescricao.getText()</b> <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Aba <b>Variables</b> como descrito na figura anterior, mas agora, antes da primeira linha, há “txtDescricao.getText(), String, “abc””.</p>
+            <p>A expressão não precisa ser necessariamente um nome de variável. Pode ser a invocação de um método, por exemplo.</p>
+            <p>Note, ainda, que na região inferior da tela há uma aba <b>Breakpoints</b> em que se pode monitorar todos os pontos de parada incluídos no projeto.</p>
+            <img src="imgs/figura_7.jpg" class="img-responsive center-block">
+            <p class="legenda-imagem">
+              Figura 7 – Aba <b>Breakpoints</b> no NetBeans <br>
+              Fonte: Senac EAD (2023)
+            </p>
+            <p class="acessivel no-print">Detalhe da tela do NetBeans com aba inferior <b>Breakpoints</b> ativada. Mostra uma tabela com valores “Line CadastroDespesa.java:105” e “Line DespesaDAO.java:18”.</p>
+
+            <h3>Comandos e utilização</h3>
+            <p>A tabela a seguir resume os comandos presentes na barra de ferramentas de depuração e quando eles devem ser usados.</p>
+            <div class='table-responsive'>
+              <table class='senac'>
+                <tbody>
+                  <tr>
+                    <th>Botão</th>
+                    <th>Descrição</th>
+                    <th>Quando usar</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_a.png" class="">
+                      <b>Finish Debugger Session</b>
+                      <p class="acessivel no-print">Ícone de quadrado em salmão</p>
+                    </td>
+                    <td>Encerra a sessão de depuração</td>
+                    <td>Ao encontrar uma falha, permite continuar a execução até o fim ou simplesmente encerrar o programa usando esse botão.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_b.png" class="">
+                      <b>Pause</b>
+                      <p class="acessivel no-print">Ícone de pause em um círculo laranja.</p>
+                    </td>
+                    <td>Pausa a execução</td>
+                    <td>Se um programa está executando, mas ainda não atingiu um ponto de parada, esse recurso pode ser usado para pausar sua execução.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_c.png" class="">
+                      <b>Continue</b>
+                      <p class="acessivel no-print">Ícone de <i>play</i> em um círculo verde.</p>
+                    </td>
+                    <td>Segue a execução</td>
+                    <td>Usado para, caso seja necessário, seguir a execução sem ir passo a passo até atingir outro <i>breakpoint</i> posterior ou o fim do programa.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_d.png" class="">
+                      <b>Step Over</b>
+                      <p class="acessivel no-print">Ícone de flecha curva de cima para baixo, de fora para dentro de um quadro azul.</p>
+                    </td>
+                    <td>Pular para a próxima linha</td>
+                    <td>Segue a execução para a linha imediatamente posterior à atual.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_e.png" class="">
+                      <b>Step Over Expression</b>
+                      <p class="acessivel no-print">Ícone de flecha entrando e depois saindo da esquerda para a direita de um quadro azul.</p>
+                    </td>
+                    <td>Pular expressão</td>
+                    <td>Executa expressão a expressão de uma linha. Por exemplo:<br><b>em.getTransaction().begin();</b><br>O comando passaria primeiro pelo <b>getTransaction()</b> e depois pelo <b>begin()</b>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_f.png" class="">
+                      <b>Step Into</b>
+                      <p class="acessivel no-print">Ícone de flecha reta entrando de cima para baixo em um quadro azul.</p>
+                    </td>
+                    <td>Entrar na execução de uma expressão</td>
+                    <td>Executa o passo a passo de um método invocado pela linha atualmente em execução.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_g.png" class="">
+                      <b>Step Out</b>
+                      <p class="acessivel no-print">ícone de flecha reta saindo de baixo para cima em um quadro azul.</p>
+                    </td>
+                    <td>Sair da execução de uma expressão</td>
+                    <td>Segue com a execução de um método sem ir passo a passo e retornar à linha onde esse método foi invocado.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_h.png" class="">
+                      <b>Run to Cursor</b>
+                      <p class="acessivel no-print">Ícone de flecha curva apontando para um cursor de escrita.</p>
+                    </td>
+                    <td>Pular para o cursor</td>
+                    <td>Sem necessitar criar um novo <i>breakpoint</i>, pula a execução direto para a linha onde o cursor está posicionado.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_i.png" class="">
+                      <b>Apply Code Changes</b>
+                      <p class="acessivel no-print">Ícone de um quadrado acima entre dois retângulos altos abaixo, que formam uma lacuna entre eles</p>
+                    </td>
+                    <td>Aplicar mudanças em código</td>
+                    <td>Normalmente, é preciso encerrar a depuração para fazer uma alteração no código e depois reexecutar o <i>debug</i> para usar as alterações executadas. Esse recurso aplica as alterações de código sem parar a execução do <i>debug</i>.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_j.png" class="">
+                      <b>Toggle Pause in GraalVM Script</b>
+                      <p class="acessivel no-print">Ícone de pause envolto em uma letra G.</p>
+                    </td>
+                    <td>Pausar GraalVM</td>
+                    <td>Usado para linguagens Ruby e JavaScript.</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="imgs/ico_k.png" class="">
+                      <b>Take GUI Snapshot</b>
+                      <p class="acessivel no-print">Ícone de máquina fotográfica.</p>
+                    </td>
+                    <td><i>Print</i> da tela do programa</td>
+                    <td>Tira um <i>print</i> da tela em execução no projeto (JFrame).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="legenda-imagem">
+              Tabela 1 – Comandos presentes na barra de ferramentas de depuração <br>
+              Fonte: Senac EAD (2023)
+            </p>
+
+            <h3>Encerramento</h3>
+            <div class="row">
+              <div class="col-md-5 col-xs-12">
+                <img src="imgs/img_fim.png" class="img-responsive center-block mt-10">
+              </div>
+              <div class="col-md-7 col-xs-12">
+                <p>O recurso de depuração, presente hoje na maioria dos IDEs, é indispensável na rotina de um programador, pois ajuda a localizar exatamente o que causa uma falha no programa.</p>
+                <p>As ferramentas disponíveis no NetBeans são bastante abrangentes e permitem um processo bem detalhado de depuração, ajudando o desenvolvedor nessa missão.</p>
+              </div>
+            </div>
+          </div>
+
+
+        </section>
+<!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+        <footer class="text-center no-print">
+          <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+        </footer>
+
+      </div>
+
+    </div>
+
+
+    <!-- Modais -->
+
+    
+    <!-- Modais 100% -->
+
+
+    <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+<!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+<div class="ico-div-loader">
+	<img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../template/js/jquery.min.js"></script>
+<script src="../template/js/bootstrap.min.js"></script>
+<script src="../template/js/jquery.magnific-popup.min.js"></script>
+<script src="../template/js/print.js"></script>
+<script src="../template/js/template.config.js"></script>
+<script src="../template/js/images.loader.js"></script>
+<script src="../template/js/highlight.min.js"></script>
+<noscript>
+  <style media="screen">
+    .over-loader { display: none;}    
+  </style>
+</noscript>
+</body>
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+	//inicializa zoom na imagem
+	$('.zoom-imagem').magnificPopup({
+	 type: 'image',
+  	 mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+ 	 zoom: {
+		enabled: true, // By default it's false, so don't forget to enable it
+
+		duration: 300, // duration of the effect, in milliseconds
+		easing: 'ease-in-out', // CSS transition easing function
+
+		// The "opener" function should return the element from which popup will be zoomed in
+		// and to which popup will be scaled down
+		// By defailt it looks for an image tag:
+		opener: function(openerElement) {
+		  // openerElement is the element on which popup was initialized, in this case its <a> tag
+		  // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+		  return openerElement.is('img') ? openerElement : openerElement.find('img');
+		}
+	  },
+	   image: {
+		  markup: '<div class="mfp-figure">'+
+					'<div class="mfp-close"></div>'+
+					'<div class="mfp-img"></div>'+ // Floated left
+					'<div class="mfp-bottom-bar">'+'<figcaption>'+'<div class="mfp-title" style="text-align:center"></div>'+
+					  '<div class="mfp-counter"></div>'+'</figcaption>'+
+					'</div>'+
+				  '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+		  cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+		  tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+	   }
+	});
+
+	//inicializa popover
+	$(function () {
+	  $('[data-toggle="popover"]').popover()
+	})
+	//inicializa tooltip
+	$(function () {
+	  $('[data-toggle="tooltip"]').tooltip()
+	})
+
+
+  $(function() {
+    $(".card").click(function() {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $( document ).ready(function() {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function() {
+    var $target = $('.animeStart'),
+        $target2 = $('.animeStop'),
+        targetBox = $('.box'),
+        animationClass = 'anime-init',
+        windowHeight = $(window).height(),
+        offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function() {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        } 
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function() {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem=document.createElement("script");
+  scriptElem.src="https://plugin.handtalk.me/web/latest/handtalk.min.js",
+  scriptElem.charset="UTF-8",
+  scriptElem.onload=function(){
+        window.ht = new HT({
+            token:"bf5b7efb148a829a126a0e0c9fd533bf",
+            align:"top",
+            videoEnabled: true,
+            ytEmbedReplace: true,           
+            mobileConfig:{align:"right",
+                          actionsAlign:"top",
+                          customButtonStyle:{
+                                borderRadius:"6px",
+                                size:"38px",
+                                horizontalMargin:"13px",
+                                bottomMargin:"140px",
+                                rightMargin:"40px"}
+                          }
+          });        
+      $('.ht-skip').attr("aria-hidden","true")
+    },
+  document.body.appendChild(scriptElem);
+</script>

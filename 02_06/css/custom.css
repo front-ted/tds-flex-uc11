@@ -1,0 +1,168 @@
+body{
+  
+  background: url('../imgs/background.png') no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+ 
+  background-color: #fff;
+}
+
+.fundo-tecnicos{
+  border-bottom: none !important;
+}
+h1 i,
+h2 i,
+h3 i,
+h4 i {
+  font-weight: bold;
+}
+h3 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+h4 {
+  margin: 0px;
+  margin-top: 40px;
+}
+pre {
+  padding: 0;
+  background: transparent;
+  border: none;
+  margin: 0;
+}
+
+.mt-20{margin-top: 20px;}
+.mt-40{margin-top: 40px;}
+.mt-60{margin-top: 60px;}
+
+.painel1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.painel1 button{
+  width: 301px;
+  height: 151px;
+  margin-bottom: 15px;
+  border: none;
+}
+.bt-instalarwindows{background: url('../imgs/bt01.png') no-repeat;}
+.bt-instalarlinux{background: url('../imgs/bt02.png') no-repeat;}
+
+.bt-instalarwindows:hover{background: url('../imgs/bt01_hover.png') no-repeat;}
+.bt-instalarlinux:hover{background: url('../imgs/bt02_hover.png') no-repeat;}
+
+.painel-abas{padding: 40px;}
+.nav-tabs{
+  margin-left: 0;
+}
+
+.carousel{
+  padding: 20px 40px;
+}
+.carousel-control.left{
+  left: -90px;
+  background: none;
+  color: #000;
+}
+.carousel-control.right{
+  right: -90px;
+  background: none;
+  color: #000;
+}
+.carousel-indicators{
+  bottom: 0;
+  margin-bottom: 0px;
+}
+.carousel-indicators .active{
+  background-color: #2875C6;
+}
+.carousel-indicators li{
+  border: 1px solid #2875C6;
+}
+
+.painel2{
+  width: 701px;
+  height: 601px;
+  margin: 20px auto;
+  background: url('../imgs/painel-bg.png') no-repeat;
+}
+.painel2 button{
+  width: 216px;
+  height: 140px;
+  border: none;
+  margin: 10px;
+}
+.bt-criandotela{background: url('../imgs/painel-bt01.png')}
+.bt-posicionando{background: url('../imgs/painel-bt02.png')}
+.bt-adicionando{background: url('../imgs/painel-bt04.png')}
+.bt-botaofuncionar{background: url('../imgs/painel-bt03.png')}
+
+.bt-criandotela:hover{background: url('../imgs/painel-bt01_hover.png')}
+.bt-posicionando:hover{background: url('../imgs/painel-bt02_hover.png')}
+.bt-adicionando:hover{background: url('../imgs/painel-bt04_hover.png')}
+.bt-botaofuncionar:hover{background: url('../imgs/painel-bt03_hover.png')}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #fff;
+  cursor: default;
+  background-color: #2875C6;
+  border: 1px solid #1d5591;
+  border-bottom-color: transparent;
+}
+
+.codigo-destaque{
+  background: #000;
+  color: #a39e9b;
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+}
+.code-destaque{
+  background-color: #071772 !important;
+}
+
+
+.txt-popover{
+  text-decoration: underline;
+  cursor: pointer;
+  color: #2875C6;
+}
+
+.bt-bibliotecas{
+  display: block;
+  width: 223px;
+  height: 223px;
+  border: none;
+  margin: 20px auto;
+}
+.bt-ODBC{background: url("../imgs/bt_2.png") no-repeat; background-size: 100%;}
+.bt-JDBC{background: url("../imgs/bt_1.png") no-repeat; background-size: 100%;}
+.bt-ODBC:hover{background-image: url("../imgs/bt_2_hover.png");}
+.bt-JDBC:hover{background-image: url("../imgs/bt_1_hover.png");}
+
+.marcador-seta li {
+  list-style-image: url("../imgs/setas.png");
+}
+
+
+@media screen and (max-width: 780px){
+  .painel2{
+    width: 100%;
+    background-size: contain;
+  }
+  
+}
+@media screen and (max-width: 480px){
+  .painel2{
+    padding-top: 300px;
+    height: auto;
+  }
+  .painel2 button{
+    margin: 10px auto;
+    display: block;
+  }
+  .caixa-destaque code{
+    word-break: break-word;
+  }
+}

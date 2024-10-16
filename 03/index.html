@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:mso="urn:schemas-microsoft-com:office:office"
+  xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Tipos de teste</title>
+
+  <!-- Bootstrap -->
+  <link href="../template/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../template/css/tecnicos_senac.css" rel="stylesheet">
+  <link href="../template/css/cores.css" rel="stylesheet">
+  <link href="../template/css/modal-100.css" rel="stylesheet">
+  <link href="../template/css/devibeans.min.css" rel="stylesheet">
+  <!--Extras - novas classes para facilitar-->
+  <link rel="stylesheet" href="../template/css/extras.css">
+  <link href="../template/css/sncload.css" rel="stylesheet">
+  <link href="../template/css/magnific-popup.css" rel="stylesheet">
+  <!-- referencia ao arquivo css com estilos especificos da pagina -->
+  <link href="css/custom.css" type="text/css" rel="stylesheet">
+  <!-- css necessario para o print -->
+  <link href="../template/css/fa/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="../template/css/print.css" type="text/css" rel="stylesheet">
+  <link href="../template/fonts/roboto.css" type="text/css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+
+  <!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">46914400.0000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Paulo Ricardo Soveral Junior</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x010100393332CEE5C5294F9D2C3CF7CCDACBE5</mso:ContentTypeId>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body onLoad="Javascript:document.getElementById('sncloader').style.display='none';">
+  <!-- MARCA D´ÁGUA -->
+  <img src="../template/images/logo_senac_colorido.png" id="marcadaguaLogo">
+  <!-- /MARCA D´ÁGUA -->
+
+  <div id='sncloader' class='over-loader'>
+    <div class="over-cell">
+      <div id="sncload"></div>
+    </div>
+  </div>
+  <header id="topo" class="senac no-print">
+    <div class="header-tecnicos container">
+      <h1 id="nome-curso">Desenvolvimento de Sistemas</h1>
+      <div id="logo-senac"><img src="../template/images/logo-senac.png" alt="logo do senac"></div>
+    </div>
+    <div id="sombra"></div>
+  </header>
+
+  <div id="booklet" class="container fundo-tecnicos">
+    <header class="no-print">
+      <!-- BTO IMPRIMIR -->
+      <div class="grupo-imprimir no-print">
+        <button type="button" data-pdf="true" class="bto-imprimir" name="button">
+          <span class="fa fa-print"></span> <span>Imprimir</span>
+        </button>
+      </div>
+      <!-- /BTO IMPRIMIR -->
+    </header>
+    <!-- - - - - - - - - - - - - - - - não alterar acima - - - - - - - - - - - - -->
+    <section class="paginas">
+
+      <!-- - - - - - - - cada página é independente  - - - - - - - - - - -->
+      <div class="pagina">
+        <p class="acessivel no-print">Como sugestão, configure a opção de leitura de caracteres e de pontuação de seu
+          leitor de tela para o grau máximo de leitura, a fim de que os códigos disponibilizados neste material sejam
+          lidos corretamente. No caso do NVDA (NonVisual Desktop Access), para localizar a opção Grau de
+          pontuação/símbolos, acesse Preferências – Configurações – Fala. Altere o padrão Pouco para Tudo. Dessa forma,
+          o leitor passará a ler os segmentos de código em sua totalidade. </p>
+
+        <h2>Tipos de teste</h2>
+        <p>Testar um <i>software</i> é um processo organizado e planejado. Além disso, não é um processo único, pois tem
+          várias técnicas e características. Com a evolução na engenharia de <i>software</i> e do desenvolvimento em si,
+          novos tipos de teste foram sendo pensados de maneira que cubra os mais diversos aspectos de um <i>software</i>
+          – desde sua interface e a interação com o usuário até as questões de segurança, passando por questões de
+          desempenho e de garantia da qualidade de <i>software</i>.</p>
+        <p>A seguir, serão explorados vários dos tipos de testes praticados no desenvolvimento de sistema. Vale
+          ressaltar que nem todos os projetos utilizarão todos os tipos de teste; cabe ao time de desenvolvimento e de
+          testes identificar aqueles mais adequados às necessidades do projeto, à realidade da equipe e às exigências do
+          cliente.</p>
+
+        <h3>Teste manual e automatizado</h3>
+        <p>Os testes de <i>software</i> podem ser realizados de duas maneiras: manualmente ou automaticamente, com o
+          apoio de uma ferramenta de automação.</p>
+        <p>O teste manual é realizado por pessoas, geralmente um analista ou especialista em testes. A pessoa deverá
+          testar passo a passo os casos de teste, com bastante atenção às condições que o teste impõe, e verificar seus
+          resultados. Há um aspecto subjetivo que pode ser positivo no teste manual, já que são seres humanos avaliando
+          o sistema. Essa subjetividade pode revelar outros problemas com baixa usabilidade ou falhas não observadas
+          anteriormente no sistema. </p>
+        <p>Geralmente é um teste de baixo custo e que não depende de grandes configurações anteriores. Por outro lado,
+          são testes mais lentos e, pela mesma subjetividade que pode ajudar, há boa chance de algum problema passar
+          despercebido por quem testa.</p>
+        <img src="imgs/figura_01.png" class="img-responsive center-block hidden-xs print">
+        <img src="imgs/mob_figura_01.png" class="img-responsive center-block visible-xs no-print">
+        <p class="legenda-imagem">
+          Figura 1 – Benefícios do teste manual <br>
+          Fonte: adaptado de Global App Testing (c2023)
+        </p>
+        <p class="acessivel no-print">A imagem mostra, ao centro, um <i>notebook</i> sob duas telas de <i>software</i> e
+          uma pessoa sentada nele. Há textos e ícones em volta dessa imagem, os quais são, a partir do sentido horário,
+          partindo do canto superior direito: no ícone de uma pessoa à frente de uma tela, “Oportunidades para testar
+          usabilidade”; no ícone de foguete sobre uma tela de computador, “Pode-se iniciar o teste imediatamente, sem a
+          necessidade de configuração de um teste automatizado”; no ícone de notas de dinheiro, “Melhor custo-benefício
+          para testes únicos simples”; no ícone de cérebro com uma lâmpada, “Mais adequado para testes improvisados (ou
+          testes aleatórios) que não contam com um plano e podem levar a resultados inesperados”; no ícone de lupa com
+          um V sobre uma tela, “Mais adequado para testes exploratórios”.</p>
+        <p>Os testes automatizados, por sua vez, são realizados por <i>softwares</i> ou bibliotecas de linguagem que
+          exigem uma configuração inicial (<i>scripts</i>, códigos ou passos configurados) para a execução de um teste.
+          Após essa configuração, o teste pode ser executado e reexecutado com muita agilidade e sem a necessidade da
+          interferência de uma pessoa, mostrando, na ferramenta, se o resultado esperado para uma funcionalidade testada
+          foi alcançado ou não. </p>
+        <p>Esses testes são bastante lógicos: se o teste produzir determinado valor ou atingir resultado esperado, então
+          ele passou; se o teste produzir valor ou resultado divergente do esperado, então ele falhou. Por isso, são
+          muito confiáveis, sem risco de interferência em razão de subjetividades. Podem ser mais caros, pois dependem
+          de ferramentas específicas, e não detectarão problemas que pessoas poderiam observar, como de usabilidade.
+          Também levam mais tempo (e exigem mais <i>expertise</i>) para serem configurados ou programados, mas, uma vez
+          que isso é feito, a execução dos testes é muito mais veloz que o teste manual.</p>
+        <img src="imgs/figura_02.png" class="img-responsive center-block hidden-xs print">
+        <img src="imgs/mob_figura_02.png" class="img-responsive center-block visible-xs no-print">
+        <p class="legenda-imagem">
+          Figura 2 – Benefícios do teste automatizado <br>
+          Fonte: adaptado de Testinium (2021)
+        </p>
+        <p class="acessivel no-print">A imagem mostra, como na anterior, um <i>notebook</i> sob uma tela de software e
+          atrás dele um monitor, do qual sai outra tela de <i>software</i>. Acima, no topo da imagem, há a frase “10
+          benefícios do teste automatizado”. A partir daí, em sentido horário, constam os seguintes textos e ícones:
+          “Captura <i>bugs</i> mais rápido” e um ícone de inseto; “Implantação mais rápida do <i>software</i>” e um
+          ícone de foguete; “Eficiência de custo e tempo” e um ícone de relógio; “Qualidade contínua” e um ícone de
+          setas circulares; “Melhores <i>insights</i> sobre o projeto” e um ícone de lâmpada; “Maior precisão” e um
+          ícone de alvo, “Alto volume de testes” e um ícone de engrenagens; “Testes de estresse” e um ícone de atleta
+          levantando peso; “Fluxo de trabalho mais eficiente” e um relógio entre duas setas circulares; “Projeto pode
+          ser lançado mais rapidamente para o mercado” e um ícone de gráfico.</p>
+        <p>É comum (e desejável) que ambos os tipos de teste sejam utilizados no processo de teste de um
+          <i>software</i>. Algumas funcionalidades e alguns aspectos do sistema se beneficiarão mais de testes manuais
+          (como nos testes de aceitação, por exemplo, como você verá a seguir), outras são mais beneficiadas com testes
+          automatizados (em testes de regressão, por exemplo). Também se deve levar em consideração a <i>expertise</i>
+          da equipe e o tempo disponível para testes. No entanto, em projetos modernos, é recomendável que ao menos um
+          tipo de teste automatizado seja aplicado ao projeto.
+        </p>
+
+        <h3>Teste funcional</h3>
+        <p>Testes funcionais são aqueles que verificam a funcionalidade e as características de um sistema sem adentrar
+          em questões técnicas, como código-fonte ou estruturas de banco de dados. Por essa razão, também é denominado
+          teste de caixa-preta (em que se vê o exterior do programa, mas não o interior). O foco nesse tipo de teste
+          fica nos valores informados como entrada de dados e saídas obtidas pelo programa, comparando-as com o que se
+          esperava obter.</p>
+        <p>Dentro do teste funcional ainda há técnicas próprias que podem ser aplicadas. Mais detalhes podem ser obtidos
+          no conteúdo <b>Técnicas de teste</b> desta unidade curricular.</p>
+
+        <h3>Teste de regressão</h3>
+        <img src="imgs/figura_03.png" class="img-responsive center-block">
+        <p class="legenda-imagem">
+          Figura 3 – Testes de regressão <br>
+          Fonte: Pixabay (2015)
+        </p>
+        <p class="acessivel no-print">imagem de uma lupa localizando um inseto na tela do computador cercada de quatro
+          setas que formam um ciclo.</p>
+        <p>Alterações em código-fonte, correções aplicadas ou funcionalidades novas implementadas em um sistema podem
+          trazer efeitos colaterais no <i>software</i>, trazendo falhas ao que já estava funcional anteriormente. Testes
+          de regressão são usados para garantir que alterações em um <i>software</i> não afetem negativamente o que já
+          foi testado e está funcionando bem. Procura, portanto, assegurar que o sistema não regrediu em questão de
+          qualidade, mantendo-o confiável.</p>
+        <p>A forma mais simples de teste de regressão é reexecutar uma bateria de testes manuais previstas nos planos de
+          teste do projeto. Entretanto, em razão de restrições de projeto, de equipe, tempo e ferramentas, pode ser que
+          alguns cenários acabem ficando de fora, o que pode trazer riscos ao projeto. Isso porque quanto mais o
+          <i>software</i> se expande, mais casos de teste vão surgindo, tornando o processo de teste mais oneroso.
+        </p>
+        <p>Outra alternativa, em muitos casos mais eficiente, é a automatização dos testes, ou seja, usar
+          <i>softwares</i> ou bibliotecas de linguagem de programação que permitam a criação de casos de teste e a
+          execução automática desses casos dentro do <i>software</i>. Entre essas ferramentas está o teste unitário (em
+          Java, utiliza-se JUnit para isso). Uma vez configurada a ferramenta e desenvolvidos os casos de teste, basta
+          acionar sempre que houver uma mudança no código ou agendar a execução periódica dos testes e aguardar os
+          resultados para verificar se houve alguma falha. Esse tema será abordado com mais detalhe no conteúdo
+          <b>Testes unitários automatizados</b> desta unidade curricular.
+        </p>
+        <p>De forma geral, o mais adequado é que alguns testes sigam sendo realizados manualmente enquanto outros são
+          automatizados.</p>
+        <img src="imgs/info1.png" class="img-responsive center-block hidden-xs no-print" aria-hidden="true">
+        <img src="imgs/mob_info1.png" class="img-responsive center-block visible-xs no-print" aria-hidden="true">
+        <div class="acessivel print">
+          <h4>Passos para realizar testes de regressão</h4>
+          <ol type="1">
+            <li>Coletar casos de testes que deverão ser reexecutados. Incluir casos de teste que cubram áreas mais
+              propensas a erros no sistema, que sejam mais vulneráveis a mudanças, que testem funções principais do
+              sistema e que sejam mais complexos, como sequências de eventos em interface visual.</li>
+            <li>Estimar o tempo de execução dos testes. É importante levar em consideração os critérios, o plano e a
+              revisão dos casos de teste para calcular o tempo necessário para testes de cada funcionalidade escolhida.
+            </li>
+            <li>Separar os testes que podem ser automatizados. A tendência pode ser de automatizar a maioria dos testes,
+              mas algumas verificações mais complexas, como séries de ações encadeadas em interface visual, podem exigir
+              testes manuais.</li>
+            <li>Priorizar os casos de teste. Recomenda-se que a prioridade sejam funções básicas e centrais do sistema;
+              em seguida, as funções cruciais, mas não centrais, ao <i>software</i>; por fim, funções periféricas, mas
+              que possam evitar problemas técnicos e complicações ao desenvolvimento.</li>
+            <li>Aplicar ferramentas para acelerar o processo de teste. </li>
+          </ol>
+        </div>
+
+        <h3>Teste de confirmação</h3>
+        <p>O teste de confirmação é aquele realizado após a correção de um problema verificado no sistema,
+          possibilitando ao testador confirmar que o problema já não ocorre mais ou para retornar ao time de
+          desenvolvimento caso o problema persista. Também é conhecido como reteste e ocorre regularmente nos
+          <i>sprints</i> do projeto usando método ágil.
+        </p>
+        <p>Não há uma técnica específica. Aplica-se, aqui, teste manual ou automatizado. O único ponto é que o testador
+          precisa executar exatamente o mesmo caso de teste que evidenciou o erro (não é necessário criar um novo caso
+          de teste).</p>
+        <p>Teste de confirmação não é igual a teste de regressão. Enquanto os testes de confirmação são aplicados
+          especificamente a defeitos recém corrigidos, os testes de regressão são mais abrangentes e acontecem após
+          testes de confirmação.</p>
+        <img src="imgs/figura_04.png" class="img-responsive center-block hidden-xs">
+        <img src="imgs/mob_figura_04_1.png" class="img-responsive center-block visible-xs">
+        <img src="imgs/mob_figura_04_2.png" class="img-responsive center-block visible-xs">
+        <p class="legenda-imagem">
+          Figura 4 – Reteste (teste de confirmação) <i>versus</i> teste de regressão <br>
+          Fonte: adaptado de Grimms (c2023)
+        </p>
+        <p class="acessivel no-print">Tabela cuja primeira coluna tem título “Reteste” e a segunda “Teste de regressão”.
+          Linha 1, coluna 1: “Casos de teste que falharam na última execução estão dentro do conjunto de teste”. Linha
+          1, coluna 2: “O conjunto de casos de teste pode incluir (mas não está limitado a isso) casos de teste que
+          falharam na última execução”. Linha 2, coluna 1: “Avalia se uma correção sanou um defeito específico”. Linha
+          2, coluna 2: “Releva se uma alteração no <i>software</i> prejudicou alguma funcionalidade que estava
+          funcionando”. Linha 3, coluna 1: “Não pode ser automatizado”. Linha 3, coluna 2: “Pode ser automatizado”.</p>
+
+        <h3>Teste de aceitação</h3>
+        <p>Conceitualmente próximo dos testes funcionais, os testes de aceitação estão mais ligados aos clientes e
+          envolvem os usuários finais do <i>software</i> para a validação das funcionalidades e dos requisitos
+          implementados no sistema.</p>
+        <img src="imgs/figura_05.png" class="img-responsive center-block">
+        <p class="legenda-imagem">
+          Figura 5 – Teste de aceitação cerifica o que está de acordo ou não com o que o usuário final necessita <br>
+          Fonte: Pixabay (2014)
+        </p>
+        <p class="acessivel no-print">Prancheta com <i>checklist</i>, algumas lacunas marcadas com V e outra com X. Um
+          lápis à direita.</p>
+        <p>Geralmente são testes elaborados com base em histórias do usuário. O teste de aceitação, que parte da visão
+          do cliente sobre o sistema, diferencia-se, assim, dos demais testes de sistema, que partem da visão dos
+          desenvolvedores sobre os requisitos.</p>
+        <p>Em metodologias mais antigas de desenvolvimento <i>software</i>, geralmente seriam testes realizados apenas
+          no final do desenvolvimento e antes da implantação. Com os métodos ágeis e uma proximidade maior do cliente,
+          geralmente acontecem em ciclos (no Scrum, testes de aceitação podem ser realizados nas reuniões de revisão dos
+          <i>sprints</i>).
+        </p>
+        <p>Há três estratégias principais para teste de aceitação. Veja, a seguir, quais são elas.</p>
+        <div class="no-print" aria-hidden="true">
+          <p>Clique ou toque para visualizar o conteúdo.</p>
+          <div class='panel-group gaitinha' id='accordion01' role='tablist' aria-multiselectable='true'>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading01'>
+                <h3 class='panel-title'>
+                  <a role='button' data-toggle='collapse' data-parent='#accordion01' href='#collapse01'
+                    aria-expanded='false' aria-controls='collapse01'>
+                    Testes formais
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse01' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading01'>
+                <div class='panel-body'>
+                  <p>São elaborados com base em planos de testes pensados com o mesmo detalhamento dos testes de
+                    sistema. Podem ser automatizados, executados pelo time de teste ou executados por representantes do
+                    cliente.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading02'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01'
+                    href='#collapse02' aria-expanded='false' aria-controls='collapse02'>
+                    Testes informais ou testes alfa
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse02' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading02'>
+                <div class='panel-body'>
+                  <p>Geralmente são executados pelo cliente. São testes sem um roteiro definido (as funcionalidades do
+                    sistema a serem exploradas são identificadas e documentadas, mas não são desenvolvidos casos de
+                    testes para serem seguidos). Os usuários testadores exploram o sistema, executando tarefas
+                    cotidianas e observando inconsistências.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading03'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion01'
+                    href='#collapse03' aria-expanded='false' aria-controls='collapse03'>
+                    Testes beta
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse03' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading03'>
+                <div class='panel-body'>
+                  <p>Nesta modalidade, um número maior de potenciais usuários (não necessariamente ligados ao cliente)
+                    fazem testes livremente. É um tipo de teste bastante aplicado em <i>softwares</i> como o WhatsApp,
+                    que disponibiliza versões exclusivas do aplicativo com novas funcionalidades a usuários cadastrados.
+                    Com base nos dados coletados do uso desses testadores, a equipe pode ajustar ou remover
+                    funcionalidades do sistema.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="acessivel print">
+          <h4>Testes formais</h4>
+          <p>São elaborados com base em planos de testes pensados com o mesmo detalhamento dos testes de sistema. Podem
+            ser automatizados, executados pelo time de teste ou executados por representantes do cliente.</p>
+          <h4>Testes informais ou testes alfa</h4>
+          <p>Geralmente são executados pelo cliente. São testes sem um roteiro definido (as funcionalidades do sistema a
+            serem exploradas são identificadas e documentadas, mas não são desenvolvidos casos de testes para serem
+            seguidos). Os usuários testadores exploram o sistema, executando tarefas cotidianas e observando
+            inconsistências.</p>
+          <h4>Testes beta</h4>
+          <p>Nesta modalidade, um número maior de potenciais usuários (não necessariamente ligados ao cliente) fazem
+            testes livremente. É um tipo de teste bastante aplicado em <i>softwares</i> como o WhatsApp, que
+            disponibiliza versões exclusivas do aplicativo com novas funcionalidades a usuários cadastrados. Com base
+            nos dados coletados do uso desses testadores, a equipe pode ajustar ou remover funcionalidades do sistema.
+          </p>
+        </div>
+        <h4>Como realizar teste de aceitação</h4>
+        <p>Os passos gerais para realizar atividades de teste de aceitação são:</p>
+        <img src="imgs/dest1.png" class="img-responsive center-block hidden-xs print">
+        <img src="imgs/mob_dest1.png" class="img-responsive center-block visible-xs no-print">
+        <div class="acessivel no-print">
+          <ol type="1">
+            <li>Coletar critérios de aceitação com base em requisitos e histórias do usuário.</li>
+            <li>Criar ao menos um caso de teste para cada critério de aceitação.</li>
+            <li>Preparar o ambiente de teste e planejar a coleta de dados necessários dos testes.</li>
+            <li>Executar os testes de aceitação, aplicando correções quando necessário.</li>
+            <li>Encerrar o teste de aceitação quando os testes forem bem-sucedidos.</li>
+          </ol>
+        </div>
+
+        <h3><i>Smoke test</i></h3>
+        <p>Os <i>smoke tests</i>, ou testes de fumaça, são testes rápidos que verificam as funcionalidades básicas de um
+          sistema. Esse teste deve determinar se o <i>build</i> (a compilação) do sistema está gerando um
+          <i>software</i> estável ou não. É semelhante a um teste de aceitação, mas de maneira bastante resumida,
+          devendo se ater aos recursos mais importantes da aplicação, ou seja, é um teste mínimo executado rapidamente
+          após um <i>build</i>.
+        </p>
+        <p>Sempre que novas funcionalidades são desenvolvidas e integradas ao sistema, recomenda-se a aplicação do
+          <i>smoke test</i>. O objetivo é informar problemas com agilidade e bloquear a versão, caso necessário.
+        </p>
+        <img src="imgs/figura_06.png" class="center-block img-responsive hidden-sm hidden-xs print">
+        <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+        <a href="imgs/figura_06.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img
+            src="imgs/figura_06.png" class="center-block img-responsive"></a>
+        <p class="legenda-imagem">
+          Figura 6 – Fluxo do <i>smoke test</i> <br>
+          Fonte: adaptado de Martins (2021)
+        </p>
+        <p class="acessivel no-print">A imagem mostra, à direita, uma pilha de três cubos com uma legenda “Compilações
+          iniciais”. Do cubo inferior, sai uma linha que liga um ícone de alerta, o qual está com a legenda “<i>Smoke
+            test</i>”. Acima, à esquerda, há um cubo com um X vermelho e a legenda “Compilação rejeitada”. À direita do
+          <i>smoke test</i>, há uma linha que leva a uma área com legenda “Compilações aprovadas” e dois cubos com sinal
+          verde de aprovado.
+        </p>
+        <p>Os testes podem ser manuais ou automatizados. No caso do teste manual, o time de testadores recebe a nova
+          versão compilada do <i>software</i> e executa os casos de teste de alta prioridade. Se eles falharem, a versão
+          é rejeitada e retorna ao time de desenvolvimento para correções. Se os testes passarem, os demais testes
+          funcionais são executados de acordo com o previsto no projeto.</p>
+        <p>Os testes automatizados podem agilizar bastante o <i>smoke test</i>, podendo executar imediatamente antes ou
+          depois da compilação do sistema. Os desenvolvedores podem rapidamente reter a versão para correções, não
+          precisando passar pelo time de testadores. </p>
+
+        <h3>Teste exploratório</h3>
+        <p>Por definição, nos testes exploratórios, a criação e a execução dos testes acontecem ao mesmo tempo. Ou seja,
+          normalmente são testes que não seguem uma definição formal de planos de testes, mas, sim, a experiência e as
+          observações do testador. Daí o nome do teste: o testador responsável fará uma exploração mais ou menos livre
+          pelo <i>software</i> em busca de inconsistências.</p>
+        <p>Esse tipo de teste pode ser interessante para casos em que não se tem um conhecimento prévio sobre o sistema;
+          em que não há requisitos formais documentados; em que há pouco tempo disponível; em que seja necessário
+          identificar passos de um defeito aleatório do sistema, em projetos que aplicam metodologias ágeis, que
+          dispensam formalidades e documentações. Também pode ser aplicado como apoio à definição formal de casos de
+          teste no sistema, podendo auxiliar a criação ou expansão de casos de teste do sistema.</p>
+        <p>Apesar de ser um processo com mais liberdade, a exploração não acontece de maneira aleatória. Geralmente,
+          esses testes iniciam pelo questionamento sobre qual é o teste mais importante que se deve realizar no momento
+          e o planejamento do teste desdobra-se disso.</p>
+        <p>Uma proposição para o processo de teste exploratório é a seguinte:</p>
+        <img src="imgs/dest2.png" class="img-responsive center-block hidden-xs print">
+        <img src="imgs/mob_dest2.png" class="img-responsive center-block visible-xs no-print">
+        <div class="acessivel no-print">
+          <ol type="1">
+            <li>Criar uma hipótese: criar uma imagem mental do funcionamento correto de uma área do sistema que será
+              testada.</li>
+            <li>Planejar cenários de teste para verificar as hipóteses formuladas.</li>
+            <li>Aplicar teste, observar os resultados e verificar se a hipótese se confirma ou não (ou seja, se erros
+              são observados).</li>
+            <li>Repetir o processo até que a hipótese seja comprovada (ou não).</li>
+          </ol>
+        </div>
+
+        <h3>Teste de desempenho</h3>
+        <p>Um teste geralmente relegado ao final do processo de desenvolvimento de <i>software</i>, mas que deveria
+          estar presente desde o início do projeto, é o de desempenho, uma modalidade que avalia tempo de processamento,
+          velocidade de transferência de dados, eficácia de consulta em banco de dados, número máximo de usuários
+          conectados, uso de processador e memória da máquina, uso de rede, tempo de resposta a comandos do usuário,
+          entre outros aspectos não funcionais do sistema de <i>software</i>.</p>
+        <img src="imgs/figura_07.png" class="img-responsive center-block">
+        <p class="legenda-imagem">
+          Figura 7 – Testes de <i>performance</i> verificam a eficiência do programa <br>
+          Fonte: Okeke (2022)
+        </p>
+        <p class="acessivel no-print">Uma tela de computador com um medidor de velocidade, em que um homem empurra o
+          ponteiro para o máximo. Acima, uma barra de progresso.</p>
+        <p>Veja algumas razões para realizar testes de desempenho:</p>
+        <img src="imgs/dest3.png" class="img-responsive center-block hidden-xs" aria-hidden="true">
+        <div class="borda-primaria-03 bg-primaria-02 texto-primaria-03 visible-xs">
+          <br><br>
+          <ul class="cor01">
+            <li>Verificar se a aplicação satisfaz requisitos não funcionais definidos no projeto.</li>
+            <li>Encontrar gargalos no sistema, ou seja, momentos específicos em que o sistema demora mais que o normal
+              para responder.</li>
+            <li>Verificar a estabilidade do sistema sob pico de acessos.</li>
+          </ul>
+        </div>
+        <p>No contexto de desenvolvimento ágil, o teste de desempenho pode ser aplicado regularmente a cada
+          <i>sprint</i> ou em momentos adequados para isso.
+        </p>
+        <p>O processo de teste de desempenho variará bastante de empresa para empresa e de projeto para projeto. Algumas
+          técnicas como teste de estresse, carga e volume, abordadas a seguir, podem fazer parte do processo caso a
+          intenção seja testar, por exemplo, a resiliência de um sistema a acessos simultâneos.</p>
+        <p>De maneira geral, recomenda-se que primeiro sejam identificados os indicadores não funcionais a serem
+          testados. Com base nisso, descobrem-se quais são as ferramentas adequadas para esse teste (<i>softwares</i> de
+          simulação de acesso, por exemplo, poderiam ser usados para verificar número de usuários máximo executando o
+          sistema ao mesmo tempo). Também é importante definir o ambiente (rede, banco de dados, condições de Internet
+          que sejam próximas do cliente, entre outros) onde os testes executarão. </p>
+        <p>Definem-se, então, os critérios de aceite para os testes (por exemplo, qual é um bom número de usuários
+          conectados simultaneamente) e, com base nisso, estabelecem-se os planos de teste. Com as ferramentas
+          preparadas, então, executam-se os testes, verificando os problemas e realizando os ajustes necessários. É
+          importante que os testes sejam executados repetidas vezes, para confirmar os problemas de desempenho.</p>
+        <div class="no-print" aria-hidden="true">
+          <p>Clique ou toque para visualizar o conteúdo. </p>
+          <div class="row">
+            <div class="col-sm-4 col-xs-12">
+              <button type="button" class="bt-testes bt-teste01" data-toggle="modal"
+                data-target="#modal-teste01"></button>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+              <button type="button" class="bt-testes bt-teste02" data-toggle="modal"
+                data-target="#modal-teste02"></button>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+              <button type="button" class="bt-testes bt-teste03" data-toggle="modal"
+                data-target="#modal-teste03"></button>
+            </div>
+          </div>
+        </div>
+        <div class="acessivel print">
+          <h3>Teste de carga</h3>
+          <p>Esse é um tipo de teste não funcional especialmente interessante para aplicações <i>web</i>. O teste de
+            carga estabelece e avalia a capacidade de processamento de um <i>software</i> dada uma carga crescente de
+            dados, geralmente conexões de usuários. </p>
+          <p>Em uma aplicação <i>web</i>, o teste de carga pode ser avaliado simulando um número X de conexões
+            inicialmente e verificando a disponibilidade do sistema. Depois, aumenta-se esse número de conexões, revendo
+            como o sistema está operando, e assim sucessivamente até que se alcance um número próximo ao que seria
+            alcançado no dia a dia do sistema ou até que o sistema apresente falha.</p>
+          <p>Analogamente, seria possível verificar carga de processos de banco de dados, aumentando gradativamente o
+            número de consultas geradas pelo sistema e verificando a estabilidade de sua conexão com o banco de dados.
+          </p>
+          <p>Com base nos testes de carga, é possível estabelecer a capacidade da aplicação e identificar fatores
+            limitantes, que podem ser de <i>hardware</i>, de codificação, de rede, entre outros.</p>
+          <p>Os resultados desse teste geralmente são representados pelo número de transações simultâneas e pela
+            quantidade de usuários conectados ao mesmo tempo no sistema. Podem indicar problemas não só em código como
+            em infraestrutura (a necessidade de um servidor com maior capacidade de processamento, por exemplo, ou uma
+            conexão à Internet com maior banda).</p>
+          <h3>Teste de estresse</h3>
+          <p>Enquanto os testes de carga geralmente simulam uma alta demanda cotidiana de um sistema, o teste de
+            estresse (ou teste de esforço) simula uma demanda extraordinária, que poderá acontecer pontualmente, mas que
+            poderá levar à falha do sistema. Esses testes são, portanto, usados para garantir a estabilidade e a
+            confiabilidade de um sistema, simulando uma alta taxa de tráfego de dados e registrando a resposta do
+            <i>software</i> a essa demanda. É um teste indicado, por exemplo, para sistemas <i>web</i> que, em razão de
+            uma data específica ou um evento, precisam testar seus limites.
+          </p>
+          <p>Como exemplo, é possível citar um <i>site</i> de vendas em uma data de liquidação ou um <i>site</i> de
+            inscrições limitadas para um evento. Ambos os casos apresentarão, em um período, uma situação de acesso
+            muito acima do que acontece diariamente. Assim, um teste de estresse pode prevenir que o sistema caia por
+            excesso de acessos.</p>
+          <p>Além de servir para verificar quanto o sistema suporta de tráfego de dados, o teste de estresse também
+            serve para avaliar como o sistema se comporta após uma falha.</p>
+          <p>Com base no teste de estresse, assim como no teste de carga, é possível definir ajustes em infraestrutura e
+            no <i>software</i> para garantir mais robustez ao sistema.</p>
+          <p>Algumas métricas podem ser avaliadas baseando-se no teste de estresse:</p>
+          <div class="caixa-destaque borda-primaria-03 bg-primaria-02">
+            <ul class="cor01">
+              <li>Quantidade de páginas requisitadas por segundo (em sistemas <i>web</i>)</li>
+              <li>Taxas de transferência (tamanho dos dados de resposta em sistema <i>web</i>)</li>
+              <li>Tempo de carregamento de uma tela ou página</li>
+              <li>Número de falhas na conexão </li>
+            </ul>
+          </div>
+          <p>Uma das ferramentas mais usados para testes de carga e de estresse é o JMeter, em que o desenvolvedor pode
+            configurar cenários de teste e o <i>software</i> fará simulação de acessos ao sistema.</p>
+          <h3>Teste de volume</h3>
+          <p>Mais um teste de desempenho, o teste de volume verifica o comportamento do sistema em situações de grande
+            carga de dados. Diferente dos testes de carga e de estresse, que se preocupam essencialmente com o tráfego
+            de informações e conexões estabelecidas, o teste de volume trabalha com tamanho de arquivos e bancos de
+            dados usados pelo sistema testado.</p>
+          <p>Para o teste, estende-se o tamanho do banco de dados ou arquivo até um limite estabelecido e, então, o
+            desempenho do sistema é testado, observando-se o tempo de resposta para as ações do usuário e o
+            comportamento do sistema (se erros acontecem, se as funcionalidades são executadas corretamente).</p>
+          <p>O teste de volume é interessante porque todo sistema, com o passar do tempo, recebe quantidades de dados
+            que podem diminuir o desempenho do <i>software</i>. No tempo de desenvolvimento, os testes funcionais
+            geralmente acontecem sobre pequenos volumes de dados. Assim, o teste de volume pode detectar problemas não
+            observados nos testes comuns. Os dados gerados para o teste geralmente vêm de um <i>software</i>
+            desenvolvido para povoar com dados válidos o banco ou os arquivos usados pelo sistema.</p>
+          <p>Com base no teste de volume, pode-se identificar, então, o ponto em que a estabilidade do sistema diminui e
+            a capacidade de dados da aplicação. Alguns dados podem ser levados em consideração na análise desses testes:
+          </p>
+          <div class="caixa-destaque borda-primaria-03 bg-primaria-02">
+            <ul class="cor01">
+              <li>Tempo de resposta do sistema (o sistema demora mais, ou não, quando está sob grande volume de dados)
+              </li>
+              <li>Perda de dados (o sistema passa a perder informações quando se trabalha com banco de dados volumosos)
+              </li>
+              <li>Armazenamento e sobrescrita de dados (os dados continuam sendo gravados corretamente, ou não, com um
+                banco de dados muito povoado)</li>
+            </ul>
+          </div>
+          <p>Entre as vantagens do teste de volume, estão a capacidade de detectar melhorias necessárias em
+            infraestrutura e em código para o sistema, a identificação precoce de gargalos de desempenho e a garantia de
+            que o sistema poderá ser usado no mundo real.</p>
+        </div>
+
+        <h3>Teste de recuperação</h3>
+        <p>É denominado teste de recuperação o processo de teste não funcional realizado para verificar a resiliência do
+          sistema, se ele consegue se recuperar de falhas ou não. No teste, força-se a ocorrência de uma falha e
+          verifica-se como o sistema se comporta a seguir.</p>
+        <p>É importante que o sistema seja desenvolvido de tal maneira que, após uma falha, ele possa continuar sua
+          execução tratando essa falha e retornando a um estado consistente anterior do sistema. Essa recuperação deve
+          acontecer em um tempo específico e é essencial em sistemas críticos como de defesa, dispositivos médicos e
+          outros.</p>
+        <p>Como exemplo de recuperação, pode-se imaginar uma aplicação baseada em rede, processando envios e
+          recebimentos de dados. Se desconectar o cabo de rede e algum tempo depois restabelecer a conexão, então o
+          <i>software</i> deve ser capaz de retomar a transmissão de dados do exato ponto onde parou quando perdeu
+          conexão.
+        </p>
+        <p>Algumas situações previsíveis podem ser testadas para recuperação:</p>
+        <div class="caixa-destaque borda-primaria-03 bg-auxiliar-claro-01">
+          <ul class="cor01">
+            <li>Falha na alimentação de energia na máquina onde o programa está executando (ao retornar, terá salvado as
+              últimas alterações?)</li>
+            <li>O servidor em uma aplicação de cliente-servidor não está acessível (o programa no cliente permitirá
+              executar outras ações localmente?)</li>
+            <li>Dispositivo externo não está respondendo (o sistema trava por causa disso?)</li>
+          </ul>
+        </div>
+        <p>É importante que o testador se prepare para o processo de teste de recuperação:</p>
+        <div class="caixa-destaque borda-primaria-03 bg-auxiliar-claro-02">
+          <ul class="cor01">
+            <li>Assegurando-se do ambiente de execução do <i>software</i> e da capacidade de expansão (processador,
+              memória etc.)</li>
+            <li>Estudando o impacto e a gravidade de possíveis falhas</li>
+            <li>Observando que o plano de teste contemple testes de recuperação</li>
+            <li>Realizando a manutenção de <i>backups</i> do sistema com vários estados do <i>software</i> e do banco de
+              dados, para o caso de a falha ser severa a tal ponto que se percam dados</li>
+            <li>Documentando todas as etapas do teste de recuperação</li>
+          </ul>
+        </div>
+        <p>Quando se observa mais de uma falha, ao invés de se ocupar com todas as falhas de uma vez, os testadores
+          devem estruturar a situação, escolhendo e priorizando um segmento de cada vez.</p>
+        <p>Como vantagens do teste de recuperação, é possível citar: a melhoria geral na qualidade do sistema, a
+          elaboração de planos de recuperação de desastres para o sistema, a eliminação de riscos e o aprimoramento do
+          desempenho geral do sistema, tornando-o mais confiável.</p>
+        <p>O processo também conta com desvantagens: pode ser demorado e custoso por envolver várias etapas e
+          preparações antes e durante os testes; precisa contar com profissionais treinados e capazes de observar de
+          maneira abrangente as falhas e a recuperação; pode apresentar algumas falhas imprevisíveis ou difíceis de
+          alcançar.</p>
+
+        <h3>Teste de segurança</h3>
+        <p>Se um sistema armazena dados sensíveis sobre seus usuários ou sobre dados de negócio do cliente, então a
+          segurança desses dados é um requisito, pois é um potencial alvo de acesso impróprio ou ilegal. Para isso, é
+          importante que o sistema tenha um processo de testes de segurança, que buscam brechas ou vulnerabilidades que
+          podem ser exploradas por <i>hackers</i> que tentam invadir o sistema e acessar e/ou corromper dados sensíveis.
+        </p>
+        <p>O objetivo dos testes de segurança é, portanto, identificar todas as lacunas e as fraquezas de um sistema que
+          possam resultar em perda de informações, prejuízos financeiros e prejuízos na reputação do cliente ou das
+          pessoas envolvidas por dados que param em mãos de terceiros. Tais problemas podem ser solucionados com ajustes
+          no código do sistema ou na infraestrutura.</p>
+        <p>Vale observar que são testes aplicados para aplicações que estejam conectadas a uma rede (seja interna, seja
+          externa, seja Internet). É um tipo de teste especialmente importante para sistemas <i>web</i>, mas que pode (e
+          deve) ser aplicado para sistemas que funcionam em rede local.</p>
+        <img src="imgs/figura_08.png" class="center-block img-responsive hidden-sm hidden-xs print">
+        <p class="no-print visible-sm visible-xs" aria-hidden="true">Toque na imagem para ampliá-la.</p>
+        <a href="imgs/figura_08.png" target="_blank" class="no-print visible-sm visible-xs" aria-hidden="true"><img
+            src="imgs/figura_08.png" class="center-block img-responsive"></a>
+        <p class="legenda-imagem">
+          Figura 8 – Princípios dos testes de segurança <br>
+          Fonte: Senac EAD (2023)
+        </p>
+        <p class="acessivel no-print">Ao centro, uma tela de computador com uma lupa focando um cadeado. Dela saem setas
+          (sentido horário) para: Confidencialidade (ícone de cadeado e chave), Autenticação (ícone de marca digital),
+          Não repúdio (ícone de apertar de mãos), Autorização (ícone de <i>checklist</i>), Integridade (ícone de base de
+          dados), Disponibilidade (ícone de tela de <i>software</i> com um sinal de <i>check</i>).</p>
+        <p>É possível classificar sete tipos de teste de segurança. Veja, a seguir, quais são eles.</p>
+        <div class="no-print" aria-hidden="true">
+          <p>Clique ou toque para visualizar o conteúdo. </p>
+          <div class='panel-group gaitinha' id='accordion02' role='tablist' aria-multiselectable='true'>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading04'>
+                <h3 class='panel-title'>
+                  <a role='button' data-toggle='collapse' data-parent='#accordion02' href='#collapse04'
+                    aria-expanded='false' aria-controls='collapse04'>
+                    Varredura de vulnerabilidade
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse04' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading04'>
+                <div class='panel-body'>
+                  <p>Um teste automatizado em que um <i>software</i> varre o sistema buscando vulnerabilidades
+                    conhecidas. Alguns exemplos de ferramentas usadas são o SecPod SanerNow, o Invicti (ambos pagos) e o
+                    Nikto2 (gratuito).</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading05'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02'
+                    href='#collapse05' aria-expanded='false' aria-controls='collapse05'>
+                    Varredura de segurança
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse05' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading05'>
+                <div class='panel-body'>
+                  <p>Pode ser manual ou automatizada e tem por objetivo buscar pontos fracos na rede e no sistema,
+                    produzindo soluções a esses riscos.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading06'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02'
+                    href='#collapse06' aria-expanded='false' aria-controls='collapse06'>
+                    Teste de penetração
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse06' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading06'>
+                <div class='panel-body'>
+                  <p>Busca por vulnerabilidade de acesso externo, simulando ataques <i>hackers</i> no sistema. Também é
+                    conhecido como <i>pentest</i>.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading07'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02'
+                    href='#collapse07' aria-expanded='false' aria-controls='collapse07'>
+                    Avaliação de risco
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse07' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading07'>
+                <div class='panel-body'>
+                  <p>É uma análise sobre os riscos de segurança observados na organização, classificando-os como baixo,
+                    médio ou alto e prevendo medidas para reduzi-los.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading08'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02'
+                    href='#collapse08' aria-expanded='false' aria-controls='collapse08'>
+                    Auditoria de segurança
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse08' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading08'>
+                <div class='panel-body'>
+                  <p>É uma inspeção interna dos aplicativos, dos sistemas operacionais e das linhas de código do sistema
+                    em busca de falhas de segurança.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading09'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02'
+                    href='#collapse09' aria-expanded='false' aria-controls='collapse09'>
+                    <i>Hacker</i> ético
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse09' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading09'>
+                <div class='panel-body'>
+                  <p>Com a ajuda de um hacker contratado para esses testes, realizam-se tentativas sucessivas de invasão
+                    ao sistema, expondo falhas de segurança. Também é conhecido como teste <i>red team</i>.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading10'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion02'
+                    href='#collapse10' aria-expanded='false' aria-controls='collapse10'>
+                    Avaliação de postura
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse10' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading10'>
+                <div class='panel-body'>
+                  <p>É uma classificação da postura geral da empresa com relação à segurança obtida baseando-se na
+                    combinação da varredura de segurança, no hackeamento ético e nas avaliações de risco.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="acessivel print">
+          <h4>Varredura de vulnerabilidade</h4>
+          <p>Um teste automatizado em que um <i>software</i> varre o sistema buscando vulnerabilidades conhecidas.
+            Alguns exemplos de ferramentas usadas são o SecPod SanerNow, o Invicti (ambos pagos) e o Nikto2 (gratuito).
+          </p>
+          <h4>Varredura de segurança</h4>
+          <p>Pode ser manual ou automatizada e tem por objetivo buscar pontos fracos na rede e no sistema, produzindo
+            soluções a esses riscos.</p>
+          <h4>Teste de penetração</h4>
+          <p>Busca por vulnerabilidade de acesso externo, simulando ataques <i>hackers</i> no sistema. Também é
+            conhecido como <i>pentest</i>.</p>
+          <h4>Avaliação de risco </h4>
+          <p>É uma análise sobre os riscos de segurança observados na organização, classificando-os como baixo, médio ou
+            alto e prevendo medidas para reduzi-los.</p>
+          <h4>Auditoria de segurança</h4>
+          <p>É uma inspeção interna dos aplicativos, dos sistemas operacionais e das linhas de código do sistema em
+            busca de falhas de segurança.</p>
+          <h4><i>Hacker</i> ético</h4>
+          <p>Com a ajuda de um hacker contratado para esses testes, realizam-se tentativas sucessivas de invasão ao
+            sistema, expondo falhas de segurança. Também é conhecido como teste <i>red team</i>.</p>
+          <h4>Avaliação de postura</h4>
+          <p>É uma classificação da postura geral da empresa com relação à segurança obtida baseando-se na combinação da
+            varredura de segurança, no hackeamento ético e nas avaliações de risco.</p>
+        </div>
+        <p>Outra maneira de classificar os testes de segurança é considerar o momento em que são realizados e a origem
+          das ações executadas. A seguir, são apresentados três tipos principais: SAST (teste de segurança de aplicações
+          estáticas), DAST (teste de segurança de aplicações dinâmicas) e IAST (teste de segurança de aplicações
+          interativas). </p>
+        <div class="caixa-destaque borda-auxiliar-claro-03 bg-auxiliar-claro-01">
+          <p><b>SAST</b></p>
+          <p>Testes de segurança de aplicativo estático, que acontecem nas etapas de desenvolvimento e, ao encontrarem
+            falhas e vulnerabilidades, passam rapidamente para correção. São testes internos, realizados com base no
+            próprio ambiente de desenvolvimento.</p>
+        </div>
+        <div class="caixa-destaque borda-auxiliar-claro-03 bg-auxiliar-claro-02">
+          <p><b>DAST</b></p>
+          <p>Testes de segurança de aplicativo dinâmico, que são realizados antes da liberação do aplicativo ao cliente
+            (seja a entrega de um sistema <i>desktop</i>, seja a disponibilização de um sistema <i>web</i> ao público).
+            São realizados da parte externa para a interna, ou seja, testa-se em um ambiente externo ao de
+            desenvolvimento, possibilitando a identificação de vulnerabilidades mais visíveis. Também analisam questões
+            de desempenho, como tempo de execução.</p>
+        </div>
+        <div class="caixa-destaque borda-auxiliar-claro-03 bg-auxiliar-escuro-02">
+          <p><b>IAST</b></p>
+          <p>Testes de segurança de aplicativo dinâmico, que são internos e concedem ao testador ou à ferramenta
+            automatizada de teste um acesso maior aos dados e ao código, permitindo detecções mais precisas de
+            vulnerabilidades. Geralmente acontecem no início do ciclo de vida do projeto.</p>
+        </div>
+        <p>Veja, a seguir, as técnicas que podem ser aplicadas no processo de teste.</p>
+        <div class="no-print" aria-hidden="true">
+          <p>Clique ou toque para visualizar o conteúdo. </p>
+          <div class='panel-group gaitinha' id='accordion03' role='tablist' aria-multiselectable='true'>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading11'>
+                <h3 class='panel-title'>
+                  <a role='button' data-toggle='collapse' data-parent='#accordion03' href='#collapse11'
+                    aria-expanded='false' aria-controls='collapse11'>
+                    Acessos à aplicação
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse11' class='panel-collapse collapse in' role='tabpanel' aria-labelledby='heading11'>
+                <div class='panel-body'>
+                  <p>Testar as permissões dos diferentes usuários do sistema para verificar se algum perfil está
+                    acessando indevidamente recursos que deveriam estar bloqueados a ele. Por exemplo: um vendedor não
+                    deve acessar os dados de outros vendedores e informações financeiras em um sistema para uma loja.
+                    Para cada permissão, o testador deverá verificar todos os menus, as telas e as funções para detectar
+                    se algum recurso está indevidamente acessível.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading12'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion03'
+                    href='#collapse12' aria-expanded='false' aria-controls='collapse12'>
+                    Proteção de dados
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse12' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading12'>
+                <div class='panel-body'>
+                  <p>Além de recursos do sistema, o acesso a determinados dados pode ser restrito a alguns usuários. No
+                    exemplo anterior, os dados de salários e faturamento da loja não devem estar ao alcance dos
+                    vendedores. Isso pode ser resolvido por meio de permissões no sistema, possivelmente em nível de
+                    banco de dados, mas também com encriptação de dados (para senhas e dados de cartões de crédito, por
+                    exemplo).</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading13'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion03'
+                    href='#collapse13' aria-expanded='false' aria-controls='collapse13'>
+                    Ataques de força bruta
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse13' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading13'>
+                <div class='panel-body'>
+                  <p>Usar um <i>software</i> para, com base em um usuário conhecido, testar senhas uma após a outra até
+                    conseguir acesso ao sistema. Geralmente sistemas aplicam uma restrição de quantidade de tentativas
+                    de autenticação, inibindo esse tipo de ataque (ao tentar acessar uma rede social, por exemplo, após
+                    um número de tentativas malsucedidas, o acesso pode ficar bloqueado por algumas horas e um
+                    <i>captcha</i> ou uma confirmação de identidade por outro meio pode ser requisitada).
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading14'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion03'
+                    href='#collapse14' aria-expanded='false' aria-controls='collapse14'>
+                    SQL Injection e XSS (<i>cross-site scripting</i>)
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse14' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading14'>
+                <div class='panel-body'>
+                  <p>Um <i>script</i> é usado maliciosamente para tentar invadir ou prejudicar dados do sistema. No caso
+                    de SQL Injection, aproveitam-se as vulnerabilidades na implementação de banco de dados, como
+                    consultas não protegidas, e usam-se comandos SQL para a invasão. Já o XSS trata de códigos de
+                    <i>script</i> de uma página que apontem para outra página, com a intenção de obter dados ou acesso a
+                    esta.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading15'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion03'
+                    href='#collapse15' aria-expanded='false' aria-controls='collapse15'>
+                    Pontos de acesso a serviços
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse15' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading15'>
+                <div class='panel-body'>
+                  <p>Aplicações <i>web</i> atuais muitas vezes expõem serviços para que outras aplicações possam
+                    acessar. Nesse contexto, é importante testar se apenas as aplicações autorizadas estão tendo acesso
+                    aos serviços autorizados e se, com base nesse serviço, não se obtém acesso a outras funcionalidades
+                    ou dados que deveriam estar protegidos.</p>
+                </div>
+              </div>
+            </div>
+            <div class='panel panel-default'>
+              <div class='panel-heading' role='tab' id='heading16'>
+                <h3 class='panel-title'>
+                  <a class='collapsed' role='button' data-toggle='collapse' data-parent='#accordion03'
+                    href='#collapse16' aria-expanded='false' aria-controls='collapse16'>
+                    Manejo de erros
+                  </a>
+                </h3>
+              </div>
+              <div id='collapse16' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading16'>
+                <div class='panel-body'>
+                  <p>É importante informar ao usuário quando um erro acontece, mas nunca devem aparecer dados detalhados
+                    da falha, que podem explicitar detalhes do sistema e podem ser usados por invasores para obter
+                    acesso. Assim, uma exceção (e principalmente seu <i>stack-trace</i>) não deve ser exposta ao
+                    usuário. Ao invés disso, esses detalhes podem ser registrados em arquivo interno de <i>log</i>, que
+                    deve estar protegido de acesso externo, mas acessível aos desenvolvedores para investigar problemas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="acessivel print">
+          <h4>Acessos à aplicação</h4>
+          <p>Testar as permissões dos diferentes usuários do sistema para verificar se algum perfil está acessando
+            indevidamente recursos que deveriam estar bloqueados a ele. Por exemplo: um vendedor não deve acessar os
+            dados de outros vendedores e informações financeiras em um sistema para uma loja. Para cada permissão, o
+            testador deverá verificar todos os menus, as telas e as funções para detectar se algum recurso está
+            indevidamente acessível.</p>
+          <h4>Proteção de dados</h4>
+          <p>Além de recursos do sistema, o acesso a determinados dados pode ser restrito a alguns usuários. No exemplo
+            anterior, os dados de salários e faturamento da loja não devem estar ao alcance dos vendedores. Isso pode
+            ser resolvido por meio de permissões no sistema, possivelmente em nível de banco de dados, mas também com
+            encriptação de dados (para senhas e dados de cartões de crédito, por exemplo).</p>
+          <h4>Ataques de força bruta</h4>
+          <p>Usar um <i>software</i> para, com base em um usuário conhecido, testar senhas uma após a outra até
+            conseguir acesso ao sistema. Geralmente sistemas aplicam uma restrição de quantidade de tentativas de
+            autenticação, inibindo esse tipo de ataque (ao tentar acessar uma rede social, por exemplo, após um número
+            de tentativas malsucedidas, o acesso pode ficar bloqueado por algumas horas e um <i>captcha</i> ou uma
+            confirmação de identidade por outro meio pode ser requisitada).</p>
+          <h4>SQL Injection e XSS (<i>cross-site scripting</i>)</h4>
+          <p>Um <i>script</i> é usado maliciosamente para tentar invadir ou prejudicar dados do sistema. No caso de SQL
+            Injection, aproveitam-se as vulnerabilidades na implementação de banco de dados, como consultas não
+            protegidas, e usam-se comandos SQL para a invasão. Já o XSS trata de códigos de <i>script</i> de uma página
+            que apontem para outra página, com a intenção de obter dados ou acesso a esta.</p>
+          <h4>Pontos de acesso a serviços</h4>
+          <p>Aplicações <i>web</i> atuais muitas vezes expõem serviços para que outras aplicações possam acessar. Nesse
+            contexto, é importante testar se apenas as aplicações autorizadas estão tendo acesso aos serviços
+            autorizados e se, com base nesse serviço, não se obtém acesso a outras funcionalidades ou dados que deveriam
+            estar protegidos.</p>
+          <h4>Manejo de erros</h4>
+          <p>É importante informar ao usuário quando um erro acontece, mas nunca devem aparecer dados detalhados da
+            falha, que podem explicitar detalhes do sistema e podem ser usados por invasores para obter acesso. Assim,
+            uma exceção (e principalmente seu <i>stack-trace</i>) não deve ser exposta ao usuário. Ao invés disso, esses
+            detalhes podem ser registrados em arquivo interno de <i>log</i>, que deve estar protegido de acesso externo,
+            mas acessível aos desenvolvedores para investigar problemas.</p>
+        </div>
+        <p>Considerando o processo tradicional de desenvolvimento de <i>software</i>, de maneira geral pode-se dizer que
+          os testes de segurança devem percorrer todo o processo de desenvolvimento do sistema.</p>
+        <img src="imgs/dest4.png" class="img-responsive center-block hidden-xs print">
+        <img src="imgs/mob_dest4.png" class="img-responsive center-block visible-xs no-print">
+        <div class="acessivel no-print">
+          <ol type="1">
+            <li>Na fase de requisitos: estudo e verificação de uso indevido de dados.</li>
+            <li>Na fase de projeto: análise do risco de segurança para o projeto e desenvolvimento de plano de teste com
+              testes de segurança.</li>
+            <li>Na fase de codificação: testes SAST e DAST</li>
+            <li>Junto aos testes de integração e de sistema: teste de caixa-preta de segurança (que partem de fora para
+              dentro sem acesso a código ou dados) e varredura de vulnerabilidades.</li>
+            <li>Nas fases de implantação e suporte: testes de penetração, varredura de vulnerabilidades e análise de
+              impacto de atualizações e ajustes.</li>
+          </ol>
+        </div>
+        <p>No caso de métodos ágeis, os testes de segurança deverão estar presentes em todos os <i>sprints</i>, em seu
+          planejamento, na implementação e na finalização do incremento de <i>software</i>.</p>
+      </div>
+
+
+    </section>
+    <!-- - - - - - - - - - - - - - - - não alterar abaixo- - - - - - - - - - - - -->
+    <footer class="text-center no-print">
+      <!--
+          <ul class="pagination">
+
+          </ul>
+          -->
+    </footer>
+
+  </div>
+
+  </div>
+
+
+  <!-- Modais -->
+
+
+  <!-- Modais 100% -->
+  <div class="modal modal-100 fade" id="modal-teste01" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-live="polite" aria-atomic="true" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="container">
+          <h3>Teste de carga</h3>
+          <p>Esse é um tipo de teste não funcional especialmente interessante para aplicações <i>web</i>. O teste de
+            carga estabelece e avalia a capacidade de processamento de um <i>software</i> dada uma carga crescente de
+            dados, geralmente conexões de usuários. </p>
+          <p>Em uma aplicação <i>web</i>, o teste de carga pode ser avaliado simulando um número X de conexões
+            inicialmente e verificando a disponibilidade do sistema. Depois, aumenta-se esse número de conexões, revendo
+            como o sistema está operando, e assim sucessivamente até que se alcance um número próximo ao que seria
+            alcançado no dia a dia do sistema ou até que o sistema apresente falha.</p>
+          <p>Analogamente, seria possível verificar carga de processos de banco de dados, aumentando gradativamente o
+            número de consultas geradas pelo sistema e verificando a estabilidade de sua conexão com o banco de dados.
+          </p>
+          <p>Com base nos testes de carga, é possível estabelecer a capacidade da aplicação e identificar fatores
+            limitantes, que podem ser de <i>hardware</i>, de codificação, de rede, entre outros.</p>
+          <p>Os resultados desse teste geralmente são representados pelo número de transações simultâneas e pela
+            quantidade de usuários conectados ao mesmo tempo no sistema. Podem indicar problemas não só em código como
+            em infraestrutura (a necessidade de um servidor com maior capacidade de processamento, por exemplo, ou uma
+            conexão à Internet com maior banda).</p>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal modal-100 fade" id="modal-teste02" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-live="polite" aria-atomic="true" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="container">
+          <h3>Teste de estresse</h3>
+          <p>Enquanto os testes de carga geralmente simulam uma alta demanda cotidiana de um sistema, o teste de
+            estresse (ou teste de esforço) simula uma demanda extraordinária, que poderá acontecer pontualmente, mas que
+            poderá levar à falha do sistema. Esses testes são, portanto, usados para garantir a estabilidade e a
+            confiabilidade de um sistema, simulando uma alta taxa de tráfego de dados e registrando a resposta do
+            <i>software</i> a essa demanda. É um teste indicado, por exemplo, para sistemas <i>web</i> que, em razão de
+            uma data específica ou um evento, precisam testar seus limites.
+          </p>
+          <p>Como exemplo, é possível citar um <i>site</i> de vendas em uma data de liquidação ou um <i>site</i> de
+            inscrições limitadas para um evento. Ambos os casos apresentarão, em um período, uma situação de acesso
+            muito acima do que acontece diariamente. Assim, um teste de estresse pode prevenir que o sistema caia por
+            excesso de acessos.</p>
+          <p>Além de servir para verificar quanto o sistema suporta de tráfego de dados, o teste de estresse também
+            serve para avaliar como o sistema se comporta após uma falha.</p>
+          <p>Com base no teste de estresse, assim como no teste de carga, é possível definir ajustes em infraestrutura e
+            no <i>software</i> para garantir mais robustez ao sistema.</p>
+          <p>Algumas métricas podem ser avaliadas baseando-se no teste de estresse:</p>
+          <div class="caixa-destaque borda-primaria-03 bg-primaria-02">
+            <ul class="cor01">
+              <li>Quantidade de páginas requisitadas por segundo (em sistemas <i>web</i>)</li>
+              <li>Taxas de transferência (tamanho dos dados de resposta em sistema <i>web</i>)</li>
+              <li>Tempo de carregamento de uma tela ou página</li>
+              <li>Número de falhas na conexão </li>
+            </ul>
+          </div>
+          <p>Uma das ferramentas mais usados para testes de carga e de estresse é o JMeter, em que o desenvolvedor pode
+            configurar cenários de teste e o <i>software</i> fará simulação de acessos ao sistema.</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal modal-100 fade" id="modal-teste03" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-live="polite" aria-atomic="true" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="container">
+          <h3>Teste de volume</h3>
+          <p>Mais um teste de desempenho, o teste de volume verifica o comportamento do sistema em situações de grande
+            carga de dados. Diferente dos testes de carga e de estresse, que se preocupam essencialmente com o tráfego
+            de informações e conexões estabelecidas, o teste de volume trabalha com tamanho de arquivos e bancos de
+            dados usados pelo sistema testado.</p>
+          <p>Para o teste, estende-se o tamanho do banco de dados ou arquivo até um limite estabelecido e, então, o
+            desempenho do sistema é testado, observando-se o tempo de resposta para as ações do usuário e o
+            comportamento do sistema (se erros acontecem, se as funcionalidades são executadas corretamente).</p>
+          <p>O teste de volume é interessante porque todo sistema, com o passar do tempo, recebe quantidades de dados
+            que podem diminuir o desempenho do <i>software</i>. No tempo de desenvolvimento, os testes funcionais
+            geralmente acontecem sobre pequenos volumes de dados. Assim, o teste de volume pode detectar problemas não
+            observados nos testes comuns. Os dados gerados para o teste geralmente vêm de um <i>software</i>
+            desenvolvido para povoar com dados válidos o banco ou os arquivos usados pelo sistema.</p>
+          <p>Com base no teste de volume, pode-se identificar, então, o ponto em que a estabilidade do sistema diminui e
+            a capacidade de dados da aplicação. Alguns dados podem ser levados em consideração na análise desses testes:
+          </p>
+          <div class="caixa-destaque borda-primaria-03 bg-primaria-02">
+            <ul class="cor01">
+              <li>Tempo de resposta do sistema (o sistema demora mais, ou não, quando está sob grande volume de dados)
+              </li>
+              <li>Perda de dados (o sistema passa a perder informações quando se trabalha com banco de dados volumosos)
+              </li>
+              <li>Armazenamento e sobrescrita de dados (os dados continuam sendo gravados corretamente, ou não, com um
+                banco de dados muito povoado)</li>
+            </ul>
+          </div>
+          <p>Entre as vantagens do teste de volume, estão a capacidade de detectar melhorias necessárias em
+            infraestrutura e em código para o sistema, a identificação precoce de gargalos de desempenho e a garantia de
+            que o sistema poderá ser usado no mundo real.</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  Em caso de footer personalizado utilizar esse elemento e adicionar a classe customizada
+    <footer>
+    </footer>
+	-->
+  <!-- carrega todas as imagens dos icones nesta div
+ caso queira adicionar mais imagens de novos icones do css,
+ ou qualquer imagem que deva ser contabilizada durante a fase
+ de loading, referenciar aqui.
+ -->
+  <div class="ico-div-loader">
+    <img src="../template/images/atencao.png">
+    <img src="../template/images/bg-content.jpg">
+    <img src="../template/images/bg-topo.jpg">
+    <img src="../template/images/black-zoom-in-256.png">
+    <img src="../template/images/concluindo.png">
+    <img src="../template/images/curtir.png">
+    <img src="../template/images/desafio.png">
+    <img src="../template/images/dica.png">
+    <img src="../template/images/doc.png">
+    <img src="../template/images/fundamental.png">
+    <img src="../template/images/icon-03.png">
+    <img src="../template/images/importante.png">
+    <img src="../template/images/lightbulb.png">
+    <img src="../template/images/link.png">
+    <img src="../template/images/link_pdf_hover.png">
+    <img src="../template/images/link_pdf_normal.png">
+    <img src="../template/images/logo-senac.png">
+    <img src="../template/images/mark-icon.png">
+    <img src="../template/images/mark-icon02.png">
+    <img src="../template/images/midia.png">
+    <img src="../template/images/monitor.png">
+    <img src="../template/images/nao_curtir.png">
+    <img src="../template/images/pergunta.png">
+    <img src="../template/images/pesquisa.png">
+    <img src="../template/images/play.png">
+    <img src="../template/images/radio_flat.png">
+    <img src="../template/images/refletir.png">
+    <img src="../template/images/saiba_mais.png">
+    <img src="../template/images/senac_loader.png">
+    <img src="../template/images/tanamidia.png">
+    <img src="../template/images/transcricao.png">
+    <img src="../template/images/transcricao_small.png">
+    <img src="../template/images/tv.png">
+    <img src="../template/images/tv_bottom.png">
+    <img src="../template/images/zoom.png">
+    <img src="../template/images/zoom_ie.cur">
+    <img src="../template/images/zoom_ie.png">
+    <!-- adicionar as imagens customizadas aqui abaixo -->
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="../template/js/jquery.min.js"></script>
+  <script src="../template/js/bootstrap.min.js"></script>
+  <script src="../template/js/jquery.magnific-popup.min.js"></script>
+  <script src="../template/js/print.js"></script>
+  <script src="../template/js/template.config.js"></script>
+  <script src="../template/js/images.loader.js"></script>
+  <script src="../template/js/highlight.min.js"></script>
+  <noscript>
+    <style media="screen">
+      .over-loader {
+        display: none;
+      }
+    </style>
+  </noscript>
+</body>
+
+</html>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
+  });
+  //inicializa zoom na imagem
+  $('.zoom-imagem').magnificPopup({
+    type: 'image',
+    mainClass: 'mfp-with-zoom', // this class is for CSS animation below
+    zoom: {
+      enabled: true, // By default it's false, so don't forget to enable it
+
+      duration: 300, // duration of the effect, in milliseconds
+      easing: 'ease-in-out', // CSS transition easing function
+
+      // The "opener" function should return the element from which popup will be zoomed in
+      // and to which popup will be scaled down
+      // By defailt it looks for an image tag:
+      opener: function (openerElement) {
+        // openerElement is the element on which popup was initialized, in this case its <a> tag
+        // you don't need to add "opener" option if this code matches your needs, it's defailt one.
+        return openerElement.is('img') ? openerElement : openerElement.find('img');
+      }
+    },
+    image: {
+      markup: '<div class="mfp-figure">' +
+        '<div class="mfp-close"></div>' +
+        '<div class="mfp-img"></div>' + // Floated left
+        '<div class="mfp-bottom-bar">' + '<figcaption>' + '<div class="mfp-title" style="text-align:center"></div>' +
+        '<div class="mfp-counter"></div>' + '</figcaption>' +
+        '</div>' +
+        '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+      cursor: 'mfp-zoom-out-cur', // Class that adds zoom cursor, will be added to body. Set to null to disable zoom out cursor.
+
+      tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message
+    }
+  });
+
+  //inicializa popover
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+  //inicializa tooltip
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+
+
+  $(function () {
+    $(".card").click(function () {
+      if ($(this).hasClass("exibe-frente")) {
+        $(this)
+          .children()
+          .first()
+          .hide();
+        $(this)
+          .children()
+          .last()
+          .show();
+        $(this).removeClass("exibe-frente");
+      } else {
+        $(".card .verso").hide();
+        $(".card .frente").show();
+        $(this).addClass("exibe-frente");
+      }
+    });
+  });
+
+  $(document).ready(function () {
+    $(".card .verso").hide();
+  });
+
+
+
+
+  /*------- Script de animação do botão -------*/
+  var root = document.documentElement;
+  root.className += ' js';
+
+  function boxTop(idBox) {
+    var boxOffset = $(idBox).offset().top;
+    return boxOffset;
+  }
+
+  $(document).ready(function () {
+    var $target = $('.animeStart'),
+      $target2 = $('.animeStop'),
+      targetBox = $('.box'),
+      animationClass = 'anime-init',
+      windowHeight = $(window).height(),
+      offset = windowHeight - (windowHeight / 4);
+
+    function animeScroll() {
+      var documentTop = $(document).scrollTop();
+      $target.each(function () {
+        if (documentTop > boxTop(this) - offset) {
+          targetBox.addClass(animationClass);
+        } else {
+          targetBox.removeClass(animationClass);
+        }
+        if (documentTop > boxTop($target2) - offset) {
+          targetBox.removeClass(animationClass);
+        }
+      });
+    }
+    animeScroll();
+
+    $(document).scroll(function () {
+      animeScroll();
+    });
+  });
+
+
+</script>
+
+<script>
+  var scriptElem = document.createElement("script");
+  scriptElem.src = "https://plugin.handtalk.me/web/latest/handtalk.min.js",
+    scriptElem.charset = "UTF-8",
+    scriptElem.onload = function () {
+      window.ht = new HT({
+        token: "bf5b7efb148a829a126a0e0c9fd533bf",
+        align: "top",
+        videoEnabled: true,
+        ytEmbedReplace: true,
+        mobileConfig: {
+          align: "right",
+          actionsAlign: "top",
+          customButtonStyle: {
+            borderRadius: "6px",
+            size: "38px",
+            horizontalMargin: "13px",
+            bottomMargin: "140px",
+            rightMargin: "40px"
+          }
+        }
+      });
+      $('.ht-skip').attr("aria-hidden", "true")
+    },
+    document.body.appendChild(scriptElem);
+</script>
